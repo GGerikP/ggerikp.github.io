@@ -1,31 +1,44 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useState, useEffect } from 'react';
 import styled from 'styled-components';
-import theme from '../theme';
 
 interface PageProps {
   children: ReactNode;
   style?: React.CSSProperties;
 }
 
-const PageContainer = styled.div`
+interface PageContainerProps {
+  height: number;
+}
+
+const PageContainer = styled.div<PageContainerProps>`
 width: 100%;
 max-width: 100%;
-min-height: 650px;
-height: 650px;
+height: ${props => props.height}px; 
 overflow: hidden;
-@media (min-width: ${theme.breakpoints.mobile}) {
-    min-height: 800px;
-    height: 800px;
-}
-@media (min-width: ${theme.breakpoints.tablet}) {
-    min-height: 1000px;
-    height: 1000px;
-}
 `;
 
 const Page: React.FC<PageProps> = ({ children, style }) => {
+
+  // State to hold the dynamic height
+  const [pageHeight, setPageHeight] = useState(window.innerHeight);
+
+  // Function to update the height when the window is resized
+  const handleResize = () => {
+    setPageHeight(window.innerHeight);
+  };
+
+  // Attach an event listener to the window for the resize event
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+
+    // Clean up the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
-    <PageContainer style={style}>
+    <PageContainer style={style} height={pageHeight}>
       {children}
     </PageContainer>
   );

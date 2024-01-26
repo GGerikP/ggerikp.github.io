@@ -23,7 +23,7 @@ const LargeTitle = styled.img`
     padding-left: 10%;
     padding-right: 10%;
     position: absolute; 
-    bottom: 150px; 
+    bottom: 0px; 
     margin: auto;
 `
 
