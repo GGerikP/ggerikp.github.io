@@ -21,7 +21,7 @@ const StyledApp = styled.div`
   color: ${theme.colors.text};
   font-family: ${theme.fonts.base};
   font-size: 20px;
-  line-height: 25px;      
+  line-height: 25px;
 `
 
 function App() {

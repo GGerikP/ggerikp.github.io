@@ -49,7 +49,7 @@ export interface ThemeInterface extends DefaultTheme {
 export const theme: ThemeInterface = {
   colors: {
     primary: '#000000',
-    secondary: '#000000',
+    secondary: '#FFFFFF',
     primaryAccent: '#444444',
     background: '#f8f9fa',
     text: '#000000',

@@ -15,25 +15,27 @@ const blink = keyframes`
   }
 `;
 
-type LineProps = {
-    istyping: boolean;
-    isidle: boolean;
+const PrintedLine = styled.div`
+    display: inline-block;
+`;
+
+interface CursorProps {
+    $istyping: number;
+    $isidle: number;
 }
 
-const PrintedLine = styled.div.withConfig({
-    shouldForwardProp: (prop, defaultValidatorFn) =>
-        !['istyping', 'isidle'].includes(prop)
-}) <LineProps>`
-  display: inline-block;
-  padding-right: 3px;
-  border-right: 2px solid ${theme.colors.text};
-  ${props => props.isidle && css`
-    animation: ${blink} .5s step-end infinite;
-  `}
-  ${props => !props.istyping && !props.isidle && css`
+const Cursor = styled.div<CursorProps>`
+    padding-right: 3px;
+    display: inline-block;
     border-right: none;
-  `}
-`;
+    ${props => props.$istyping === 1 && css`
+        border-right: 2px solid white;
+    `}
+    ${props => props.$isidle === 1 && css`
+        border-right: 2px solid white;
+        animation: ${blink} .5s step-end infinite;
+    `}
+`
 
 const Link = styled.a`
   text-decoration: underline;
@@ -138,6 +140,7 @@ const LinePrinter: React.FC<PrintedTextBlockProps> = ({ lines, typingSpeed, prom
 
         const prePrintDelay = !instantPrint ? (typingSpeed + ((cursorCoordinates.charIndex === 0 && currentSegment.printDelayBefore) ? currentSegment.printDelayBefore : 0)) : 0;
         const postPrintDelay = !instantPrint && (isSegmentDone && currentSegment.printDelayAfter) ? currentSegment.printDelayAfter : 0;
+
         const timeout = setTimeout(() => {
 
             updateDisplayedText(cursorCoordinates.activeLine, cursorCoordinates.activeSegment, textSubSection, currentSegment?.link);
@@ -158,9 +161,9 @@ const LinePrinter: React.FC<PrintedTextBlockProps> = ({ lines, typingSpeed, prom
                             charIndex: !isSegmentDone ? cursorCoordinates.charIndex + 1 : 0
                         }
                     });
-            }, postPrintDelay);
-        }
-    }, prePrintDelay);
+                }, postPrintDelay);
+            }
+        }, prePrintDelay);
 
         return () => clearTimeout(timeout);
     }, [lines, typingSpeed, cursorCoordinates, instantPrint]);
@@ -170,18 +173,24 @@ const LinePrinter: React.FC<PrintedTextBlockProps> = ({ lines, typingSpeed, prom
             {displayedText.lines.map((line, lineIndex) => {
                 return (
                     <PrintedLine key={lineIndex}
-                        istyping={lineIndex === displayedText.lines.length - 1 && (displayedText?.cursorDisplay) === CursorDisplay.Stable}
-                        isidle={lineIndex === displayedText.lines.length - 1 && (displayedText?.cursorDisplay) === CursorDisplay.Blink}
                     >
                         <div>{promptChars}
                             {line.segments.map((segment, segmentIndex) => {
                                 const text = displayedText?.lines[lineIndex]?.segments[segmentIndex].text;
                                 return (
                                     segment.link
-                                        ? <Link key={segmentIndex} href={segment.link}><PrintedTextSpan>{text}</PrintedTextSpan></Link>
+                                        ? <Link key={segmentIndex}
+                                            href={segment.link} target="_blank"
+                                            rel="noopener noreferrer">
+                                            <PrintedTextSpan>{text}</PrintedTextSpan>
+                                        </Link>
                                         : <PrintedTextSpan key={segmentIndex}>{text}</PrintedTextSpan>
                                 )
                             })}
+                        <Cursor
+                            $istyping={lineIndex === displayedText.lines.length - 1 && (displayedText?.cursorDisplay) === CursorDisplay.Stable ? 1 : 0}
+                            $isidle={lineIndex === displayedText.lines.length - 1 && (displayedText?.cursorDisplay) === CursorDisplay.Blink ? 1 : 0}>
+                                &nbsp;</Cursor>
                         </div>
                     </PrintedLine>
                 )

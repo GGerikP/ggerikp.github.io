@@ -14,7 +14,7 @@ const terminalKeyframes = keyframes`
 const WindowContainer = styled.div`
     display: block;
     border-radius: 5px;
-    color: ${theme.colors.textSecondary};
+    color: white;
     font-size: ${theme.fontSizes.large};
     animation: ${terminalKeyframes} ${terminalHeightExpansionDuration}s;
     height: 0px;
@@ -24,6 +24,9 @@ const WindowContainer = styled.div`
 const WindowTitleBar = styled.div`
     border-radius: 5px 5px 0px 0px;
     background-color: ${theme.colors.primaryAccent};
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `
 
 const WindowTitle = styled.div`
@@ -32,19 +35,18 @@ const WindowTitle = styled.div`
     width: 100%;
 `
 
-const WindowX = styled.div`
-    position: absolute;
-    right: 5px;
-    top: 0px;
-    height: 100%;
+const WindowX = styled.i`
+    color: white;
+    font-size: 20px;
+    padding: 3px;
 `
 
 const TerminalContainer = styled.div`
-    color: ${theme.colors.text};
+    color: white;
     top: 5%;
     left: 5%;
-    background-color: ${theme.colors.secondary};
-    border-radius: 0px 0px 5px 5px;
+    background-color: black;
+    border-radius: 0px 0px 10px 10px;
     height: 100%;
     min-height: inherit;
 `
@@ -63,6 +65,12 @@ const TerminalIcon = styled.img`
     top: 6px;
 `
 
+const LinesContainer = styled.div`
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+`
+
 type TerminalProps = {
     lines: Line[];
 }
@@ -71,8 +79,13 @@ const Terminal: React.FC<TerminalProps> = ({ lines }) => {
     const windowTitle = 'gerik@peterson:~';
 
     const [expanded, setExpanded] = useState(false);
+    const [printerKey, setPrinterKey] = useState(0);
 
-    useEffect(() => {
+    const handleClick = () => {
+        setPrinterKey(prevKey => prevKey + 1);
+      };
+
+      useEffect(() => {
       // Wait for the initial animation to complete, then expand further if needed
       const timer = setTimeout(() => {
         setExpanded(true);
@@ -81,18 +94,22 @@ const Terminal: React.FC<TerminalProps> = ({ lines }) => {
       return () => clearTimeout(timer);
     }, []);
 
+    const reprint = true;
     return (
         <WindowContainer style={expanded ? { height:'auto' , minHeight : terminalHeight, overflow: 'visible' } : undefined}>
             <WindowTitleBar>
                 <WindowTitle>{windowTitle}</WindowTitle>
-                <WindowX>x</WindowX>
+                <button onClick={handleClick}>Reprint</button>
+                <WindowX className="fa fa-times" />
             </WindowTitleBar>
             <TerminalContainer>
                 <TerminatorTitleBar>
                     <TerminalIcon src={terminatorPrefsIcon} />
                     <WindowTitle>{windowTitle}</WindowTitle>
                 </TerminatorTitleBar>
-                <LinePrinter lines={lines} typingSpeed={35} promptChars={'$ '} instantPrint={false}/>
+                <LinesContainer>
+                    <LinePrinter lines={lines} typingSpeed={35} promptChars={'$ '} instantPrint={false} key={printerKey}/>
+                </LinesContainer>
             </TerminalContainer>
         </WindowContainer>
     )

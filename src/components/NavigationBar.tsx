@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import theme from '../theme';
 import GerikPetersonLogo from './images/gerik-peterson-logo.png';
 
@@ -15,6 +15,7 @@ const NavBarContainer = styled.div`
   top: 0;
   z-index: 10;
   height: 50px;
+  border-bottom: solid 1px black;
 `;
 
 const NavBar = styled.nav`
@@ -24,7 +25,7 @@ const NavBar = styled.nav`
   padding: 0.5rem 1rem;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(HashLink)`
   &&& {
     text-decoration: none;
     padding: 0 1rem;
@@ -96,20 +97,20 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
   return (
     <NavBarContainer>
       <NavBar>
-        <Logo as={Link} to="/"><img src={GerikPetersonLogo} alt="Site Logo"/></Logo>
+        <Logo as={HashLink} to="/"><img src={GerikPetersonLogo} alt="Site Logo"/></Logo>
         <NavItems className={mobileMenuActive ? 'active' : ''}>
-          <StyledLink to="/">Home</StyledLink>
-          <StyledLink to="/about">About</StyledLink>
-          <StyledLink to="/services">Services</StyledLink>
-          <StyledLink to="/contact">Contact</StyledLink>
+          <StyledLink to="/#title">Home</StyledLink>
+          <StyledLink to="/#about">About</StyledLink>
+          <StyledLink to="/#cv">Experience</StyledLink>
+          <StyledLink to="/#values">Values</StyledLink>
         </NavItems>
         <HamburgerIcon name="bars" size="large" onClick={toggleMobileMenu} />
       </NavBar>
       <MobileMenu className={mobileMenuActive ? 'active' : ''}>
-        <StyledLink to="/" onClick={() => setMobileMenuActive(false)}>Home</StyledLink>
-        <StyledLink to="/about" onClick={() => setMobileMenuActive(false)}>About</StyledLink>
-        <StyledLink to="/services" onClick={() => setMobileMenuActive(false)}>Services</StyledLink>
-        <StyledLink to="/contact" onClick={() => setMobileMenuActive(false)}>Contact</StyledLink>
+        <StyledLink to="/#title" onClick={() => setMobileMenuActive(false)}>Home</StyledLink>
+        <StyledLink to="/#about" onClick={() => setMobileMenuActive(false)}>About</StyledLink>
+        <StyledLink to="/#cv" onClick={() => setMobileMenuActive(false)}>Experience</StyledLink>
+        <StyledLink to="/#values" onClick={() => setMobileMenuActive(false)}>Values</StyledLink>
       </MobileMenu>
     </NavBarContainer>
   );
