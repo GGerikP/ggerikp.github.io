@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const MyValuesContainer = styled.div`
     display: flex;
     justify-content: center;
-    height: 100vh;
+    height: auto;
     background-color: #B7DDF0;
     padding: 5%;
 `
@@ -13,7 +13,7 @@ const MyValuesText = styled.div`
     display: flex;
     flex-direction: column;
     min-width: 300px;
-    width: 50%;
+    width: 75%;
 `
 
 const MyValuesParagraph = styled.div`
@@ -31,6 +31,12 @@ function MyValuesBlock() {
             <MyValuesText>
                 <MyValuesParagraph style={{ textAlign: 'center' }}>
                     <h1>My Values</h1>
+                    <hr />
+                    <p>
+                        There is so much I could put here.  Please be patient with me as I figure out what exactly I how exactly I want to write this up. :-)
+                    </p>
+                    <hr />
+                    <p>Here's something generic for now:</p>
                     <ValuesList>
                         <li>Stay Positive</li>
                         <li>Be Honest</li>

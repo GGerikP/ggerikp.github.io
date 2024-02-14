@@ -1,10 +1,12 @@
 // NavigationBar.tsx
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
 import { HashLink } from 'react-router-hash-link';
 import theme from '../theme';
 import GerikPetersonLogo from './images/gerik-peterson-logo.png';
+import Link from './Link';
+import { useOnClickOutside } from 'usehooks-ts'
 
 // Styled components
 const NavBarContainer = styled.div`
@@ -14,7 +16,7 @@ const NavBarContainer = styled.div`
   position: fixed;
   top: 0;
   z-index: 10;
-  height: 50px;
+  height: 55px;
   border-bottom: solid 1px black;
 `;
 
@@ -22,19 +24,23 @@ const NavBar = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 1rem;
+  padding: 5px;
+  width: 100%;
 `;
 
-const StyledLink = styled(HashLink)`
+const StyledLink = styled(Link)`
   &&& {
     text-decoration: none;
-    padding: 0 1rem;
     cursor: pointer;
     transition: color 0.3s ease-in-out;
     color: black;
+    padding-right: 10px;
+    padding-left: 10px;
+    border-right: 1px solid black;
 
     &:hover {
       color: #ddd;
+      text-decoration: line-through;
     }
   }
 `;
@@ -69,14 +75,14 @@ const HamburgerIcon = styled(Icon)`
 const MobileMenu = styled.div`
   display: none;
   flex-direction: column;
-  padding-top: 1rem;
+  padding-top: 10px;
 
   @media (max-width: ${theme.breakpoints.tablet}) {
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
-    background: #333;
+    background: white;
     display: none;
 
     &.active {
@@ -89,28 +95,35 @@ type NavigationBarProps = {};
 
 const NavigationBar: React.FC<NavigationBarProps> = () => {
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
+  const ref = useRef(null)
 
   const toggleMobileMenu = () => {
     setMobileMenuActive(!mobileMenuActive);
   };
 
+  const handleClickOutside = () => {
+    // Your custom logic here
+    setMobileMenuActive(false);
+  }
+  useOnClickOutside(ref, handleClickOutside);
+
   return (
-    <NavBarContainer>
+    <NavBarContainer ref={ref} id="NavigationBar">
       <NavBar>
         <Logo as={HashLink} to="/"><img src={GerikPetersonLogo} alt="Site Logo"/></Logo>
         <NavItems className={mobileMenuActive ? 'active' : ''}>
-          <StyledLink to="/#title">Home</StyledLink>
-          <StyledLink to="/#about">About</StyledLink>
-          <StyledLink to="/#cv">Experience</StyledLink>
-          <StyledLink to="/#values">Values</StyledLink>
+          <StyledLink url="/#title">Home</StyledLink>
+          <StyledLink url="/#about">About</StyledLink>
+          <StyledLink url="/#cv">Experience</StyledLink>
+          <StyledLink url="/#values">Values</StyledLink>
         </NavItems>
         <HamburgerIcon name="bars" size="large" onClick={toggleMobileMenu} />
       </NavBar>
       <MobileMenu className={mobileMenuActive ? 'active' : ''}>
-        <StyledLink to="/#title" onClick={() => setMobileMenuActive(false)}>Home</StyledLink>
-        <StyledLink to="/#about" onClick={() => setMobileMenuActive(false)}>About</StyledLink>
-        <StyledLink to="/#cv" onClick={() => setMobileMenuActive(false)}>Experience</StyledLink>
-        <StyledLink to="/#values" onClick={() => setMobileMenuActive(false)}>Values</StyledLink>
+        <StyledLink url="/#title" onClick={() => setMobileMenuActive(false)}>Home</StyledLink>
+        <StyledLink url="/#about" onClick={() => setMobileMenuActive(false)}>About</StyledLink>
+        <StyledLink url="/#cv" onClick={() => setMobileMenuActive(false)}>Experience</StyledLink>
+        <StyledLink url="/#values" onClick={() => setMobileMenuActive(false)}>Values</StyledLink>
       </MobileMenu>
     </NavBarContainer>
   );

@@ -39,8 +39,19 @@ const aboutMeText: Line[] = [
     {
         lineSegments: [{ text: "If you want to learn more about my professional life you might check my " },
         { text: "linkedin", link: "https://www.linkedin.com/in/gerikpeterson/" },
-        { text: " profile.", printDelayAfter: 0 }]
+        { text: " profile.", printDelayAfter: 300 }]
     },
+    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
+    { lineSegments: [{ text: "Otherwise, have fun looking around. :-) ", printDelayAfter: 300 }] },
+    { lineSegments: [{ text: "And I hope you have a most excellent day!", printDelayAfter: 0 }] },
+    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
+    { lineSegments: [{ text: "--------------", printDelayAfter: 0 }] },
+    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
+    { lineSegments: [{ text: "Take me to....", printDelayAfter: 0 }] },
+    { lineSegments: [{ text: "Professional Experience", link: "#cv", printDelayAfter: 0 }] },
+    { lineSegments: [{ text: "My Values", link: "#values" }] },
+    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
+    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
 ];
 
 function AboutMeBlock() {

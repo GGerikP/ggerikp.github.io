@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes, css } from 'styled-components';
 import theme from '../theme';
+import Link from './Link';
 
 const PrintedTextBlockContainer = styled.div`
   display: flex;
@@ -37,13 +38,15 @@ const Cursor = styled.div<CursorProps>`
     `}
 `
 
-const Link = styled.a`
-  text-decoration: underline;
+const StyledLink = styled(Link)`
+    text-decoration: underline;
 `;
+
 const PrintedTextSpan = styled.span`
-  white-space: pre;
-  text-wrap: wrap;
+    white-space: pre;
+    text-wrap: wrap;
 `
+
 export type LineSegment = {
     text: string;
     link?: string;
@@ -179,11 +182,11 @@ const LinePrinter: React.FC<PrintedTextBlockProps> = ({ lines, typingSpeed, prom
                                 const text = displayedText?.lines[lineIndex]?.segments[segmentIndex].text;
                                 return (
                                     segment.link
-                                        ? <Link key={segmentIndex}
-                                            href={segment.link} target="_blank"
-                                            rel="noopener noreferrer">
+                                        ? <StyledLink
+                                            key={segmentIndex}
+                                            url={segment.link}>
                                             <PrintedTextSpan>{text}</PrintedTextSpan>
-                                        </Link>
+                                        </StyledLink>
                                         : <PrintedTextSpan key={segmentIndex}>{text}</PrintedTextSpan>
                                 )
                             })}

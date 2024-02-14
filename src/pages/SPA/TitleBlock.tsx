@@ -19,13 +19,6 @@ const ProfilePicContainer = styled.div`
     z-index: -1;
 `
 
-/*const ProfilePic = styled.img`
-    max-height: 71.58331rem;
-    width: 53.6875rem;
-    min-width: 350px;
-    float: right;
-`*/
-
 const ProfilePicFullPage = styled.div`
     position: absolute;
     width: 100%;
@@ -35,6 +28,9 @@ const ProfilePicFullPage = styled.div`
     background-repeat: no-repeat;
     background-position-y: center;
     background-position-x: center;
+    @media (width > 1300px) {
+        background-position-y: 65%;
+    }
 `
 
 const TitleContainer = styled.div`

@@ -16,12 +16,14 @@ import TravelerPage from './pages/Traveler';
 import SingerPage from './pages/Singer';
 import PianistPage from './pages/Pianist';*/
 import SPA from './pages/SPA';
+import Footer from './components/Footer';
 
 const StyledApp = styled.div`
   color: ${theme.colors.text};
   font-family: ${theme.fonts.base};
   font-size: 20px;
   line-height: 25px;
+  height: 100%;
 `
 
 function App() {
@@ -43,6 +45,7 @@ function App() {
   <Route path="/pianist" element={<PianistPage />} />*/}
           <Route path="*" element={<Error404NotFoundPage />} />
         </Routes>
+        <Footer />
       </Router>
     </StyledApp>
     );

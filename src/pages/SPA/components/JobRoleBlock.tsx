@@ -1,14 +1,20 @@
-import React, { ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import React, { ReactNode, useEffect, useRef, useState } from 'react';
+import styled, { css, keyframes } from 'styled-components';
 import theme from '../../../theme';
-import ExternalLink from '../../../components/ExternalLink';
+import Link from '../../../components/Link';
+import { HashLink } from 'react-router-hash-link';
+import { useOnClickOutside } from 'usehooks-ts'
 
-const Container = styled.div`
+interface ContainerProps {
+    $maxchildheight: number;
+}
+const Container = styled.div<ContainerProps>`
     width: 90%;
     min-width: 350px;
     min-height: 350px;
+    overflow: visible;
+    margin-top: 5px;
     position: relative;
-    padding: 2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -17,17 +23,21 @@ const Container = styled.div`
     @media (max-width > ${theme.breakpoints.tablet}) {
         width: 50%;
     }
+
+    transition: min-height .5s ease;
+    min-height: ${(props) => (props.$maxchildheight ? `${props.$maxchildheight}px` : '350px')};
 `
 
 interface JobBackgroundProps {
     $background?: string;
     $backgroundimage?: string;
+    $isactive: boolean;
 }
 const JobBackground = styled.div<JobBackgroundProps>`
-    overflow: hidden;
-    height: 0;
-    min-height: 100%;
-    width: 100%;
+    position: relative;
+    min-height: 350px;
+    height: 100%;
+    width: ${(props) => (props.$isactive ? '115%' : '100%')};
     border: 1px solid black;
     ${props => props.$background && css`
         background-color: ${props.$background};
@@ -38,13 +48,15 @@ const JobBackground = styled.div<JobBackgroundProps>`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    &:hover {
-        width: 115%;
-        z-index: 1;
-        height: auto;
-        overflow: visible;
-    }
-    transition: width 0.3s ease, height 0.3s ease;
+    transition: all 0s ease;
+`
+
+const AnchorLink = styled(HashLink)`
+    min-width: 100%;
+    min-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
 `
 
 const LogoImage = styled.img`
@@ -56,29 +68,26 @@ const LogoImage = styled.img`
     transform: translate(-50%, -50%);
 `
 
-const JobContentCard = styled.div`
+interface JobContentCardProps {
+    $isvisible: boolean;
+    height: number;
+}
+const JobContentCard = styled.div<JobContentCardProps>`
+    position: absolute;
+    top: 0;
+    left: 0;
     overflow: hidden;
     width: 100%;
-    height: 0;
-    //background-color: #FFEFC6;
     background-color: white;
     color: black;
-    opacity: .95;
-    transition: height 0.3s ease;
-    border: 1px solid black;
-
-    ${Container}:hover & {
-        height: auto;
-        height: 100%;
-        overflow: visible;
-    }
-    transition: width 0.3s ease, height 0.3s ease overflow 0.3s normal;
+    opacity: ${(props) => (props.$isvisible ? '1' : '0')};
+    transition: all .5s ease;
+    height: ${(props) => (props.$isvisible ? 'auto' : '0')};
+    padding: 20px;
 `
 
 const ContentCardData = styled.div`
     width: 100%;
-    padding: 10px;
-    margin: 10px;
     font-size: 15px;
     line-height: 25px;
 `
@@ -102,6 +111,7 @@ const ContentCardTitle = styled.div`
 `
 
 interface JobRoleBlockProps {
+    companyId: string;
     companyLogoURL: string;
     companyName: string;
     title: string;
@@ -115,16 +125,59 @@ interface JobRoleBlockProps {
 
 function JobRoleBlock(props: JobRoleBlockProps) {
 
+    const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, hash: string) => {
+        event.preventDefault();
+        setIsActive(true);
+        setTimeout(() => {
+            const element = document.querySelector(hash);
+            if (element) {
+                const yCoordinate = element.getBoundingClientRect().top + window.scrollY;
+                const yOffset = -80;
+                window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+            }
+        }, 500);
+    };
+
+    const [isActive, setIsActive] = useState(false);
+    const [childHeight, setChildHeight] = useState(0);
+    const childRef = useRef<HTMLDivElement>(null);
+
+    const ref = useRef(null)
+
+    const handleClickOutside = () => {
+      setIsActive(false);
+    }
+  
+    /*const handleClickInside = () => {
+      // Your custom logic here
+      console.log('clicked inside')
+    }*/
+  
+    useOnClickOutside(ref, handleClickOutside)
+
+    useEffect(() => {
+        if (childRef.current) {
+            const computedStyle = getComputedStyle(childRef.current);
+            const height =
+              childRef.current.clientHeight;
+            setChildHeight(height);
+        }
+    }, [isActive]);
+
     return (
-        <Container>
-            <JobBackground $background={props.backgroundColor} $backgroundimage={props.backgroundImage}>
-                <LogoImage src={props.companyLogoURL} />
-                <JobContentCard>
+        <Container id={props.companyId}
+            ref={ref}
+            $maxchildheight={isActive ? childHeight + 2 : 0}>
+            <JobBackground id="background" $isactive={isActive} $background={props.backgroundColor} $backgroundimage={props.backgroundImage}>
+                <AnchorLink to={`#${props.companyId}`} onClick={(event) => handleClick(event, `#${props.companyId}`)}>
+                    <LogoImage src={props.companyLogoURL} />
+                </AnchorLink>
+                <JobContentCard id="JobContentCard" $isvisible={isActive} height={childHeight} ref={childRef}>
                     <ContentCardData>
                         <TitleWrapper>
-                            <ExternalLink url={props.companyURL}><ContentCardLogo src={props.companyLogoURL} /></ExternalLink>
+                            <Link url={props.companyURL}><ContentCardLogo src={props.companyLogoURL} /></Link>
                             <ContentCardTitle>
-                                <ExternalLink url={props.companyURL}><h1>{props.companyName}</h1></ExternalLink>
+                                <Link url={props.companyURL}><h1>{props.companyName}</h1></Link>
                                 <h2>Title: {props.title}</h2>
                             </ContentCardTitle>
                         </TitleWrapper>
