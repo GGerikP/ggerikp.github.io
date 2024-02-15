@@ -94,7 +94,6 @@ const Terminal: React.FC<TerminalProps> = ({ lines }) => {
       return () => clearTimeout(timer);
     }, []);
 
-    const reprint = true;
     return (
         <WindowContainer style={expanded ? { height:'auto' , minHeight : terminalHeight, overflow: 'visible' } : undefined}>
             <WindowTitleBar>

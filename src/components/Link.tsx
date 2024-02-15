@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import { HashLink } from 'react-router-hash-link';
-import { Link as RouterLink, LinkProps as RouterLinkProps } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 interface LinkProps {
     url: string;

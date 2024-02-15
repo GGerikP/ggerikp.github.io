@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
 import theme from '../../../theme';
 import Link from '../../../components/Link';
 import { HashLink } from 'react-router-hash-link';
@@ -162,7 +162,6 @@ function JobRoleBlock(props: JobRoleBlockProps) {
 
     useEffect(() => {
         if (childRef.current) {
-            const computedStyle = getComputedStyle(childRef.current);
             const height =
               childRef.current.clientHeight;
             setChildHeight(height);

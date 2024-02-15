@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes, css } from 'styled-components';
-import theme from '../theme';
 import Link from './Link';
 
 const PrintedTextBlockContainer = styled.div`
