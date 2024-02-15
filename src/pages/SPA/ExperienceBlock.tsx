@@ -19,7 +19,7 @@ const ExperienceBlockContainer = styled.div`
     padding-top: 5vw;
     background-color: #FFF3D4;
     border-radius: 30px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 `
 
 const ExperienceContent = styled.div`

@@ -6,7 +6,8 @@ import { HashLink } from 'react-router-hash-link';
 import theme from '../theme';
 import GerikPetersonLogo from './images/gerik-peterson-logo.png';
 import Link from './Link';
-import { useOnClickOutside } from 'usehooks-ts'
+import { useOnClickOutside } from 'usehooks-ts';
+import SiteIcon from "./images/icon-mowser-192.png";
 
 // Styled components
 const NavBarContainer = styled.div`
@@ -45,9 +46,18 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Logo = styled.h1`
+
+const NavBarIcon = styled.img`
+  height: 40px;
+  cursor: pointer;
+`
+
+const Logo = styled.div`
   cursor: pointer;
   height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 const NavItems = styled.div`
@@ -110,7 +120,7 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
   return (
     <NavBarContainer ref={ref} id="NavigationBar">
       <NavBar>
-        <Logo as={HashLink} to="/#title"><img src={GerikPetersonLogo} alt="Site Logo"/></Logo>
+        <Logo as={HashLink} to="/#title"><NavBarIcon src={SiteIcon} style={{height: "30px", paddingLeft: "10px", paddingRight: "10px", borderRight: "solid 1px black", marginRight: "10px" }} /><NavBarIcon src={GerikPetersonLogo} alt="Site Logo"/></Logo>
         <NavItems className={mobileMenuActive ? 'active' : ''}>
           <StyledLink url="/#title">Home</StyledLink>
           <StyledLink url="/#about">About</StyledLink>

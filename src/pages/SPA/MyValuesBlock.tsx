@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import BackgroundClouds from './images/background-clouds-large.jpg';
 
 const MyValuesContainer = styled.div`
     display: flex;
@@ -9,6 +10,14 @@ const MyValuesContainer = styled.div`
     height: auto;
     background-color: #B7DDF0;
     padding: 5%;
+    background-image: url(${BackgroundClouds});
+    background-position: center;
+    background-size: cover;
+    line-height: 40px;
+    border-radius: 20px;
+    color: white;
+    font-family: "Bebas Neue", sans-serif;
+    font-size: 26px;
 `
 
 const ValuesBlock = styled.div`
@@ -36,17 +45,17 @@ function MyValuesBlock() {
                     <h1>Personal Values</h1>
                     <hr />
                     <ValuesList>
-                        <li>Stay Positive.</li>
-                        <li>Be Honest.</li>
-                        <li>Be Strong.</li>
-                        <li>Keep yourself healthy (physically and mentally).</li>
-                        <li>Look after your mental health.</li>
-                        <li>Be a Person of Integrity.</li>
-                        <li>Make it happen.</li>
-                        <li>Vulnerability is OK.</li>
-                        <li>Own Your Mistakes.</li>
-                        <li>Love learning.</li>
-                        <li>Be a teacher to everyone.</li>
+                        <li>STAY POSITIVE.</li>
+                        <li>BE HONEST.</li>
+                        <li>BE STRONG.</li>
+                        <li>KEEP YOURSELF HEALTHY.</li>
+                        <li>LOOK AFTER YOUR MENTAL HEALTH.</li>
+                        <li>BE A PERSON OF INTEGRITY.</li>
+                        <li>MAKE IT HAPPEN.</li>
+                        <li>VULNERABILITY IS OK.</li>
+                        <li>OWN YOUR MISTAKES.</li>
+                        <li>LOVE LEARNING.</li>
+                        <li>BE A TEACHER TO THE WORLD.</li>
                     </ValuesList>
                 </MyValuesParagraph>
             </ValuesBlock>
@@ -55,16 +64,16 @@ function MyValuesBlock() {
                     <h1>In Management</h1>
                     <hr />
                     <ValuesList>
-                        <li>Care about everyone.</li>
-                        <li>Empower everyone.</li>
-                        <li>Be a leader, not a manager.</li>
-                        <li>Take responsibility.</li>
-                        <li>Keep Your Reports Happy.</li>
-                        <li>Inclusion is key (silo no-one).</li>
-                        <li>Appreciate your knowledge.</li>
-                        <li>Produce Quality Work.</li>
-                        <li>Vulnerability is OK.</li>
-                        <li>Keep strength and modesty balanced.</li>
+                        <li>CARE ABOUT EVERYONE.</li>
+                        <li>EMPOWER EVERYONE.</li>
+                        <li>BE A LEADER, NOT A MANAGER.</li>
+                        <li>ADULTS DON'T EXIST, ONLY OLD CHILDREN</li>
+                        <li>TAKE RESPONSIBILITY.</li>
+                        <li>KEEP YOUR REPORTS HAPPY.</li>
+                        <li>INCLUSION IS KEY (SILO NO-ONE).</li>
+                        <li>APPRECIATE YOUR KNOWLEDGE.</li>
+                        <li>PRODUCE QUALITY WORK.</li>
+                        <li>BALANCE CONFIDENCE AND MODESTY.</li>
                     </ValuesList>
                 </MyValuesParagraph>
             </ValuesBlock>
@@ -73,17 +82,17 @@ function MyValuesBlock() {
                     <h1>As an Engineer</h1>
                     <hr />
                     <ValuesList>
-                        <li>Leave your ego at the door.</li>
-                        <li>Focus on Value.</li>
-                        <li>Get it done.</li>
-                        <li>Innovate.</li>
-                        <li>Love to learn.</li>
-                        <li>Dummy-proof everything.</li>
-                        <li>Apply Security Everywhere.</li>
-                        <li>Testing is included.</li>
-                        <li>We work as a team.</li>
-                        <li>Nothing will ever be perfect.</li>
-                        <li>Always be Pro-active.</li>
+                        <li>LEAVE YOUR EGO AT THE DOOR.</li>
+                        <li>FOCUS ON VALUE.</li>
+                        <li>GET IT DONE.</li>
+                        <li>INNOVATE.</li>
+                        <li>LOVE TO LEARN.</li>
+                        <li>DUMMY-PROOF EVERYTHING.</li>
+                        <li>APPLY SECURITY EVERYWHERE.</li>
+                        <li>TESTING IS INCLUDED.</li>
+                        <li>WE WORK AS A TEAM.</li>
+                        <li>NOTHING WILL EVER BE PERFECT.</li>
+                        <li>ALWAYS BE PRO-ACTIVE.</li>
                     </ValuesList>
                 </MyValuesParagraph>
             </ValuesBlock>
