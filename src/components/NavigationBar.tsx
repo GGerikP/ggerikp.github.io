@@ -110,7 +110,7 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
   return (
     <NavBarContainer ref={ref} id="NavigationBar">
       <NavBar>
-        <Logo as={HashLink} to="/"><img src={GerikPetersonLogo} alt="Site Logo"/></Logo>
+        <Logo as={HashLink} to="/#title"><img src={GerikPetersonLogo} alt="Site Logo"/></Logo>
         <NavItems className={mobileMenuActive ? 'active' : ''}>
           <StyledLink url="/#title">Home</StyledLink>
           <StyledLink url="/#about">About</StyledLink>
