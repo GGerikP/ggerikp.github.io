@@ -4,7 +4,8 @@ import theme from '../../theme';
 import ProportionalScrollElement from '../../components/ProportionalScrollElement';
 //import ProfilePicLookingDown from './images/profile-pic-looking-down.png';
 import LargeTitleWhite from './images/title-gerikpeterson-white-large.png';
-import ProfilePicSF from './images/profile-seth-kendra-me-sf.jpg';
+//import ProfilePicSF from './images/profile-seth-kendra-me-sf.jpg';
+import ProfilePicChicago from './images/profile-gerikpeterson-large.jpg';
 
 const Container = styled.div`
     width: 100%;
@@ -23,7 +24,7 @@ const ProfilePicFullPage = styled.div`
     position: absolute;
     width: 100%;
     height: 100vh;
-    background-image: url(${ProfilePicSF});
+    background-image: url(${ProfilePicChicago});
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;

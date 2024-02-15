@@ -39,7 +39,7 @@ function MyValuesBlock() {
                         <li>Stay Positive.</li>
                         <li>Be Honest.</li>
                         <li>Be Strong.</li>
-                        <li>Keep yourself healthy: physically.</li>
+                        <li>Keep yourself healthy (physically and mentally).</li>
                         <li>Look after your mental health.</li>
                         <li>Be a Person of Integrity.</li>
                         <li>Make it happen.</li>
@@ -59,7 +59,8 @@ function MyValuesBlock() {
                         <li>Empower everyone.</li>
                         <li>Be a leader, not a manager.</li>
                         <li>Take responsibility.</li>
-                        <li>Happy Reports and silo no-one.</li>
+                        <li>Keep Your Reports Happy.</li>
+                        <li>Inclusion is key (silo no-one).</li>
                         <li>Appreciate your knowledge.</li>
                         <li>Produce Quality Work.</li>
                         <li>Vulnerability is OK.</li>
