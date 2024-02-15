@@ -63,6 +63,7 @@ const Title = styled.div`
 const ExperienceBlurb = styled.div`
     flex-grow: 1;
     padding-left: 10%;
+    padding-right: 10%;
 `
 
 const Roles = styled.div`
