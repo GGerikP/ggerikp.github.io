@@ -17,7 +17,7 @@ const ExperienceBlockContainer = styled.div`
     flex-direction: column;
     align-items: center;
     padding-top: 5vw;
-    background-color: rgb(255,255,255,.9);
+    background-color: #FFF3D4;
     border-radius: 30px;
     margin-bottom: 20px;
 `
@@ -39,11 +39,25 @@ const ExperienceIntroContainer = styled.div`
 
 const Title = styled.div`
     width: 100%;
-    @media (width > ${theme.breakpoints.mobile}) {
-        width: 35%;
-    }
     min-width: 350px;
     margin-left: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    text-align: center;
+
+    &::before,
+    &::after {
+        display: inline-block;
+        content: "";
+        border-top: .3rem solid black;
+        width: 6rem;
+        margin: 0 1rem;
+        transform: translateY(-0rem);
+    }
 `
 
 const ExperienceBlurb = styled.div`
@@ -66,8 +80,10 @@ function ExperienceBlock() {
                 <ExperienceIntroContainer>
                     <Title><h1>Professional Experience</h1></Title>
                     <ExperienceBlurb>
-                        <p>I am a 50/50 manager-to-engineer split.  I love leading people and writing code equally, so my roles over the past 15 years flip flop between these two.</p>
+                        <p>I am a 50/50 manager-to-engineer split.  I love leading people and writing code equally, so my roles over the past 15 years have flip-floped between these two.</p>
                         <p>Historically my strength is backend engineering - but these days I just love being an engineer so it doesn't really matter what part of the stack it is I work on anymore.</p>
+                        <br />
+                        <p>Click on the roles below to find out more.</p>
                     </ExperienceBlurb>
                 </ExperienceIntroContainer>
                 <Roles>
