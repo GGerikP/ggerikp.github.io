@@ -33,10 +33,10 @@ function MyValuesBlock() {
                     <h1>My Values</h1>
                     <hr />
                     <p>
-                        There is so much I could put here.  Please be patient with me as I figure out what exactly I how exactly I want to write this up. :-)
+                        I am still working on figuring out what exactly I want to put here. :-)
                     </p>
                     <hr />
-                    <p>Here's something generic for now:</p>
+                    <p>So, here's a generic list for now:</p>
                     <ValuesList>
                         <li>Stay Positive</li>
                         <li>Be Honest</li>

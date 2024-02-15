@@ -37,7 +37,7 @@ const JobBackground = styled.div<JobBackgroundProps>`
     position: relative;
     min-height: 350px;
     height: 100%;
-    width: ${(props) => (props.$isactive ? '115%' : '100%')};
+    width: ${(props) => (props.$isactive ? '105%' : '100%')};
     border: 1px solid black;
     ${props => props.$background && css`
         background-color: ${props.$background};
@@ -48,7 +48,10 @@ const JobBackground = styled.div<JobBackgroundProps>`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    transition: all 0s ease;
+    transition: width 0.5s ease;
+    ${Container}:hover & {
+        width: 105%;
+    }
 `
 
 const AnchorLink = styled(HashLink)`
@@ -135,7 +138,7 @@ function JobRoleBlock(props: JobRoleBlockProps) {
                 const yOffset = -80;
                 window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
             }
-        }, 500);
+        }, 600);
     };
 
     const [isActive, setIsActive] = useState(false);
@@ -145,7 +148,9 @@ function JobRoleBlock(props: JobRoleBlockProps) {
     const ref = useRef(null)
 
     const handleClickOutside = () => {
-      setIsActive(false);
+        setTimeout(() => {
+            setIsActive(false);
+        }, 200);
     }
   
     /*const handleClickInside = () => {
@@ -167,9 +172,14 @@ function JobRoleBlock(props: JobRoleBlockProps) {
     return (
         <Container id={props.companyId}
             ref={ref}
-            $maxchildheight={isActive ? childHeight + 2 : 0}>
-            <JobBackground id="background" $isactive={isActive} $background={props.backgroundColor} $backgroundimage={props.backgroundImage}>
-                <AnchorLink to={`#${props.companyId}`} onClick={(event) => handleClick(event, `#${props.companyId}`)}>
+            $maxchildheight={isActive ? childHeight + 2 : 0}
+            >
+            <JobBackground id="background" 
+                $isactive={isActive} 
+                $background={props.backgroundColor} 
+                $backgroundimage={props.backgroundImage}>
+                <AnchorLink to={`#${props.companyId}`} 
+                onClick={(event) => handleClick(event, `#${props.companyId}`)}>
                     <LogoImage src={props.companyLogoURL} />
                 </AnchorLink>
                 <JobContentCard id="JobContentCard" $isvisible={isActive} height={childHeight} ref={childRef}>
@@ -178,7 +188,7 @@ function JobRoleBlock(props: JobRoleBlockProps) {
                             <Link url={props.companyURL}><ContentCardLogo src={props.companyLogoURL} /></Link>
                             <ContentCardTitle>
                                 <Link url={props.companyURL}><h1>{props.companyName}</h1></Link>
-                                <h2>Title: {props.title}</h2>
+                                <h2>{props.title}</h2>
                             </ContentCardTitle>
                         </TitleWrapper>
                         <h3>Location: {props.location}</h3>
