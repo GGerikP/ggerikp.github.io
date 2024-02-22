@@ -8,17 +8,20 @@ import IconSmallFacebook from './images/icon-facebook-small.svg';
 
 const FooterContainer = styled.div`
     width: 100%;
-    height: 200px;
     border-bottom: solid 1px black;
     background-color: white;
     border: 1px solid black;
+    margin-top: 20px;
+    padding: 10px;
+`
+
+const SocialMediaContainer = styled.div`
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    margin-top: 20px;
 `
-
 const SocialMediaWrapper = styled.div`
     height: 100%;
     display: flex;
@@ -26,17 +29,33 @@ const SocialMediaWrapper = styled.div`
 `
 
 const SocialMediaIcon = styled.img`
-    height: 100px;
-    width: 100px;
+    height: 75px;
+    width: 75px;
+`
+
+const FooterBlurbContainer = styled.div`
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    flex-direction: column;
 `
 
 function Footer() {
     return (
         <FooterContainer>
-            <SocialMediaWrapper><Link url="https://www.linkedin.com/in/gerikpeterson/"><SocialMediaIcon src={IconSmallLinkedIn} /></Link></SocialMediaWrapper>
-            <SocialMediaWrapper><Link url="https://github.com/GGerikP"><SocialMediaIcon src={IconSmallGithub} /></Link></SocialMediaWrapper>
-            <SocialMediaWrapper><Link url="https://stackoverflow.com/users/3187487/gerik"><SocialMediaIcon src={IconSmallStackOverflow} style={{ border: "2px solid black", borderRadius: "3px", height: "100%"}}/></Link></SocialMediaWrapper>
-            <SocialMediaWrapper><Link url="https://www.facebook.com/ggerikp/"><SocialMediaIcon src={IconSmallFacebook} /></Link></SocialMediaWrapper>
+            <SocialMediaContainer>
+                <SocialMediaWrapper><Link url="https://www.linkedin.com/in/gerikpeterson/"><SocialMediaIcon src={IconSmallLinkedIn} /></Link></SocialMediaWrapper>
+                <SocialMediaWrapper><Link url="https://github.com/GGerikP"><SocialMediaIcon src={IconSmallGithub} /></Link></SocialMediaWrapper>
+                <SocialMediaWrapper><Link url="https://stackoverflow.com/users/3187487/gerik"><SocialMediaIcon src={IconSmallStackOverflow} style={{ border: "2px solid black", borderRadius: "3px", height: "100%" }} /></Link></SocialMediaWrapper>
+                <SocialMediaWrapper><Link url="https://www.facebook.com/ggerikp/"><SocialMediaIcon src={IconSmallFacebook} /></Link></SocialMediaWrapper>
+            </SocialMediaContainer>
+            <FooterBlurbContainer>
+                <p>This site was created by Gerik Peterson.</p>
+                <p>Information, data and designs from this website may not be copied or used in any way except for its originally intended purpose.</p>
+            </FooterBlurbContainer>
         </FooterContainer>
     )
 }
