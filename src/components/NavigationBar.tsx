@@ -5,7 +5,6 @@ import { Icon } from 'semantic-ui-react';
 import { HashLink } from 'react-router-hash-link';
 import theme from '../theme';
 import GerikPetersonLogo from './images/gerik-peterson-logo.png';
-import Link from './Link';
 import { useOnClickOutside } from 'usehooks-ts';
 import SiteIcon from "./images/icon-mowser-192.png";
 
