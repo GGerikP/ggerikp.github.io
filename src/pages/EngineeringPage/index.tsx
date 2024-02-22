@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import HomePageHeader from '../TerminalHomePage/TerminalHomePageHeader';
 import HomePageMain from '../TerminalHomePage/TerminalHomePageMain';
 import theme from '../../theme';
-import { Line } from '../../components/LinePrinter';
+import { Line } from '../../components/IntegratedParagraphPrinter';
 import GenericPageWrapper from '../../components/GenericPageWrapper';
 
 // Styled component for HomePage

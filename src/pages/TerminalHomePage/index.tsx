@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import TerminalHomePageMain from './TerminalHomePageMain';
 import theme from '../../theme';
-import { Line } from '../../components/LinePrinter';
+import { Line } from '../../components/IntegratedParagraphPrinter';
 import GenericPageWrapper from '../../components/GenericPageWrapper';
 
 // Styled component for TerminalHomePage

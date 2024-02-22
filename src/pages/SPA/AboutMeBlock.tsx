@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Terminal from '../../components/Terminal';
-import { Line } from '../../components/LinePrinter';
+import { Line } from '../../components/IntegratedParagraphPrinter';
 import theme from '../../theme';
 
 const AboutMeContainer = styled.div`
@@ -59,7 +59,7 @@ function AboutMeBlock() {
         <AboutMeContainer id="about">
             <AboutMeText>
                 <AboutMeParagraph style={{ textAlign: 'center' }}>
-                    <Terminal lines={aboutMeText} />
+                    <Terminal lines={aboutMeText} instantPrint={false}/>
                 </AboutMeParagraph>
             </AboutMeText>
         </AboutMeContainer>

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import profilepic from './images/ProfilePic-v4.png';
-import { Line } from '../../components/LinePrinter';
+import { Line } from '../../components/IntegratedParagraphPrinter';
 import Terminal from '../../components/Terminal';
 
 // Styled component for TerminalHomePage header

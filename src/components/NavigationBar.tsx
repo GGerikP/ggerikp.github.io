@@ -29,7 +29,7 @@ const NavBar = styled.nav`
   width: 100%;
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(HashLink)`
   &&& {
     text-decoration: none;
     cursor: pointer;
@@ -46,10 +46,37 @@ const StyledLink = styled(Link)`
   }
 `;
 
+const StyledMobileLink = styled(HashLink)`
+  &&& {
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+    color: black;
+    padding-right: 10px;
+    padding-left: 10px;
+
+    &:hover {
+      color: #ddd;
+      text-decoration: line-through;
+    }
+  }
+`;
 
 const NavBarIcon = styled.img`
-  height: 40px;
   cursor: pointer;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-right: solid 1px black;
+  margin-right: 10px;
+`
+
+const NavBarLogo = styled.img`
+  cursor: pointer;
+  height: 40px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-right: 10px;
 `
 
 const Logo = styled.div`
@@ -86,6 +113,7 @@ const MobileMenu = styled.div`
   display: none;
   flex-direction: column;
   padding-top: 10px;
+  height: 0;
 
   @media (max-width: ${theme.breakpoints.tablet}) {
     position: absolute;
@@ -97,6 +125,12 @@ const MobileMenu = styled.div`
 
     &.active {
       display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 50vh;
+      height: auto;
+      transition: height 1s ease-in-out;
     }
   }
 `;
@@ -105,7 +139,22 @@ type NavigationBarProps = {};
 
 const NavigationBar: React.FC<NavigationBarProps> = () => {
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
-  const ref = useRef(null)
+  const insideOutsideRefElement = useRef(null)
+
+  const scrollToAnchor = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, hash: string) => {
+    event.preventDefault();
+      const element = document.querySelector(hash);
+      if (element) {
+        const yCoordinate = element.getBoundingClientRect().top + window.scrollY;
+        const yOffset = -60;
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+      }
+  };
+
+  const handleMobileAnchorLinkClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, hash: string) => {
+    toggleMobileMenu();
+    scrollToAnchor(event, hash);
+  }
 
   const toggleMobileMenu = () => {
     setMobileMenuActive(!mobileMenuActive);
@@ -115,25 +164,28 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
     // Your custom logic here
     setMobileMenuActive(false);
   }
-  useOnClickOutside(ref, handleClickOutside);
+  useOnClickOutside(insideOutsideRefElement, handleClickOutside);
 
   return (
-    <NavBarContainer ref={ref} id="NavigationBar">
+    <NavBarContainer ref={insideOutsideRefElement} id="NavigationBar">
       <NavBar>
-        <Logo as={HashLink} to="/#title"><NavBarIcon src={SiteIcon} style={{height: "30px", paddingLeft: "10px", paddingRight: "10px", borderRight: "solid 1px black", marginRight: "10px" }} /><NavBarIcon src={GerikPetersonLogo} alt="Site Logo"/></Logo>
+        <Logo as={HashLink} to="/#title">
+          <NavBarIcon title="mow" src={SiteIcon} />
+          <NavBarLogo src={GerikPetersonLogo} alt="Site Logo" />
+        </Logo>
         <NavItems className={mobileMenuActive ? 'active' : ''}>
-          <StyledLink url="/#title">Home</StyledLink>
-          <StyledLink url="/#about">About</StyledLink>
-          <StyledLink url="/#cv">Experience</StyledLink>
-          <StyledLink url="/#values">Values</StyledLink>
+          <StyledLink to="/#title" onClick={(event) => scrollToAnchor(event, "#title")}>Home</StyledLink>
+          <StyledLink to="/#about" onClick={(event) => scrollToAnchor(event, "#about")}>About</StyledLink>
+          <StyledLink to="/#cv" onClick={(event) => scrollToAnchor(event, "#cv")}>Experience</StyledLink>
+          <StyledLink to="/#values" onClick={(event) => scrollToAnchor(event, "#values")}>Values</StyledLink>
         </NavItems>
         <HamburgerIcon name="bars" size="large" onClick={toggleMobileMenu} />
       </NavBar>
       <MobileMenu className={mobileMenuActive ? 'active' : ''}>
-        <StyledLink url="/#title" onClick={() => setMobileMenuActive(false)}>Home</StyledLink>
-        <StyledLink url="/#about" onClick={() => setMobileMenuActive(false)}>About</StyledLink>
-        <StyledLink url="/#cv" onClick={() => setMobileMenuActive(false)}>Experience</StyledLink>
-        <StyledLink url="/#values" onClick={() => setMobileMenuActive(false)}>Values</StyledLink>
+        <StyledMobileLink to="/#title" onClick={(event) => handleMobileAnchorLinkClick(event, "#title")}>Home</StyledMobileLink>
+        <StyledMobileLink to="/#about" onClick={(event) => handleMobileAnchorLinkClick(event, "#about")}>About</StyledMobileLink>
+        <StyledMobileLink to="/#cv" onClick={(event) => handleMobileAnchorLinkClick(event, "#cv")}>Experience</StyledMobileLink>
+        <StyledMobileLink to="/#values" onClick={(event) => handleMobileAnchorLinkClick(event, "#values")}>Values</StyledMobileLink>
       </MobileMenu>
     </NavBarContainer>
   );

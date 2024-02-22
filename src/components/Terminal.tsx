@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import theme from '../theme';
-import LinePrinter, { Line } from './LinePrinter';
 import terminatorPrefsIcon from './images/terminator-prefs-icon.jpeg';
+import ParagraphPrinter, { Line } from './Printer/ParagraphPrinter';
 
 const terminalHeight: string = '50vh'
 const terminalHeightExpansionDuration: number = 5;
@@ -73,9 +73,10 @@ const LinesContainer = styled.div`
 
 type TerminalProps = {
     lines: Line[];
+    instantPrint?: boolean;
 }
 
-const Terminal: React.FC<TerminalProps> = ({ lines }) => {
+const Terminal: React.FC<TerminalProps> = ({ lines, instantPrint }: TerminalProps) => {
     const windowTitle = 'gerik@peterson:~';
 
     const [expanded, setExpanded] = useState(false);
@@ -107,7 +108,7 @@ const Terminal: React.FC<TerminalProps> = ({ lines }) => {
                     <WindowTitle>{windowTitle}</WindowTitle>
                 </TerminatorTitleBar>
                 <LinesContainer>
-                    <LinePrinter lines={lines} typingSpeed={35} promptChars={'$ '} instantPrint={false} key={printerKey}/>
+                    <ParagraphPrinter lines={lines} typingSpeed={35} promptChars={'$ '} instantPrint={instantPrint ?? false} key={printerKey}/>
                 </LinesContainer>
             </TerminalContainer>
         </WindowContainer>

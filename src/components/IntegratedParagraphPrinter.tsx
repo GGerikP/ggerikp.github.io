@@ -63,7 +63,7 @@ export type Line = {
     lineSegments: LineSegment[];
 }
 
-type PrintedTextBlockProps = {
+type ParagraphPrinterProps = {
     lines: Line[];
     typingSpeed: number;
     promptChars?: string;
@@ -89,7 +89,7 @@ type CursorCoordinates = {
     activeSegment: number,
     charIndex: number
 }
-const LinePrinter: React.FC<PrintedTextBlockProps> = ({ lines, typingSpeed, promptChars, instantPrint }) => {
+const IntegratedParagraphPrinter: React.FC<ParagraphPrinterProps> = ({ lines, typingSpeed, promptChars, instantPrint }) => {
 
     const [cursorCoordinates, setCursorCoordinates] = useState<CursorCoordinates>({ charIndex: 0, activeSegment: 0, activeLine: 0 })
     const [displayedText, setDisplayedText] = useState<DisplayedText>({
@@ -201,4 +201,4 @@ const LinePrinter: React.FC<PrintedTextBlockProps> = ({ lines, typingSpeed, prom
     );
 }
 
-export default LinePrinter;
+export default IntegratedParagraphPrinter;

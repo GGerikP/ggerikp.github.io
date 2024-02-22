@@ -7,20 +7,17 @@ interface LinkProps {
     onClick?: () => void;
     children?: ReactNode;
     className?: string;
-    isHashLink?: boolean;
-    style?: React.CSSProperties;
 }
 
 function Link(props: LinkProps) {
 
-    const isHashLink = props.isHashLink || props.url.startsWith('#') || props.url.startsWith('/#');
+    const isHashLink = props.url.startsWith('#') || props.url.startsWith('/#');
     return (
         isHashLink ?
             <HashLink
                 to={props.url}
                 className={props.className}
-                onClick={props.onClick}
-                style={props.style}>
+                onClick={props.onClick}>
                 {props.children}
             </HashLink>
             :

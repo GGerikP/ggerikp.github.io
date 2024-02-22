@@ -8,7 +8,7 @@ import { useOnClickOutside } from 'usehooks-ts'
 interface ContainerProps {
     $maxchildheight: number;
 }
-const Container = styled.div<ContainerProps>`
+const JobRoleContainer = styled.div<ContainerProps>`
     width: 90%;
     min-width: 350px;
     min-height: 350px;
@@ -49,7 +49,7 @@ const JobBackground = styled.div<JobBackgroundProps>`
     flex-direction: row;
     justify-content: center;
     transition: width 0.5s ease;
-    ${Container}:hover & {
+    ${JobRoleContainer}:hover & {
         width: 105%;
     }
 `
@@ -128,6 +128,11 @@ interface JobRoleBlockProps {
 
 function JobRoleBlock(props: JobRoleBlockProps) {
 
+    const [isActive, setIsActive] = useState(false);
+    const [childHeight, setChildHeight] = useState(0);
+    const childRef = useRef<HTMLDivElement>(null);
+    const insideOutsideRefElement = useRef(null)
+
     const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, hash: string) => {
         event.preventDefault();
         setIsActive(true);
@@ -141,44 +146,38 @@ function JobRoleBlock(props: JobRoleBlockProps) {
         }, 600);
     };
 
-    const [isActive, setIsActive] = useState(false);
-    const [childHeight, setChildHeight] = useState(0);
-    const childRef = useRef<HTMLDivElement>(null);
-
-    const ref = useRef(null)
-
     const handleClickOutside = () => {
         setTimeout(() => {
             setIsActive(false);
         }, 200);
     }
-  
+
     /*const handleClickInside = () => {
       // Your custom logic here
       console.log('clicked inside')
     }*/
-  
-    useOnClickOutside(ref, handleClickOutside)
+
+    useOnClickOutside(insideOutsideRefElement, handleClickOutside)
 
     useEffect(() => {
         if (childRef.current) {
             const height =
-              childRef.current.clientHeight;
+                childRef.current.clientHeight;
             setChildHeight(height);
         }
     }, [isActive]);
 
     return (
-        <Container id={props.companyId}
-            ref={ref}
+        <JobRoleContainer id={props.companyId}
+            ref={insideOutsideRefElement}
             $maxchildheight={isActive ? childHeight + 2 : 0}
-            >
-            <JobBackground id="background" 
-                $isactive={isActive} 
-                $background={props.backgroundColor} 
+        >
+            <JobBackground id="background"
+                $isactive={isActive}
+                $background={props.backgroundColor}
                 $backgroundimage={props.backgroundImage}>
-                <AnchorLink to={`#${props.companyId}`} 
-                onClick={(event) => handleClick(event, `#${props.companyId}`)}>
+                <AnchorLink to={`#${props.companyId}`}
+                    onClick={(event) => handleClick(event, `#${props.companyId}`)}>
                     <LogoImage src={props.companyLogoURL} />
                 </AnchorLink>
                 <JobContentCard id="JobContentCard" $isvisible={isActive} height={childHeight} ref={childRef}>
@@ -195,7 +194,7 @@ function JobRoleBlock(props: JobRoleBlockProps) {
                     </ContentCardData>
                 </JobContentCard>
             </JobBackground>
-        </Container>
+        </JobRoleContainer>
     )
 }
 
