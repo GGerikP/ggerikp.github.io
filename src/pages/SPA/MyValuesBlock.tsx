@@ -26,6 +26,7 @@ const ValuesBlock = styled.div`
     min-width: 350px;
     width: 33%;
     margin-bottom: 20px;
+    align-items: center;
 `
 
 const MyValuesParagraph = styled.div`
@@ -34,6 +35,8 @@ const MyValuesParagraph = styled.div`
 
 const ValuesList = styled.ol`
     list-style: none;
+    margin: 0;
+    padding: 0;
 `
 
 

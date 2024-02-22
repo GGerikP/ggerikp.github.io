@@ -4,6 +4,7 @@ import TitleBlock from './TitleBlock';
 import AboutMeBlock from './AboutMeBlock';
 import MyValuesBlock from './MyValuesBlock';
 import ExperienceBlock from './ExperienceBlock';
+import ProfessionalProfileBlock from './ProfessionalProfile';
 
 const SiteContainer = styled.div`
     width: 95%;
@@ -21,6 +22,7 @@ function SPA(props: SPAProps) {
         <SiteContainer>
             <TitleBlock />
             <AboutMeBlock />
+            <ProfessionalProfileBlock />
             <ExperienceBlock />
             <MyValuesBlock />
         </SiteContainer>

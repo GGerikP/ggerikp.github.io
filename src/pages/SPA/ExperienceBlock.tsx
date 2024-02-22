@@ -9,8 +9,6 @@ import LogoOpenBet from './images/logo-openbet.jpeg';
 import LogoPresidentialBrokerage from './images/logo-presidentialbrokerage.jpeg';
 import LogoJoannStores from './images/logo-joannstores.jpeg';
 import LogoAmericanGreetings from './images/logo-americangreetings.jpeg';
-import AmericanFlag from './images/Flag-USA.svg';
-import UKFlag from './images/Flag-UK.svg';
 
 const ExperienceBlockContainer = styled.div`
     width: 100%;
@@ -30,15 +28,6 @@ const ExperienceContent = styled.div`
         width: 75%;
     }
 `
-
-const ProfessionalProfileContainer = styled.div`
-    width: 100%;
-    margin-bottom: 40px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-`
-
 
 const ExperienceIntroContainer = styled.div`
     width: 100%;
@@ -75,6 +64,9 @@ const ExperienceBlurb = styled.div`
     flex-grow: 1;
     padding-left: 10%;
     padding-right: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 `
 
 const Roles = styled.div`
@@ -84,47 +76,15 @@ const Roles = styled.div`
     flex-wrap: wrap;
 `
 
-const Flags = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    max-height: 400px;
-    align-items: flex-start;
-    justify-content: center;
-`
-
-const Flag = styled.img`
-    width: 45%;
-    min-width: 300px;
-    min-height: 100px;
-    max-height: 100%;
-    margin: 10px;
-`
-
 function ExperienceBlock() {
 
     return (
         <ExperienceBlockContainer id="cv">
             <ExperienceContent>
-                <ProfessionalProfileContainer>
-                    <Title><h1>Professional Profile</h1></Title>
-                    <ExperienceBlurb>
-                        <p>I am a 50/50 manager-to-engineer split.  I love leading people and writing code equally, so my roles over the past 15 years have flip-floped between these two.</p>
-                        <p>Historically my strength is backend engineering - but these days I just love being an engineer so it doesn't really matter what part of the stack it is I work on anymore.</p>
-                        <br />
-                        <p>It's worth mentioning that I also have <strong>dual citizenship</strong> in The United States and The United Kingdom and am free to work without restriction in both countries.</p>
-                        <br />
-                    </ExperienceBlurb>
-                    <Flags>
-                        <Flag src={AmericanFlag} />
-                        <Flag src={UKFlag} />
-                    </Flags>
-                </ProfessionalProfileContainer>
                 <ExperienceIntroContainer>
                     <Title><h1>Professional Experience</h1></Title>
                     <ExperienceBlurb>
-                    <p>Click on the roles below to find out more.</p>
+                        <p>Click on the roles below to find out more.</p>
                     </ExperienceBlurb>
                 </ExperienceIntroContainer>
                 <Roles>

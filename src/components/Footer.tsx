@@ -6,9 +6,9 @@ import IconSmallGithub from './images/icon-github-small.svg';
 import IconSmallStackOverflow from './images/icon-stackoverflow-small.png';
 import IconSmallFacebook from './images/icon-facebook-small.svg';
 
-const Container = styled.div`
+const FooterContainer = styled.div`
     width: 100%;
-    height: 55px;
+    height: 200px;
     border-bottom: solid 1px black;
     background-color: white;
     border: 1px solid black;
@@ -16,6 +16,7 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin-top: 20px;
 `
 
 const SocialMediaWrapper = styled.div`
@@ -25,18 +26,18 @@ const SocialMediaWrapper = styled.div`
 `
 
 const SocialMediaIcon = styled.img`
-    height: 40px;
-    width: 40px;
+    height: 100px;
+    width: 100px;
 `
 
 function Footer() {
     return (
-        <Container>
+        <FooterContainer>
             <SocialMediaWrapper><Link url="https://www.linkedin.com/in/gerikpeterson/"><SocialMediaIcon src={IconSmallLinkedIn} /></Link></SocialMediaWrapper>
             <SocialMediaWrapper><Link url="https://github.com/GGerikP"><SocialMediaIcon src={IconSmallGithub} /></Link></SocialMediaWrapper>
             <SocialMediaWrapper><Link url="https://stackoverflow.com/users/3187487/gerik"><SocialMediaIcon src={IconSmallStackOverflow} style={{ border: "2px solid black", borderRadius: "3px", height: "100%"}}/></Link></SocialMediaWrapper>
             <SocialMediaWrapper><Link url="https://www.facebook.com/ggerikp/"><SocialMediaIcon src={IconSmallFacebook} /></Link></SocialMediaWrapper>
-        </Container>
+        </FooterContainer>
     )
 }
 

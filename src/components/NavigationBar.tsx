@@ -175,6 +175,7 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
         <NavItems className={mobileMenuActive ? 'active' : ''}>
           <StyledLink to="/#title" onClick={(event) => scrollToAnchor(event, "#title")}>Home</StyledLink>
           <StyledLink to="/#about" onClick={(event) => scrollToAnchor(event, "#about")}>About</StyledLink>
+          <StyledLink to="/#professionalprofile" onClick={(event) => scrollToAnchor(event, "#professionalprofile")}>Profile</StyledLink>
           <StyledLink to="/#cv" onClick={(event) => scrollToAnchor(event, "#cv")}>Experience</StyledLink>
           <StyledLink to="/#values" onClick={(event) => scrollToAnchor(event, "#values")}>Values</StyledLink>
         </NavItems>
@@ -183,6 +184,7 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
       <MobileMenu className={mobileMenuActive ? 'active' : ''}>
         <StyledMobileLink to="/#title" onClick={(event) => handleMobileAnchorLinkClick(event, "#title")}>Home</StyledMobileLink>
         <StyledMobileLink to="/#about" onClick={(event) => handleMobileAnchorLinkClick(event, "#about")}>About</StyledMobileLink>
+        <StyledMobileLink to="/#professionalprofile" onClick={(event) => handleMobileAnchorLinkClick(event, "#professionalprofile")}>Experience</StyledMobileLink>
         <StyledMobileLink to="/#cv" onClick={(event) => handleMobileAnchorLinkClick(event, "#cv")}>Experience</StyledMobileLink>
         <StyledMobileLink to="/#values" onClick={(event) => handleMobileAnchorLinkClick(event, "#values")}>Values</StyledMobileLink>
       </MobileMenu>

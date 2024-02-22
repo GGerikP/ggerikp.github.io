@@ -29,12 +29,12 @@ const AboutMeParagraph = styled.div`
 
 
 const aboutMeText: Line[] = [
-    { lineSegments: [{ text: "Hey there!  Welcome to my site.", printDelayAfter: 1000 }] },
+    { lineSegments: [{ text: "Hey there!  Welcome to my site.", printDelayAfter: 750 }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "Ok, so what is this thing?", printDelayAfter: 1000 }] },
+    { lineSegments: [{ text: "Ok, so what is this thing?", printDelayAfter: 750 }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: `This is my personal software development playground.`, printDelayAfter: 500 }] },
-    { lineSegments: [{ text: `Really it's just a place for me to try things out and have a domain to use when I need it.`, printDelayAfter: 500 }] },
+    { lineSegments: [{ text: `This is my personal software development playground.`, printDelayAfter: 300 }] },
+    { lineSegments: [{ text: `It's mostly just a place for me to try things out and have a domain to use when I need it.`, printDelayAfter: 500 }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
     {
         lineSegments: [{ text: "If you want to learn more about my professional life you might check my " },
@@ -42,12 +42,13 @@ const aboutMeText: Line[] = [
         { text: " profile.", printDelayAfter: 300 }]
     },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "Otherwise, have fun looking around. :-) ", printDelayAfter: 300 }] },
+    { lineSegments: [{ text: "Otherwise, enjoy looking around. ", printDelayAfter: 200 }] },
     { lineSegments: [{ text: "And I hope you have a most excellent day!", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "--------------", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "Take me to....", printDelayAfter: 0 }] },
+    { lineSegments: [{ text: "Professional Profile", link: "#cv", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "Professional Experience", link: "#cv", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "My Values", link: "#values" }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
