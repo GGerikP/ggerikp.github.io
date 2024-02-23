@@ -11,7 +11,8 @@ const AboutMeContainer = styled.div`
     //background-color: #FFEFC6;
     padding-right: 3%;
     @media (width > ${theme.breakpoints.mobile}) {
-        padding-right: 10%;
+        padding-left: 5%;
+        padding-right: 5%;
     }
     margin-bottom: 50px;
 `
@@ -21,6 +22,7 @@ const AboutMeText = styled.div`
     flex-direction: column;
     min-width: 350px;
     width: 100%;
+    justify-content: center;
 `
 
 const AboutMeParagraph = styled.div`
@@ -29,11 +31,17 @@ const AboutMeParagraph = styled.div`
 
 
 const aboutMeText: Line[] = [
+    { lineSegments: [{ text: "Loading: Gerik Peterson's Playground.", printDelayAfter: 750 },
+        {text: ".", printDelayAfter: 200 },
+        {text: ".", printDelayAfter: 100 },
+        {text: ".", printDelayAfter: 50 },
+        {text: ".", printDelayAfter: 50 }] },
+    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "Hey there!  Welcome to my site.", printDelayAfter: 750 }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "Ok, so what is this thing?", printDelayAfter: 750 }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: `This is my personal software development playground.`, printDelayAfter: 300 }] },
+    { lineSegments: [{ text: `This is my personal website and software development playground.`, printDelayAfter: 300 }] },
     { lineSegments: [{ text: `It's mostly just a place for me to try things out and have a domain to use when I need it.`, printDelayAfter: 500 }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
     {
@@ -42,8 +50,8 @@ const aboutMeText: Line[] = [
         { text: " profile.", printDelayAfter: 300 }]
     },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "Otherwise, enjoy looking around. ", printDelayAfter: 200 }] },
-    { lineSegments: [{ text: "And I hope you have a most excellent day!", printDelayAfter: 0 }] },
+    { lineSegments: [{ text: "Otherwise, I hope you enjoy looking around...", printDelayAfter: 200 }] },
+    { lineSegments: [{ text: "And have a most excellent day!", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "--------------", printDelayAfter: 0 }] },
     { lineSegments: [{ text: "", printDelayAfter: 0 }] },

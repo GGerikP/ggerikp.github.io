@@ -257,9 +257,9 @@ function ExperienceBlock() {
                         workDescription={<div>
                             <p>In this role I was responsible for:</p>
                             <ol style={{ listStyleType: "disc" }}>
-                                <li>Developed Excel macros in order to automate data processing efficiency </li>
-                                <li>Maintained client database and stock portfolios within StockCharts.com and ACT!</li>
-                                <li>Created professional reporting Excel spread sheets for data analysis</li>
+                                <li>Developing macros in order to automate data processing efficiency </li>
+                                <li>Maintaining client database and stock portfolios within StockCharts.com and ACT!</li>
+                                <li>Creating professional reporting Excel spread sheets for data analysis</li>
                             </ol>
                             <p>Greatest Achievement: Through my initiative I began incorporating VBA into the generation of some of the standard reports saving hours of daily work.</p>
                         </div>}

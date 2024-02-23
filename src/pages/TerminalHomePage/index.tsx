@@ -17,7 +17,7 @@ const TerminalHomePageContainer = styled.div`
 `;
 
 const lines: Line[] = [
-  { lineSegments: [{ text: "Loading: Gerik Peterson's Playground...", printDelayAfter: 1000 }] },
+  { lineSegments: [{ text: "Loading: Gerik Peterson's Playground...", printDelayBefore: 1000, printDelayAfter: 1000 }] },
   { lineSegments: [{ text: "" }] },
   { lineSegments: [{ text: "Welcome Visitor!", printDelayAfter: 500 }] },
   { lineSegments: [{ text: "" }] },
@@ -61,7 +61,7 @@ type TerminalHomePageProps = {};
 
 function TerminalHomePage(props: TerminalHomePageProps) {
 
-  const [terminalText, setTerminalText] = useState<Line[]>([{lineSegments: [ {text: ''}]}]);
+  const [terminalText, setTerminalText] = useState<Line[]>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -75,7 +75,7 @@ function TerminalHomePage(props: TerminalHomePageProps) {
     };
 
     fetchData();
-  }, []);
+  }, [setTerminalText]);
 
   return (
     <GenericPageWrapper>

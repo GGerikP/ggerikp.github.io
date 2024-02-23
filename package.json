@@ -5,7 +5,7 @@
   "homepage": "https://ggerikp.github.io/",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
@@ -54,6 +54,9 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^6.0.0"
+    "@types/react-test-renderer": "^18.0.7",
+    "@types/testing-library__jest-dom": "^6.0.0",
+    "gh-pages": "^6.0.0",
+    "react-test-renderer": "^18.2.0"
   }
 }

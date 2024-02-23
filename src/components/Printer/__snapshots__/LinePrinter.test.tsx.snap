@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinePrinter component renders line segments 1`] = `
+<div
+  className="sc-hKgKIp keWiQg"
+  id="LinePrinter:0"
+>
+  <div>
+    <span
+      id="SegmentPrinter:0"
+    >
+      <span
+        className="sc-dlfmHC gfsIAT"
+      >
+        Segment 1
+      </span>
+      <div
+        className="sc-bdfCDU dyFYgG"
+        id="cursor"
+      >
+         
+      </div>
+    </span>
+    <span
+      id="SegmentPrinter:1"
+    >
+      <span
+        className="sc-dlfmHC gfsIAT"
+      >
+        Segment 2
+      </span>
+      <div
+        className="sc-bdfCDU dyFYgG"
+        id="cursor"
+      >
+         
+      </div>
+    </span>
+    <span
+      id="SegmentPrinter:2"
+    >
+      <span
+        className="sc-dlfmHC gfsIAT"
+      >
+        Segment 3
+      </span>
+      <div
+        className="sc-bdfCDU dyFYgG"
+        id="cursor"
+      >
+         
+      </div>
+    </span>
+  </div>
+</div>
+`;

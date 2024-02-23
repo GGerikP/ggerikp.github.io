@@ -21,7 +21,7 @@ export type Line = {
 }
 
 type ParagraphPrinterProps = {
-    lines: Line[];
+    lines?: Line[];
     startingLineIndex?: number;
     typingSpeed: number;
     promptChars?: string;
@@ -36,14 +36,14 @@ function ParagraphPrinter({ lines, typingSpeed, promptChars, instantPrint }: Par
     const [hasMoreLines, setHasMoreLines] = useState<boolean>(true);
 
     const printNextLine = useCallback(() => {
-        if (displayedLines && (lineIndex < lines.length)) {
+        if (displayedLines && lines && (lineIndex < lines.length)) {
             const newLine: Line = lines[lineIndex];
             const updatedDisplayedLines: Line[] = [...displayedLines, newLine];
             setDisplayedLines(updatedDisplayedLines);
         }
         setLineIndex(prevState => {
             const nextLineIndex = prevState + 1;
-            if (nextLineIndex === lines.length) {
+            if (!lines || nextLineIndex === lines.length) {
                 setHasMoreLines(false);
             }
             return nextLineIndex;

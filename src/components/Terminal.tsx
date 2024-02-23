@@ -11,14 +11,26 @@ const terminalKeyframes = keyframes`
   100% { height: ${terminalHeight}; }
 `
 
-const WindowContainer = styled.div`
+interface WindowContainerProps {
+    $expanded: boolean;
+}
+const WindowContainer = styled.div<WindowContainerProps>`
     display: block;
     border-radius: 5px;
     color: white;
     font-size: ${theme.fontSizes.large};
     animation: ${terminalKeyframes} ${terminalHeightExpansionDuration}s;
-    height: 0px;
-    overflow: hidden;
+    ${props => props.$expanded ? 
+        {
+            height:'auto', 
+            minHeight : terminalHeight,
+            overflow: 'visible'
+        } 
+        : {
+            height: "0px",
+            overflow: "hidden"
+        }
+    }
 `
 
 const WindowTitleBar = styled.div`
@@ -72,15 +84,15 @@ const LinesContainer = styled.div`
 `
 
 type TerminalProps = {
-    lines: Line[];
+    lines?: Line[];
     instantPrint?: boolean;
 }
 
 const Terminal: React.FC<TerminalProps> = ({ lines, instantPrint }: TerminalProps) => {
     const windowTitle = 'gerik@peterson:~';
 
-    const [expanded, setExpanded] = useState(false);
-    const [printerKey, setPrinterKey] = useState(0);
+    const [expanded, setExpanded] = useState<boolean>(false);
+    const [printerKey, setPrinterKey] = useState<number>(0);
 
     const handleClick = () => {
         setPrinterKey(prevKey => prevKey + 1);
@@ -96,7 +108,7 @@ const Terminal: React.FC<TerminalProps> = ({ lines, instantPrint }: TerminalProp
     }, []);
 
     return (
-        <WindowContainer style={expanded ? { height:'auto' , minHeight : terminalHeight, overflow: 'visible' } : undefined}>
+        <WindowContainer $expanded={expanded}>
             <WindowTitleBar>
                 <WindowTitle>{windowTitle}</WindowTitle>
                 <button onClick={handleClick}>Reprint</button>

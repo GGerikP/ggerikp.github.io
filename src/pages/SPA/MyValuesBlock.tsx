@@ -70,7 +70,7 @@ function MyValuesBlock() {
                         <li>CARE ABOUT EVERYONE.</li>
                         <li>EMPOWER EVERYONE.</li>
                         <li>BE A LEADER, NOT A MANAGER.</li>
-                        <li>ADULTS DON'T EXIST, ONLY OLD CHILDREN</li>
+                        <li>ADULTS DON'T EXIST, ONLY OLDER CHILDREN.</li>
                         <li>TAKE RESPONSIBILITY.</li>
                         <li>KEEP YOUR REPORTS HAPPY.</li>
                         <li>INCLUSION IS KEY (SILO NO-ONE).</li>

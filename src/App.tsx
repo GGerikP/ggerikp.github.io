@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 import styled from 'styled-components';
 import theme from './theme';
 import Error404NotFoundPage from './pages/Error404NotFoundPage';
+import TerminalHomePage from './pages/TerminalHomePage';
 /*import AboutPage from './pages/AboutPage';
 import ServicesPage from './pages/ServicesPage';
 import ContactPage from './pages/ContactPage';
@@ -33,6 +34,7 @@ function App() {
         <NavigationBar />
         <Routes>
           <Route path="/" element={<SPA />} />
+          <Route path="/terminal" element={<TerminalHomePage />} />
           {/*<Route path="/homepage" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />

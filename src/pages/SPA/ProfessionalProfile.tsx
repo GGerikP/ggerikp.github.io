@@ -97,8 +97,8 @@ function ProfessionalProfileBlock() {
                     <Title><h1>Professional Profile</h1></Title>
                     <ProfessionalProfileBlurb>
                         <p>I am a 50/50 manager-to-engineer split.  I love leading people and writing code equally, so my roles over the past 15 years have flip-flopped between these two.</p>
-                        <p>Historically my strength is backend engineering, but these days it doesn't really matter what part of the stack I work on anymore.  I just love being an engineer.</p>
-                        <p>It's also worth mentioning that I also have <strong>dual citizenship</strong> in the United States and the United Kingdom; so, I am free to work without restriction in both countries.</p>
+                        <p>Historically my strength is backend engineering with a specialty in cloud computing.  However, these days it doesn't really matter what I work on; I just love being an engineer.</p>
+                        <p>It's also worth mentioning that I also have <strong>dual citizenship</strong> in the United States and the United Kingdom.  So, I am free to live and work in both countries without restriction.</p>
                     </ProfessionalProfileBlurb>
                     <Flags>
                         <Flag src={AmericanFlag} />

@@ -49,7 +49,7 @@ const TitleContainer = styled.div`
 `
 
 type TerminalHomePageMainProps = {
-  terminalText: Line[];
+  terminalText?: Line[];
 }
 
 const TerminalHomePageMain: React.FC<TerminalHomePageMainProps> = ({terminalText}) => {

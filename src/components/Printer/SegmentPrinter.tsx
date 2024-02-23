@@ -42,7 +42,7 @@ function SegmentPrinter({ segment, segmentIndex, typingSpeed, instantPrint, hasM
             if (segment?.text?.length > charIndex) {
                 setCursorDisplay(CursorDisplay.Stable);
                 setDisplayedText(segment.text.substring(0, charIndex + 1));
-                setCharIndex(charIndex + 1);
+                setCharIndex(prevState => prevState + 1);
             } else {
                 setCursorDisplay(CursorDisplay.Blink);
                 setIsDonePrinting(true);
