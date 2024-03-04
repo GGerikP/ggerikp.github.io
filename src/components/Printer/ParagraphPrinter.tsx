@@ -3,10 +3,12 @@ import styled from 'styled-components';
 import LinePrinter from './LinePrinter';
 
 const PrintedTextBlockContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  text-align: left;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
 `
 
 export type LineSegment = {

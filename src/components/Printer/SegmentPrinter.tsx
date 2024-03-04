@@ -3,13 +3,14 @@ import styled from 'styled-components';
 import Link from '../Link';
 import Cursor, { CursorDisplay } from './Cursor';
 
+const SegmentWrapper = styled.span`
+`
+
 const StyledLink = styled(Link)`
     text-decoration: underline;
 `;
 
 const PrintedTextSpan = styled.span`
-    white-space: pre;
-    text-wrap: wrap;
 `
 
 export type Segment = {
@@ -70,7 +71,7 @@ function SegmentPrinter({ segment, segmentIndex, typingSpeed, instantPrint, hasM
     }, [segment, charIndex, isDonePrinting, hasMoreLines, instantPrint, typingSpeed]);
 
     return (
-        <span id={`SegmentPrinter:${segmentIndex}`}>
+        <SegmentWrapper id={`SegmentPrinter:${segmentIndex}`}>
             {segment.link
                 ? <StyledLink
                     url={segment.link}>
@@ -79,7 +80,7 @@ function SegmentPrinter({ segment, segmentIndex, typingSpeed, instantPrint, hasM
                 : <PrintedTextSpan>{displayedText}</PrintedTextSpan>
             }
             <Cursor cursorDisplay={cursorDisplay} />
-        </span>
+        </SegmentWrapper>
     );
 }
 

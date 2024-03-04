@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import SegmentPrinter from './SegmentPrinter';
 
 const PrintedLine = styled.div`
-    display: inline-block;
 `;
 
 interface LineSegment {
@@ -63,21 +62,20 @@ function LinePrinter({ line, lineIndex, typingSpeed, promptChars, instantPrint, 
 
     return (
         <PrintedLine id={`LinePrinter:${lineIndex}`}>
-            <div>{promptChars}
-                {displayedSegments.map((segment, index) => {
-                    return (
-                        <SegmentPrinter
-                            key={index}
-                            segment={segment}
-                            segmentIndex={index}
-                            typingSpeed={typingSpeed}
-                            instantPrint={instantPrint}
-                            hasMoreLines={hasMoreLines}
-                            printNextSegment={printNextSegment}
-                        />
-                    )
-                })}
-            </div>
+            {promptChars}
+            {displayedSegments.map((segment, index) => {
+                return (
+                    <SegmentPrinter
+                        key={index}
+                        segment={segment}
+                        segmentIndex={index}
+                        typingSpeed={typingSpeed}
+                        instantPrint={instantPrint}
+                        hasMoreLines={hasMoreLines}
+                        printNextSegment={printNextSegment}
+                    />
+                )
+            })}
         </PrintedLine>
     );
 }
