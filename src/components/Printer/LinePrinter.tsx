@@ -3,10 +3,7 @@ import styled from 'styled-components';
 import SegmentPrinter, { Segment } from './SegmentPrinter';
 
 const PrintedLine = styled.div`
-<<<<<<< Updated upstream
-=======
     width: 100%;
->>>>>>> Stashed changes
 `;
 
 export type Line = {
