@@ -18,17 +18,17 @@ const HomePageContainer = styled.div`
 `;
 
 const lines: Line[] = [
-  { lineSegments: [{ text: "This is the About page where I put stuff about me...", printDelayAfter: 1000 }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "" }] },
+  { segments: [{ text: "This is the About page where I put stuff about me...", postPrintDelay: 1000 }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "" }] },
 ];
 
 type AboutPageProps = {};
 
 function AboutPage(props: AboutPageProps) {
 
-  const [terminalText, setTerminalText] = useState<Line[]>([{lineSegments: [ {text: ''}]}]);
+  const [terminalText, setTerminalText] = useState<Line[]>([{segments: [ {text: ''}]}]);
 
   useEffect(() => {
     const fetchData = async () => {

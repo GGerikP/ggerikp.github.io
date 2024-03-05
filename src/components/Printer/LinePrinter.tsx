@@ -1,19 +1,16 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import SegmentPrinter from './SegmentPrinter';
+import SegmentPrinter, { Segment } from './SegmentPrinter';
 
 const PrintedLine = styled.div`
+<<<<<<< Updated upstream
+=======
+    width: 100%;
+>>>>>>> Stashed changes
 `;
 
-interface LineSegment {
-    text: string;
-    link?: string;
-    printDelayBefore?: number;
-    printDelayAfter?: number;
-}
-
 export type Line = {
-    lineSegments: LineSegment[];
+    segments: Segment[];
 }
 
 type LinePrinterProps = {
@@ -22,56 +19,88 @@ type LinePrinterProps = {
     typingSpeed: number;
     promptChars?: string;
     instantPrint: boolean;
-    hasMoreLines: boolean;
+    isLastLine: boolean;
     printNextLine?: () => void;
 };
 
-function LinePrinter({ line, lineIndex, typingSpeed, promptChars, instantPrint, hasMoreLines, printNextLine }: LinePrinterProps) {
+function LinePrinter({ line, lineIndex, typingSpeed, promptChars, instantPrint, isLastLine, printNextLine }: LinePrinterProps) {
 
-    const sideEffectExecutedRef = useRef(false);
-    const [segmentIndex, setSegmentIndex] = useState<number>(-1);
-    const [displayedSegments, setDisplayedSegments] = useState<LineSegment[]>([]);
+    const [lineIsDone, setLineIsDone] = useState<boolean>(false);
+    const [segmentIndex, setSegmentIndex] = useState<number>(0);
+    const [printedSegments, setPrintedSegments] = useState<Segment[]>([]);
 
     // Called by the TextPrinter to print each next segment
     const printNextSegment = useCallback(() => {
-        const updatedSegmentIndex = segmentIndex + 1;
-        setSegmentIndex(updatedSegmentIndex);
-        if (updatedSegmentIndex < line.lineSegments.length) {
-            const nextSegment: LineSegment = {
-                text: line?.lineSegments[updatedSegmentIndex]?.text,
-                link: line?.lineSegments[updatedSegmentIndex]?.link,
-                printDelayBefore: line?.lineSegments[updatedSegmentIndex]?.printDelayBefore,
-                printDelayAfter: line?.lineSegments[updatedSegmentIndex]?.printDelayAfter,
-            }
-            const updatedDisplayedSegments = [...displayedSegments, nextSegment]
-            setDisplayedSegments(updatedDisplayedSegments);
-        } else {
+        // console.log('Calling printNextSegment ----------');
+        setSegmentIndex(prevSegmentIndex => prevSegmentIndex + 1);
+    }, []);
+
+    // Update whether the line is done or not.
+    useEffect(() => {
+        if (!line) {
+            // console.log('LinePrinter WARNING: CANNOT PRINT EMPTY LINE.');
+        } else if (!lineIsDone && segmentIndex === line.segments.length) {
+            setLineIsDone(true);
+        }
+    }, [segmentIndex, line, lineIsDone]);
+
+    // Print the next line
+    useEffect(() => {
+        // console.log(`LinePrinter: lineIndex(${lineIndex}) JSON.stringify(line)=${JSON.stringify(line)}`);
+        // console.log(`LinePrinter: lineIndex(${lineIndex}) line.lineSegments.length(${line.lineSegments.length})`);
+        if (!line) {
+            console.log('LinePrinter WARNING: CANNOT PRINT EMPTY LINE.');
+        } else if (lineIsDone) {
             if (typeof printNextLine === 'function') {
+                // console.log(`LinePrinter: lineIndex(${lineIndex}) segmentIndex(${segmentIndex})`);
                 printNextLine();
             }
         }
-    }, [segmentIndex, displayedSegments, line.lineSegments, printNextLine]);
+    }, [lineIsDone, lineIndex, line, printNextLine]);
 
-    // Used to print the first segment
     useEffect(() => {
-        if (!sideEffectExecutedRef.current) {
-            printNextSegment();
+        if (!line) {
+            // console.log(`Line is undefined! ${JSON.stringify(line)}`);
+        } else {
+            // console.log(`LinePrinter: lineIsDone(${lineIsDone}), segmentIndex(${segmentIndex}), line.lineSegments.length(${line.segments.length})`)
+            if (lineIsDone) {
+                // console.log(`The line is done!`);
+            } else if (!lineIsDone && (segmentIndex < line.segments.length)) {
+                // console.log('Creating a new segment.');
+                const nextSegment: Segment = {
+                    text: line?.segments[segmentIndex]?.text,
+                    link: line?.segments[segmentIndex]?.link,
+                    prePrintDelay: line?.segments[segmentIndex]?.prePrintDelay,
+                    postPrintDelay: line?.segments[segmentIndex]?.postPrintDelay,
+                }
+                if (printedSegments[segmentIndex] === undefined) {
+                    // console.log('Adding a new segment.');
+                    setPrintedSegments(prevDisplayedSegments => {
+                        const updatedDisplayedSegments = [...prevDisplayedSegments];
+                        updatedDisplayedSegments[segmentIndex] = nextSegment;
+                        return updatedDisplayedSegments;
+                    });
+                } else {
+                    // console.log('Segment is not null - NOT ADDING THE SEGMENT.')
+                }
+            }
         }
-        sideEffectExecutedRef.current = true;
-    }, [printNextSegment]);
+
+    }, [segmentIndex, lineIsDone, line?.segments, printedSegments, line])
 
     return (
         <PrintedLine id={`LinePrinter:${lineIndex}`}>
             {promptChars}
-            {displayedSegments.map((segment, index) => {
+            {printedSegments.map((segment, index) => {
                 return (
                     <SegmentPrinter
                         key={index}
                         segment={segment}
                         segmentIndex={index}
+                        isLastSegment={index === line.segments.length - 1}
                         typingSpeed={typingSpeed}
                         instantPrint={instantPrint}
-                        hasMoreLines={hasMoreLines}
+                        isLastLine={isLastLine}
                         printNextSegment={printNextSegment}
                     />
                 )

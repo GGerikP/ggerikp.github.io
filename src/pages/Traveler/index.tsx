@@ -18,17 +18,17 @@ const HomePageContainer = styled.div`
 `;
 
 const lines: Line[] = [
-  { lineSegments: [{ text: "This is Singer page where I put my ideas down about being a manager...", printDelayAfter: 1000 }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "" }] },
+  { segments: [{ text: "This is Singer page where I put my ideas down about being a manager...", postPrintDelay: 1000 }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "" }] },
 ];
 
 type TravelerPageProps = {};
 
 function TravelerPage(props: TravelerPageProps) {
 
-  const [terminalText, setTerminalText] = useState<Line[]>([{lineSegments: [ {text: ''}]}]);
+  const [terminalText, setTerminalText] = useState<Line[]>([{segments: [ {text: ''}]}]);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -16,59 +16,76 @@ const PrintedTextSpan = styled.span`
 export type Segment = {
     text: string;
     link?: string;
-    printDelayBefore?: number;
-    printDelayAfter?: number;
+    prePrintDelay?: number;
+    postPrintDelay?: number;
 }
 
 type SegmentPrinterProps = {
     segment: Segment;
     segmentIndex: number;
+    isLastSegment: boolean;
+    isLastLine: boolean;
     typingSpeed: number;
     instantPrint: boolean;
-    hasMoreLines: boolean;
     printNextSegment: () => void;
 };
 
-function SegmentPrinter({ segment, segmentIndex, typingSpeed, instantPrint, hasMoreLines, printNextSegment }: SegmentPrinterProps) {
+function SegmentPrinter({ segment, segmentIndex, isLastSegment, isLastLine, typingSpeed, instantPrint, printNextSegment }: SegmentPrinterProps) {
 
     const [isDonePrinting, setIsDonePrinting] = useState<boolean>(false);
     const [charIndex, setCharIndex] = useState<number>(0);
     const [displayedText, setDisplayedText] = useState<string>('');
     const [cursorDisplay, setCursorDisplay] = useState<CursorDisplay>(CursorDisplay.Blink);
+    const postPrintDelay = (!instantPrint && (segment.postPrintDelay) ? segment.postPrintDelay : 0)
+    const prePrintDelay = !instantPrint ? (typingSpeed + ((charIndex === 0 && segment.prePrintDelay) ? segment.prePrintDelay : 0)) : 0;
 
+    // Cursor Display
     useEffect(() => {
-        const prePrintDelay = !instantPrint ? (typingSpeed + ((charIndex === 0 && segment.printDelayBefore) ? segment.printDelayBefore : 0)) : 0;
-
-        const updateDisplayedText = () => {
-            if (segment?.text?.length > charIndex) {
+        // console.log(`isDonePrinting=${isDonePrinting}, isLastSegment=${isLastSegment}, isLastLine=${isLastLine}, cursorDisplay=${cursorDisplay}`);
+        if (!isDonePrinting && (charIndex < segment?.text?.length)) {
+            if (cursorDisplay !== CursorDisplay.Stable) {
                 setCursorDisplay(CursorDisplay.Stable);
-                setDisplayedText(segment.text.substring(0, charIndex + 1));
-                setCharIndex(prevState => prevState + 1);
-            } else {
-                setCursorDisplay(CursorDisplay.Blink);
+            }
+        } else if (isDonePrinting && !(isLastSegment && isLastLine)) {
+            if (cursorDisplay !== CursorDisplay.Hidden) {
+                setCursorDisplay(CursorDisplay.Hidden);
+            }
+        } else if (cursorDisplay !== CursorDisplay.Blink) {
+            setCursorDisplay(CursorDisplay.Blink);
+        }
+    }, [charIndex, isLastLine, isLastSegment, isDonePrinting, segment?.text?.length, cursorDisplay])
+
+    // Get Next Segment
+    useEffect(() => {
+        if (isDonePrinting) {
+            printNextSegment();
+        }
+    }, [isDonePrinting, printNextSegment])
+
+    // Set whether we're done printing or not
+    useEffect(() => {
+        const postPrintTimeout = setTimeout(() => {
+            if (charIndex >= segment?.text?.length) {
                 setIsDonePrinting(true);
             }
-        };
-
-        const postPrintDelay = isDonePrinting ? (!instantPrint && (segment.printDelayAfter) ? segment.printDelayAfter : 0) : 0;
-        const postPrintTimeout = setTimeout(() => {
-            if (isDonePrinting) {
-                if (hasMoreLines) {
-                    setCursorDisplay(CursorDisplay.Hidden);
-                }
-                printNextSegment();
-            } else {
-                const prePrintTimeout = setTimeout(() => {
-                    setCursorDisplay(CursorDisplay.Blink);
-                    updateDisplayedText();
-                }, prePrintDelay);
-                return () => clearTimeout(prePrintTimeout);
-            }
         }, postPrintDelay);
-        return () => clearTimeout(postPrintTimeout);
-        // We want to ignore the printNextSegment dependency
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [segment, charIndex, isDonePrinting, hasMoreLines, instantPrint, typingSpeed]);
+        return (() => clearTimeout(postPrintTimeout));
+    }, [segment, charIndex, postPrintDelay])
+
+    // Update the Displayed Text
+    useEffect(() => {
+        setDisplayedText(segment.text.substring(0, charIndex));
+    }, [charIndex, segment])
+
+    // Print the next char
+    useEffect(() => {
+        const prePrintTimeout = setTimeout(() => {
+            if (charIndex < segment?.text?.length) {
+                setCharIndex(prevCharIndex => prevCharIndex + 1);
+            }
+        }, prePrintDelay);
+        return (() => clearTimeout(prePrintTimeout));
+    }, [segment, charIndex, prePrintDelay]);
 
     return (
         <SegmentWrapper id={`SegmentPrinter:${segmentIndex}`}>
@@ -79,7 +96,7 @@ function SegmentPrinter({ segment, segmentIndex, typingSpeed, instantPrint, hasM
                 </StyledLink>
                 : <PrintedTextSpan>{displayedText}</PrintedTextSpan>
             }
-            <Cursor cursorDisplay={cursorDisplay} />
+            <Cursor cursorDisplay={cursorDisplay} index={segmentIndex} />
         </SegmentWrapper>
     );
 }

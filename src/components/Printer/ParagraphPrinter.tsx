@@ -1,6 +1,6 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
-import LinePrinter from './LinePrinter';
+import LinePrinter, { Line } from './LinePrinter';
 
 const PrintedTextBlockContainer = styled.div`
     position: relative;
@@ -10,17 +10,6 @@ const PrintedTextBlockContainer = styled.div`
     text-align: left;
     width: 100%;
 `
-
-export type LineSegment = {
-    text: string;
-    link?: string;
-    printDelayBefore?: number;
-    printDelayAfter?: number;
-}
-
-export type Line = {
-    lineSegments: LineSegment[];
-}
 
 type ParagraphPrinterProps = {
     lines?: Line[];
@@ -32,33 +21,41 @@ type ParagraphPrinterProps = {
 
 function ParagraphPrinter({ lines, typingSpeed, promptChars, instantPrint }: ParagraphPrinterProps) {
 
-    const sideEffectExecutedRef = useRef(false);
+    // const sideEffectExecutedRef = useRef(false);
     const [lineIndex, setLineIndex] = useState<number>(0);
     const [displayedLines, setDisplayedLines] = useState<Line[]>([]);
-    const [hasMoreLines, setHasMoreLines] = useState<boolean>(true);
 
     const printNextLine = useCallback(() => {
-        if (displayedLines && lines && (lineIndex < lines.length)) {
-            const newLine: Line = lines[lineIndex];
-            const updatedDisplayedLines: Line[] = [...displayedLines, newLine];
-            setDisplayedLines(updatedDisplayedLines);
-        }
-        setLineIndex(prevState => {
-            const nextLineIndex = prevState + 1;
-            if (!lines || nextLineIndex === lines.length) {
-                setHasMoreLines(false);
-            }
-            return nextLineIndex;
-        });
-    }, [lineIndex, displayedLines, lines]);
+        setLineIndex(prevLineIndex => prevLineIndex + 1);
+    }, [])
 
     useEffect(() => {
-        if (!sideEffectExecutedRef.current) {
-            printNextLine();
+        // console.log(`ParagraphPrinter: lineIndex(${lineIndex}), lines.length(${lines?.length}), displayedLines.length(${displayedLines.length})`);
+        if (lines) {
+            if (lineIndex < lines.length) {
+                if (displayedLines[lineIndex] === undefined) {
+                    // console.log(`ParagraphPrinter: lineIndex(${lineIndex}) JSON.stringify(lines[lineIndex])(${JSON.stringify(lines[lineIndex])})`)
+                    if (!lines[lineIndex]) {
+                        console.log(`Cannot add undefined line element at lines[${lineIndex}]`);
+                    } else {
+                        setDisplayedLines(prevDisplayedLines => {
+                            const updatedDisplayedLines = [...prevDisplayedLines];
+                            updatedDisplayedLines[lineIndex] = lines[lineIndex]
+                            return updatedDisplayedLines;
+                        });
+                    }
+                } else {
+                    // console.log(`Not updating the displayedLines: displayedLines[${lineIndex}] is not undefined.`);
+                }
+            } else {
+                // console.log(`Not updating the displayedLines: lineIndex is greater than or equal to the lines.length.`);
+            }
+        } else {
+            console.log(`Not updating the displayedLines: there are no lines.`);
         }
-        sideEffectExecutedRef.current = true;
-    }, [printNextLine]);
+    }, [lineIndex, lines, displayedLines]);
 
+    // console.log(`lineIndex = ${lineIndex}`);
     return (
         <PrintedTextBlockContainer id="ParagraphPrinter">
             {displayedLines && displayedLines.map((line, index) => {
@@ -70,7 +67,7 @@ function ParagraphPrinter({ lines, typingSpeed, promptChars, instantPrint }: Par
                         promptChars={promptChars}
                         typingSpeed={typingSpeed}
                         instantPrint={instantPrint}
-                        hasMoreLines={hasMoreLines}
+                        isLastLine={(!lines || index === lines.length - 1)}
                         printNextLine={printNextLine}
                     />
                 )

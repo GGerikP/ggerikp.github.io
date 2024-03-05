@@ -50,7 +50,7 @@ export type LineSegment = {
     text: string;
     link?: string;
     printDelayBefore?: number;
-    printDelayAfter?: number;
+    postPrintDelay?: number;
 }
 
 enum CursorDisplay {
@@ -60,7 +60,7 @@ enum CursorDisplay {
 }
 
 export type Line = {
-    lineSegments: LineSegment[];
+    segments: LineSegment[];
 }
 
 type ParagraphPrinterProps = {
@@ -133,15 +133,15 @@ const IntegratedParagraphPrinter: React.FC<ParagraphPrinterProps> = ({ lines, ty
             });
         };
 
-        const currentSegment = lines[cursorCoordinates.activeLine].lineSegments[cursorCoordinates.activeSegment];
+        const currentSegment = lines[cursorCoordinates.activeLine].segments[cursorCoordinates.activeSegment];
         const segmentText = currentSegment.text;
         const textSubSection = currentSegment.text.substring(0, cursorCoordinates.charIndex + 1);
         const isSegmentDone = (segmentText === textSubSection);
-        const areSegmentsDone = (isSegmentDone && (cursorCoordinates.activeSegment === lines[cursorCoordinates.activeLine].lineSegments.length - 1));
+        const areSegmentsDone = (isSegmentDone && (cursorCoordinates.activeSegment === lines[cursorCoordinates.activeLine].segments.length - 1));
         const areLinesDone = (areSegmentsDone && (cursorCoordinates.activeLine === lines.length - 1));
 
         const prePrintDelay = !instantPrint ? (typingSpeed + ((cursorCoordinates.charIndex === 0 && currentSegment.printDelayBefore) ? currentSegment.printDelayBefore : 0)) : 0;
-        const postPrintDelay = !instantPrint && (isSegmentDone && currentSegment.printDelayAfter) ? currentSegment.printDelayAfter : 0;
+        const postPrintDelay = !instantPrint && (isSegmentDone && currentSegment.postPrintDelay) ? currentSegment.postPrintDelay : 0;
 
         const timeout = setTimeout(() => {
 

@@ -18,17 +18,17 @@ const HomePageContainer = styled.div`
 `;
 
 const lines: Line[] = [
-  { lineSegments: [{ text: "This is the Contact page where I put my contact information...", printDelayAfter: 1000 }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "" }] },
+  { segments: [{ text: "This is the Contact page where I put my contact information...", postPrintDelay: 1000 }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "" }] },
 ];
 
 type ContactPageProps = {};
 
 function ContactPage(props: ContactPageProps) {
 
-  const [terminalText, setTerminalText] = useState<Line[]>([{lineSegments: [ {text: ''}]}]);
+  const [terminalText, setTerminalText] = useState<Line[]>([{segments: [ {text: ''}]}]);
 
   useEffect(() => {
     const fetchData = async () => {

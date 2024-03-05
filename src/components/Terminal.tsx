@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import theme from '../theme';
 import terminatorPrefsIcon from './images/terminator-prefs-icon.jpeg';
-import ParagraphPrinter, { Line } from './Printer/ParagraphPrinter';
+import ParagraphPrinter from './Printer/ParagraphPrinter';
+import { Line } from './Printer/LinePrinter';
 
 const terminalHeight: string = '50vh'
 const terminalHeightExpansionDuration: number = 5;
@@ -20,12 +21,12 @@ const WindowContainer = styled.div<WindowContainerProps>`
     color: white;
     font-size: ${theme.fontSizes.large};
     animation: ${terminalKeyframes} ${terminalHeightExpansionDuration}s;
-    ${props => props.$expanded ? 
+    ${props => props.$expanded ?
         {
-            height:'auto', 
-            minHeight : terminalHeight,
+            height: 'auto',
+            minHeight: terminalHeight,
             overflow: 'visible'
-        } 
+        }
         : {
             height: "0px",
             overflow: "hidden"
@@ -96,15 +97,15 @@ const Terminal: React.FC<TerminalProps> = ({ lines, instantPrint }: TerminalProp
 
     const handleClick = () => {
         setPrinterKey(prevKey => prevKey + 1);
-      };
+    };
 
-      useEffect(() => {
-      // Wait for the initial animation to complete, then expand further if needed
-      const timer = setTimeout(() => {
-        setExpanded(true);
-      }, terminalHeightExpansionDuration * 975); // Match this duration with the animation duration
-  
-      return () => clearTimeout(timer);
+    useEffect(() => {
+        // Wait for the initial animation to complete, then expand further if needed
+        const timer = setTimeout(() => {
+            setExpanded(true);
+        }, terminalHeightExpansionDuration * 975); // Match this duration with the animation duration
+
+        return () => clearTimeout(timer);
     }, []);
 
     return (
@@ -120,7 +121,16 @@ const Terminal: React.FC<TerminalProps> = ({ lines, instantPrint }: TerminalProp
                     <WindowTitle>{windowTitle}</WindowTitle>
                 </TerminatorTitleBar>
                 <LinesContainer>
-                    <ParagraphPrinter lines={lines} typingSpeed={35} promptChars={'$ '} instantPrint={instantPrint ?? false} key={printerKey}/>
+                    {
+                        lines ? 
+                        <ParagraphPrinter
+                            key={printerKey}
+                            lines={lines}
+                            typingSpeed={35}
+                            promptChars={'$ '}
+                            instantPrint={instantPrint ?? false}/>
+                        : <></>
+                    }
                 </LinesContainer>
             </TerminalContainer>
         </WindowContainer>

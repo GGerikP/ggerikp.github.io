@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SegmentPrinter Tests Renders a SegmentPrinter with a large string of text instantly with instantPrint set to true 1`] = `
+<DocumentFragment>
+  <span
+    id="SegmentPrinter:0"
+  >
+    <span
+      class="sc-dlfmHC gfsIAT"
+    />
+    <div
+      class="sc-bdfCDU cFrJyp"
+      id="Cursor:0"
+    >
+       
+    </div>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`SegmentPrinter Tests Renders a SegmentPrinter with a single character of text and it is the last segment and last line 1`] = `
+<DocumentFragment>
+  <span
+    id="SegmentPrinter:0"
+  >
+    <span
+      class="sc-dlfmHC gfsIAT"
+    />
+    <div
+      class="sc-bdfCDU cFrJyp"
+      id="Cursor:0"
+    >
+       
+    </div>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`SegmentPrinter Tests Renders a SegmentPrinter with a single character of text but there are more segments to print 1`] = `
+<DocumentFragment>
+  <span
+    id="SegmentPrinter:0"
+  >
+    <span
+      class="sc-dlfmHC gfsIAT"
+    />
+    <div
+      class="sc-bdfCDU cFrJyp"
+      id="Cursor:0"
+    >
+       
+    </div>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`SegmentPrinter Tests Renders a SegmentPrinter with a single character of text but there are more segments to print 2`] = `
+<DocumentFragment>
+  <span
+    id="SegmentPrinter:0"
+  >
+    <span
+      class="sc-dlfmHC gfsIAT"
+    />
+    <div
+      class="sc-bdfCDU cFrJyp"
+      id="Cursor:0"
+    >
+       
+    </div>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`SegmentPrinter Tests Renders a single empty segment with more segments to follow 1`] = `
+<DocumentFragment>
+  <span
+    id="SegmentPrinter:0"
+  >
+    <span
+      class="sc-dlfmHC gfsIAT"
+    />
+    <div
+      class="sc-bdfCDU blcbix"
+      id="Cursor:0"
+    >
+       
+    </div>
+  </span>
+</DocumentFragment>
+`;
+
+exports[`SegmentPrinter Tests Renders a single empty segment with no lines or segments to follow 1`] = `
+<DocumentFragment>
+  <span
+    id="SegmentPrinter:0"
+  >
+    <span
+      class="sc-dlfmHC gfsIAT"
+    />
+    <div
+      class="sc-bdfCDU blcbix"
+      id="Cursor:0"
+    >
+       
+    </div>
+  </span>
+</DocumentFragment>
+`;

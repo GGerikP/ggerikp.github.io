@@ -17,28 +17,28 @@ const TerminalHomePageContainer = styled.div`
 `;
 
 const lines: Line[] = [
-  { lineSegments: [{ text: "Loading: Gerik Peterson's Playground...", printDelayBefore: 1000, printDelayAfter: 1000 }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "Welcome Visitor!", printDelayAfter: 500 }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "This website is used as a place for me to play with new tech and tools.", printDelayAfter: 500 }]},
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "Feel free to have a look around. ", printDelayAfter: 250 }, { text: "The following are a few topics about me: "}] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "  "}, { text: "Software Engineer", link: "/engineering" }] },
-  { lineSegments: [{ text: "  "}, { text: "Manager", link: "/management" }] },
+  { segments: [{ text: "Loading: Gerik Peterson's Playground...", printDelayBefore: 1000, postPrintDelay: 1000 }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "Welcome Visitor!", postPrintDelay: 500 }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "This website is used as a place for me to play with new tech and tools.", postPrintDelay: 500 }]},
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "Feel free to have a look around. ", postPrintDelay: 250 }, { text: "The following are a few topics about me: "}] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "  "}, { text: "Software Engineer", link: "/engineering" }] },
+  { segments: [{ text: "  "}, { text: "Manager", link: "/management" }] },
   {
-    lineSegments: [
+    segments: [
       { text: "  "},
       { text: "Musician: " },
-      { text: "Singer", link: "/singer", printDelayBefore: 1000, printDelayAfter: 250 }, { text: " - "},
-      { text: "Pianist", link: "/pianist", printDelayAfter: 1000 }
+      { text: "Singer", link: "/singer", printDelayBefore: 1000, postPrintDelay: 250 }, { text: " - "},
+      { text: "Pianist", link: "/pianist", postPrintDelay: 1000 }
     ],
   },
-  { lineSegments: [{ text: "  "}, { text: "Californian", link: "/political-whatifs" }] },
-  { lineSegments: [{ text: "  "}, { text: "Londoner", link: "/traveler" }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "" }] },
+  { segments: [{ text: "  "}, { text: "Californian", link: "/political-whatifs" }] },
+  { segments: [{ text: "  "}, { text: "Londoner", link: "/traveler" }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "" }] },
 ];
 
 const TitleContainer = styled.div`
