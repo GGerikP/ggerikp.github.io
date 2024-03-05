@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Terminal from '../../components/Terminal';
-import { Line } from '../../components/IntegratedParagraphPrinter';
 import theme from '../../theme';
+import { Line } from '../../components/Printer/LinePrinter';
 
 const AboutMeContainer = styled.div`
     display: flex;
@@ -28,7 +28,6 @@ const AboutMeText = styled.div`
 const AboutMeParagraph = styled.div`
     text-align: center;
 `
-
 
 const aboutMeText: Line[] = [
     { segments: [{ text: "Loading: Gerik Peterson's Playground", postPrintDelay: 250 },

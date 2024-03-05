@@ -3,19 +3,20 @@
 exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line with 1 segment 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCstZk hKvAUs"
+    class="sc-jSguLX gYGgnw"
     id="ParagraphPrinter"
   >
     <div
-      class="sc-hKgKIp khdAKB"
+      class="sc-eCstZk dVbBMf"
       id="LinePrinter:0"
     >
       $ 
       <span
+        class="sc-gsTDqH brCFsH"
         id="SegmentPrinter:0"
       >
         <span
-          class="sc-dlfmHC gfsIAT"
+          class="sc-hKgKIp gVuSnU"
         />
         <div
           class="sc-bdfCDU blcbix"
@@ -32,19 +33,20 @@ exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line wit
 exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line with 2 segments 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCstZk hKvAUs"
+    class="sc-jSguLX gYGgnw"
     id="ParagraphPrinter"
   >
     <div
-      class="sc-hKgKIp khdAKB"
+      class="sc-eCstZk dVbBMf"
       id="LinePrinter:0"
     >
       $ 
       <span
+        class="sc-gsTDqH brCFsH"
         id="SegmentPrinter:0"
       >
         <span
-          class="sc-dlfmHC gfsIAT"
+          class="sc-hKgKIp gVuSnU"
         />
         <div
           class="sc-bdfCDU blcbix"
@@ -61,19 +63,20 @@ exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line wit
 exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 5 lines, each with 5 segments 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCstZk hKvAUs"
+    class="sc-jSguLX gYGgnw"
     id="ParagraphPrinter"
   >
     <div
-      class="sc-hKgKIp khdAKB"
+      class="sc-eCstZk dVbBMf"
       id="LinePrinter:0"
     >
       $ 
       <span
+        class="sc-gsTDqH brCFsH"
         id="SegmentPrinter:0"
       >
         <span
-          class="sc-dlfmHC gfsIAT"
+          class="sc-hKgKIp gVuSnU"
         />
         <div
           class="sc-bdfCDU blcbix"
