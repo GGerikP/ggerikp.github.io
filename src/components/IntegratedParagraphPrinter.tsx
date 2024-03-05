@@ -19,7 +19,7 @@ const PrintedLine = styled.div`
     display: inline-block;
 `;
 
-interface CursorProps {
+type CursorProps = {
     $istyping: number;
     $isidle: number;
 }
