@@ -34,12 +34,13 @@ const CursorDiv = styled.div<CursorDivProps>`
 
 interface CursorProps {
     cursorDisplay: CursorDisplay;
+    index: number;
 }
 
-function Cursor({cursorDisplay}: CursorProps) {
-
+function Cursor({cursorDisplay, index}: CursorProps) {
+    // console.log(`Cursor(${index}): cursorDisplay = ${cursorDisplay}`)
     return (
-        <CursorDiv id="cursor" $cursordisplay={cursorDisplay}>&nbsp;</CursorDiv>
+        <CursorDiv id={`Cursor:${index}`} $cursordisplay={cursorDisplay}>&nbsp;</CursorDiv>
     )
 }
 

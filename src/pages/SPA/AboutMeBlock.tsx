@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import Terminal from '../../components/Terminal';
-import { Line } from '../../components/IntegratedParagraphPrinter';
 import theme from '../../theme';
+import { Line } from '../../components/Printer/LinePrinter';
 
 const AboutMeContainer = styled.div`
     display: flex;
@@ -29,38 +29,37 @@ const AboutMeParagraph = styled.div`
     text-align: center;
 `
 
-
 const aboutMeText: Line[] = [
-    { lineSegments: [{ text: "Loading: Gerik Peterson's Playground.", printDelayAfter: 750 },
-        {text: ".", printDelayAfter: 200 },
-        {text: ".", printDelayAfter: 100 },
-        {text: ".", printDelayAfter: 50 },
-        {text: ".", printDelayAfter: 50 }] },
-    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "Hey there!  Welcome to my site.", printDelayAfter: 750 }] },
-    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "Ok, so what is this thing?", printDelayAfter: 750 }] },
-    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: `This is my personal website and software development playground.`, printDelayAfter: 300 }] },
-    { lineSegments: [{ text: `It's mostly just a place for me to try things out and have a domain to use when I need it.`, printDelayAfter: 500 }] },
-    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
+    { segments: [{ text: "Loading: Gerik Peterson's Playground", postPrintDelay: 250 },
+        {text: ".", postPrintDelay: 100 },
+        {text: ".", postPrintDelay: 100 },
+        {text: ".", postPrintDelay: 50 },
+        {text: ".", postPrintDelay: 50 }] },
+    { segments: [{ text: "", postPrintDelay: 100 }] },
+    { segments: [{ text: "Hey there!  Welcome to my site.", postPrintDelay: 750 }] },
+    { segments: [{ text: "", postPrintDelay: 100 }] },
+    { segments: [{ text: "Ok, so what is this thing?", postPrintDelay: 750 }] },
+    { segments: [{ text: "", postPrintDelay: 100 }] },
+    { segments: [{ text: `This is my personal website and software development playground.`, postPrintDelay: 300 }] },
+    { segments: [{ text: `It's mostly just a place for me to try things out and have a domain to use when I need it.`, postPrintDelay: 500 }] },
+    { segments: [{ text: "", postPrintDelay: 100 }] },
     {
-        lineSegments: [{ text: "If you want to learn more about my professional life you might check my " },
+        segments: [{ text: "If you want to learn more about my professional life you might check my " },
         { text: "linkedin", link: "https://www.linkedin.com/in/gerikpeterson/" },
-        { text: " profile.", printDelayAfter: 300 }]
+        { text: " profile.", postPrintDelay: 300 }]
     },
-    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "Otherwise, I hope you enjoy looking around...", printDelayAfter: 200 }] },
-    { lineSegments: [{ text: "And have a most excellent day!", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "--------------", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "Take me to....", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "Professional Profile", link: "#cv", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "Professional Experience", link: "#cv", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "My Values", link: "#values" }] },
-    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
-    { lineSegments: [{ text: "", printDelayAfter: 0 }] },
+    { segments: [{ text: "", postPrintDelay: 0 }] },
+    { segments: [{ text: "Otherwise, enjoy looking around.", postPrintDelay: 200 }] },
+    { segments: [{ text: "And I hope you have a most excellent day!", postPrintDelay: 0 }] },
+    { segments: [{ text: "", postPrintDelay: 0 }] },
+    { segments: [{ text: "--------------", postPrintDelay: 0 }] },
+    { segments: [{ text: "", postPrintDelay: 0 }] },
+    { segments: [{ text: "Take me to....", postPrintDelay: 0 }] },
+    { segments: [{ text: "Professional Profile", link: "#cv", postPrintDelay: 0 }] },
+    { segments: [{ text: "Professional Experience", link: "#cv", postPrintDelay: 0 }] },
+    { segments: [{ text: "My Values", link: "#values" }] },
+    { segments: [{ text: "", postPrintDelay: 0 }] },
+    { segments: [{ text: "", postPrintDelay: 0 }] },
 ];
 
 function AboutMeBlock() {

@@ -18,17 +18,17 @@ const HomePageContainer = styled.div`
 `;
 
 const lines: Line[] = [
-  { lineSegments: [{ text: "This is the Engineering page where I put stuff about my Engineering knowledge and experience...", printDelayAfter: 1000 }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "This is also where I'll probably begin linking up projects." }] },
-  { lineSegments: [{ text: "" }] },
+  { segments: [{ text: "This is the Engineering page where I put stuff about my Engineering knowledge and experience...", postPrintDelay: 1000 }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "This is also where I'll probably begin linking up projects." }] },
+  { segments: [{ text: "" }] },
 ];
 
 type EngineeringPageProps = {};
 
 function EngineeringPage(props: EngineeringPageProps) {
 
-  const [terminalText, setTerminalText] = useState<Line[]>([{lineSegments: [ {text: ''}]}]);
+  const [terminalText, setTerminalText] = useState<Line[]>([{segments: [ {text: ''}]}]);
 
   useEffect(() => {
     const fetchData = async () => {

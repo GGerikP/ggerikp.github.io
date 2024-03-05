@@ -1,56 +1,82 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LinePrinter component renders line segments 1`] = `
-<div
-  className="sc-hKgKIp keWiQg"
-  id="LinePrinter:0"
->
-  <div>
+exports[`LinePrinter renders correctly with no segments 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-eCstZk dVbBMf"
+    id="LinePrinter:0"
+  />
+</DocumentFragment>
+`;
+
+exports[`LinePrinter renders correctly with one segment where there are no more lines 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-eCstZk dVbBMf"
+    id="LinePrinter:0"
+  >
     <span
+      class="sc-gsTDqH brCFsH"
       id="SegmentPrinter:0"
     >
       <span
-        className="sc-dlfmHC gfsIAT"
-      >
-        Segment 1
-      </span>
+        class="sc-hKgKIp gVuSnU"
+      />
       <div
-        className="sc-bdfCDU dyFYgG"
-        id="cursor"
-      >
-         
-      </div>
-    </span>
-    <span
-      id="SegmentPrinter:1"
-    >
-      <span
-        className="sc-dlfmHC gfsIAT"
-      >
-        Segment 2
-      </span>
-      <div
-        className="sc-bdfCDU dyFYgG"
-        id="cursor"
-      >
-         
-      </div>
-    </span>
-    <span
-      id="SegmentPrinter:2"
-    >
-      <span
-        className="sc-dlfmHC gfsIAT"
-      >
-        Segment 3
-      </span>
-      <div
-        className="sc-bdfCDU dyFYgG"
-        id="cursor"
+        class="sc-bdfCDU blcbix"
+        id="Cursor:0"
       >
          
       </div>
     </span>
   </div>
-</div>
+</DocumentFragment>
+`;
+
+exports[`LinePrinter renders correctly with two segment where there are additional lines to follow 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-eCstZk dVbBMf"
+    id="LinePrinter:0"
+  >
+    <span
+      class="sc-gsTDqH brCFsH"
+      id="SegmentPrinter:0"
+    >
+      <span
+        class="sc-hKgKIp gVuSnU"
+      />
+      <div
+        class="sc-bdfCDU blcbix"
+        id="Cursor:0"
+      >
+         
+      </div>
+    </span>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`LinePrinter renders correctly with two segment where there are no more lines 1`] = `
+<DocumentFragment>
+  <div
+    class="sc-eCstZk dVbBMf"
+    id="LinePrinter:0"
+  >
+    <span
+      class="sc-gsTDqH brCFsH"
+      id="SegmentPrinter:0"
+    >
+      <span
+        class="sc-hKgKIp gVuSnU"
+      />
+      <div
+        class="sc-bdfCDU blcbix"
+        id="Cursor:0"
+      >
+         
+      </div>
+    </span>
+  </div>
+</DocumentFragment>
 `;

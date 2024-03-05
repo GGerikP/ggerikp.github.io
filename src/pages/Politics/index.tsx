@@ -18,17 +18,17 @@ const HomePageContainer = styled.div`
 `;
 
 const lines: Line[] = [
-  { lineSegments: [{ text: "This is my Pianist page where I'll link some recordings of me playing the piano...", printDelayAfter: 1000 }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "" }] },
-  { lineSegments: [{ text: "" }] },
+  { segments: [{ text: "This is my Pianist page where I'll link some recordings of me playing the piano...", postPrintDelay: 1000 }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "" }] },
+  { segments: [{ text: "" }] },
 ];
 
 type PoliticsPageProps = {};
 
 function PoliticsPage(props: PoliticsPageProps) {
 
-  const [terminalText, setTerminalText] = useState<Line[]>([{lineSegments: [ {text: ''}]}]);
+  const [terminalText, setTerminalText] = useState<Line[]>([{segments: [ {text: ''}]}]);
 
   useEffect(() => {
     const fetchData = async () => {
