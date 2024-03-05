@@ -5,7 +5,7 @@ import Link from '../../../components/Link';
 import { HashLink } from 'react-router-hash-link';
 import { useOnClickOutside } from 'usehooks-ts'
 
-interface ContainerProps {
+type ContainerProps = {
     $maxchildheight: number;
 }
 const JobRoleContainer = styled.div<ContainerProps>`
@@ -28,7 +28,7 @@ const JobRoleContainer = styled.div<ContainerProps>`
     min-height: ${(props) => (props.$maxchildheight ? `${props.$maxchildheight}px` : '350px')};
 `
 
-interface JobBackgroundProps {
+type JobBackgroundProps = {
     $background?: string;
     $backgroundimage?: string;
     $isactive: boolean;
@@ -71,7 +71,7 @@ const LogoImage = styled.img`
     transform: translate(-50%, -50%);
 `
 
-interface JobContentCardProps {
+type JobContentCardProps = {
     $isvisible: boolean;
     height: number;
 }
@@ -113,7 +113,7 @@ const ContentCardTitle = styled.div`
     flex-direction: column;
 `
 
-interface JobRoleBlockProps {
+type JobRoleBlockProps = {
     companyId: string;
     companyLogoURL: string;
     companyName: string;

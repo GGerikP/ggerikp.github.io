@@ -13,7 +13,7 @@ const blink = keyframes`
   }
 `;
 
-interface CursorDivProps {
+type CursorDivProps = {
     $cursordisplay: string;
 }
 
@@ -32,7 +32,7 @@ const CursorDiv = styled.div<CursorDivProps>`
     `}
 `
 
-interface CursorProps {
+type CursorProps = {
     cursorDisplay: CursorDisplay;
     index: number;
 }

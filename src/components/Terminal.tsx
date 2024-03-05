@@ -12,7 +12,7 @@ const terminalKeyframes = keyframes`
   100% { height: ${terminalHeight}; }
 `
 
-interface WindowContainerProps {
+type WindowContainerProps = {
     $expanded: boolean;
 }
 const WindowContainer = styled.div<WindowContainerProps>`
