@@ -7,6 +7,8 @@ export interface ThemeInterface extends DefaultTheme {
     primary: string;
     secondary: string;
     primaryAccent: string;
+    secondaryAccent: string;
+    tertiaryAccent: string;
     background: string;
     text: string;
     textSecondary: string;
@@ -19,6 +21,7 @@ export interface ThemeInterface extends DefaultTheme {
   };
   fonts: {
     base: string;
+    secondary: string;
   };
   fontSizes: {
     xsmall: string;
@@ -48,11 +51,13 @@ export interface ThemeInterface extends DefaultTheme {
 // Define your theme values
 export const theme: ThemeInterface = {
   colors: {
-    primary: '#000000',
+    primary: '#F2F2F2',
     secondary: '#FFFFFF',
-    primaryAccent: '#444444',
-    background: '#f8f9fa',
-    text: '#000000',
+    primaryAccent: '#639CBF',
+    secondaryAccent: '#F21326',
+    tertiaryAccent: '#260101',
+    background: '#639CBF',
+    text: '#260101',
     textSecondary: '#ffffff',
     link: '#007bff',
     linkHover: '#0056b3',
@@ -63,6 +68,7 @@ export const theme: ThemeInterface = {
   },
   fonts: {
     base: 'Rye, monospace, Helvetica, Arial, sans-serif',
+    secondary: 'Lora'
   },
   fontSizes: {
     xsmall: '0.4rem',

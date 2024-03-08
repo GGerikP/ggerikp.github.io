@@ -16,7 +16,7 @@ const NavBarContainer = styled.div`
   position: fixed;
   top: 0;
   z-index: 10;
-  height: 55px;
+  height: 50px;
   border-bottom: solid 1px black;
 `;
 
@@ -40,7 +40,6 @@ const StyledLink = styled(HashLink)`
 
     &:hover {
       color: #ddd;
-      text-decoration: line-through;
     }
   }
 `;
@@ -56,7 +55,6 @@ const StyledMobileLink = styled(HashLink)`
 
     &:hover {
       color: #ddd;
-      text-decoration: line-through;
     }
   }
 `;
@@ -77,6 +75,20 @@ const NavBarLogo = styled.img`
   padding-right: 10px;
   margin-right: 10px;
 `
+
+// const NavBarTitle = styled.h1`
+//   cursor: pointer;
+//   height: 40px;
+//   padding-left: 10px;
+//   padding-right: 10px;
+//   margin-right: 10px;
+//   font-family: ${theme.fonts.secondary};
+//   color: ${theme.colors.text};
+//   font-weight: inherit;
+//   margin-top: 0;
+//   font-style: italic;
+// `
+
 
 const Logo = styled.div`
   cursor: pointer;
@@ -171,6 +183,7 @@ const NavigationBar: React.FC<NavigationBarProps> = () => {
         <Logo as={HashLink} to="/#title">
           <NavBarIcon title="mow" src={SiteIcon} />
           <NavBarLogo src={GerikPetersonLogo} alt="Site Logo" />
+          {/*<NavBarTitle>Gerik Peterson</NavBarTitle>*/}
         </Logo>
         <NavItems className={mobileMenuActive ? 'active' : ''}>
           <StyledLink to="/#title" onClick={(event) => scrollToAnchor(event, "#title")}>Home</StyledLink>

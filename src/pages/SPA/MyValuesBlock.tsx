@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import BackgroundClouds from './images/background-clouds-large.jpg';
+import theme from '../../theme';
 
-const MyValuesContainer = styled.div`
+const MyValuesContainer = styled.section`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -18,6 +19,16 @@ const MyValuesContainer = styled.div`
     color: white;
     font-family: "Bebas Neue", sans-serif;
     font-size: 26px;
+    z-index: 1;
+    @media (width > ${theme.breakpoints.mobile}) {
+        margin-left: 5%;
+        margin-right: 5%;
+    }
+    h1 {
+        font-family: ${theme.fonts.base};
+        font-weight: 100;
+        margin-top: 20px;
+    }
 `
 
 const ValuesBlock = styled.div`

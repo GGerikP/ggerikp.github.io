@@ -6,7 +6,7 @@ import IconSmallGithub from './images/icon-github-small.svg';
 import IconSmallStackOverflow from './images/icon-stackoverflow-small.png';
 import IconSmallFacebook from './images/icon-facebook-small.svg';
 
-const FooterContainer = styled.div`
+const FooterContainer = styled.footer`
     width: 100%;
     border-bottom: solid 1px black;
     background-color: white;
@@ -21,6 +21,7 @@ const SocialMediaContainer = styled.div`
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    border-bottom: solid 1px black;
 `
 const SocialMediaWrapper = styled.div`
     height: 100%;
@@ -41,6 +42,7 @@ const FooterBlurbContainer = styled.div`
     align-items: center;
     font-size: 10px;
     flex-direction: column;
+    text-align: center;
 `
 
 function Footer() {

@@ -4,17 +4,16 @@ import Terminal from '../../components/Terminal';
 import theme from '../../theme';
 import { Line } from '../../components/Printer/LinePrinter';
 
-const AboutMeContainer = styled.div`
+const AboutMeSection = styled.section`
     display: flex;
     justify-content: center;
-    // height: 100vh;
-    //background-color: #FFEFC6;
     padding-right: 3%;
     @media (width > ${theme.breakpoints.mobile}) {
         padding-left: 5%;
         padding-right: 5%;
     }
-    margin-bottom: 50px;
+    margin-bottom: 10px;
+    z-index: 1;
 `
 
 const AboutMeText = styled.div`
@@ -49,8 +48,8 @@ const aboutMeText: Line[] = [
         { text: " profile.", postPrintDelay: 300 }]
     },
     { segments: [{ text: "", postPrintDelay: 0 }] },
-    { segments: [{ text: "Otherwise, enjoy looking around.", postPrintDelay: 200 }] },
-    { segments: [{ text: "And I hope you have a most excellent day!", postPrintDelay: 0 }] },
+    { segments: [{ text: "I hope you enjoy looking around.", postPrintDelay: 200 }] },
+    { segments: [{ text: "Otherwise, I hope you have a most excellent day!", postPrintDelay: 0 }] },
     { segments: [{ text: "", postPrintDelay: 0 }] },
     { segments: [{ text: "--------------", postPrintDelay: 0 }] },
     { segments: [{ text: "", postPrintDelay: 0 }] },
@@ -64,13 +63,13 @@ const aboutMeText: Line[] = [
 
 function AboutMeBlock() {
     return (
-        <AboutMeContainer id="about">
+        <AboutMeSection id="about">
             <AboutMeText>
                 <AboutMeParagraph style={{ textAlign: 'center' }}>
                     <Terminal lines={aboutMeText} instantPrint={false}/>
                 </AboutMeParagraph>
             </AboutMeText>
-        </AboutMeContainer>
+        </AboutMeSection>
     )
 }
 

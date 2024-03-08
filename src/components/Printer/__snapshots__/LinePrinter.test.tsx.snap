@@ -5,7 +5,9 @@ exports[`LinePrinter renders correctly with no segments 1`] = `
   <div
     class="sc-eCstZk dVbBMf"
     id="LinePrinter:0"
-  />
+  >
+    <span />
+  </div>
 </DocumentFragment>
 `;
 
@@ -15,6 +17,7 @@ exports[`LinePrinter renders correctly with one segment where there are no more 
     class="sc-eCstZk dVbBMf"
     id="LinePrinter:0"
   >
+    <span />
     <span
       class="sc-gsTDqH brCFsH"
       id="SegmentPrinter:0"
@@ -39,6 +42,7 @@ exports[`LinePrinter renders correctly with two segment where there are addition
     class="sc-eCstZk dVbBMf"
     id="LinePrinter:0"
   >
+    <span />
     <span
       class="sc-gsTDqH brCFsH"
       id="SegmentPrinter:0"
@@ -63,6 +67,7 @@ exports[`LinePrinter renders correctly with two segment where there are no more 
     class="sc-eCstZk dVbBMf"
     id="LinePrinter:0"
   >
+    <span />
     <span
       class="sc-gsTDqH brCFsH"
       id="SegmentPrinter:0"

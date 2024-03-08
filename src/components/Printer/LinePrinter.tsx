@@ -87,7 +87,7 @@ function LinePrinter({ line, lineIndex, typingSpeed, promptChars, instantPrint, 
 
     return (
         <PrintedLine id={`LinePrinter:${lineIndex}`}>
-            {promptChars}
+            <span>{promptChars}</span>
             {printedSegments.map((segment, index) => {
                 return (
                     <SegmentPrinter

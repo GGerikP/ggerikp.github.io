@@ -17,7 +17,7 @@ const ColoredBackgroundBox = styled.div.withConfig({
         !['position', 'backgroundImage'].includes(prop)
     }) <BackgroundBoxProps>`
     display: block;
-    background-color: ${theme.colors.primary};
+    background-color: ${theme.colors.background};
     background-image: url(${props => props.backgroundImage});
     width: 65%;
     height: 500px;

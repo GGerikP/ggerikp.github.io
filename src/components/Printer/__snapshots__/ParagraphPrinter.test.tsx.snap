@@ -10,7 +10,9 @@ exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line wit
       class="sc-eCstZk dVbBMf"
       id="LinePrinter:0"
     >
-      $ 
+      <span>
+        $ 
+      </span>
       <span
         class="sc-gsTDqH brCFsH"
         id="SegmentPrinter:0"
@@ -40,7 +42,9 @@ exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line wit
       class="sc-eCstZk dVbBMf"
       id="LinePrinter:0"
     >
-      $ 
+      <span>
+        $ 
+      </span>
       <span
         class="sc-gsTDqH brCFsH"
         id="SegmentPrinter:0"
@@ -70,7 +74,9 @@ exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 5 lines, e
       class="sc-eCstZk dVbBMf"
       id="LinePrinter:0"
     >
-      $ 
+      <span>
+        $ 
+      </span>
       <span
         class="sc-gsTDqH brCFsH"
         id="SegmentPrinter:0"

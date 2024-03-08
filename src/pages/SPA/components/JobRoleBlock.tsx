@@ -1,9 +1,9 @@
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../../theme';
-import Link from '../../../components/Link';
 import { HashLink } from 'react-router-hash-link';
 import { useOnClickOutside } from 'usehooks-ts'
+import JobRoleDetailBlock from './JobRoleDetailBlock';
 
 type ContainerProps = {
     $maxchildheight: number;
@@ -11,7 +11,7 @@ type ContainerProps = {
 const JobRoleContainer = styled.div<ContainerProps>`
     width: 90%;
     min-width: 350px;
-    min-height: 350px;
+    min-height: 250px;
     overflow: visible;
     margin-top: 5px;
     position: relative;
@@ -25,7 +25,7 @@ const JobRoleContainer = styled.div<ContainerProps>`
     }
 
     transition: min-height .5s ease;
-    min-height: ${(props) => (props.$maxchildheight ? `${props.$maxchildheight}px` : '350px')};
+    min-height: ${(props) => (props.$maxchildheight ? `${props.$maxchildheight}px` : '250px')};
 `
 
 type JobBackgroundProps = {
@@ -35,7 +35,7 @@ type JobBackgroundProps = {
 }
 const JobBackground = styled.div<JobBackgroundProps>`
     position: relative;
-    min-height: 350px;
+    min-height: 250px;
     height: 100%;
     width: ${(props) => (props.$isactive ? '105%' : '100%')};
     border: 1px solid black;
@@ -63,57 +63,15 @@ const AnchorLink = styled(HashLink)`
 `
 
 const LogoImage = styled.img`
-    min-width: 250px;
-    min-height: 250px;
+    min-width: 150px;
+    min-height: 150px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 `
 
-type JobContentCardProps = {
-    $isvisible: boolean;
-    height: number;
-}
-const JobContentCard = styled.div<JobContentCardProps>`
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    width: 100%;
-    background-color: white;
-    color: black;
-    opacity: ${(props) => (props.$isvisible ? '1' : '0')};
-    transition: all .5s ease;
-    height: ${(props) => (props.$isvisible ? 'auto' : '0')};
-    padding: 20px;
-`
-
-const ContentCardData = styled.div`
-    width: 100%;
-    font-size: 15px;
-    line-height: 25px;
-`
-
-const TitleWrapper = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-`
-
-const ContentCardLogo = styled.img`
-    height: 100px;
-    width: 100px;
-    margin-right: 10px;
-    border: 1px solid black;
-`
-
-const ContentCardTitle = styled.div`
-    display: flex;
-    flex-direction: column;
-`
-
-type JobRoleBlockProps = {
+export type JobRoleBlockProps = {
     companyId: string;
     companyLogoURL: string;
     companyName: string;
@@ -180,19 +138,11 @@ function JobRoleBlock(props: JobRoleBlockProps) {
                     onClick={(event) => handleClick(event, `#${props.companyId}`)}>
                     <LogoImage src={props.companyLogoURL} />
                 </AnchorLink>
-                <JobContentCard id="JobContentCard" $isvisible={isActive} height={childHeight} ref={childRef}>
-                    <ContentCardData>
-                        <TitleWrapper>
-                            <Link url={props.companyURL}><ContentCardLogo src={props.companyLogoURL} /></Link>
-                            <ContentCardTitle>
-                                <Link url={props.companyURL}><h1>{props.companyName}</h1></Link>
-                                <h2>{props.title}</h2>
-                            </ContentCardTitle>
-                        </TitleWrapper>
-                        <h3>Location: {props.location}</h3>
-                        <div>Responsibilities: {props.workDescription}</div>
-                    </ContentCardData>
-                </JobContentCard>
+                <JobRoleDetailBlock
+                    isVisible={isActive}
+                    height={childHeight}
+                    childRef={childRef}
+                    jobRoleDetails={props} />
             </JobBackground>
         </JobRoleContainer>
     )

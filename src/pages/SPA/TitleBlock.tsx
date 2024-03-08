@@ -3,12 +3,19 @@ import styled from 'styled-components';
 import theme from '../../theme';
 import ProportionalScrollElement from '../../components/ProportionalScrollElement';
 //import ProfilePicLookingDown from './images/profile-pic-looking-down.png';
-import LargeTitleWhite from './images/title-gerikpeterson-white-large.png';
+// import LargeTitleWhite from './images/title-gerikpeterson-white-large.png';
 //import ProfilePicSF from './images/profile-seth-kendra-me-sf.jpg';
 import ProfilePicChicago from './images/profile-gerikpeterson-large.jpg';
 
-const Container = styled.div`
+const TitleBlockContainer = styled.section`
     width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    @media (width > ${theme.breakpoints.mobile}) {
+        padding-left: 5%;
+        padding-right: 5%;
+    }
 `
 
 const ProfilePicContainer = styled.div`
@@ -17,7 +24,6 @@ const ProfilePicContainer = styled.div`
     position: fixed;
     top: 0;
     right: 0;
-    z-index: -1;
 `
 
 const ProfilePicFullPage = styled.div`
@@ -35,40 +41,57 @@ const ProfilePicFullPage = styled.div`
 `
 
 const TitleContainer = styled.div`
-    position: relative;
     width: 100%;
     height: 90vh;
+    position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-items: center;
     align-items: flex-end;
 `
-const LargeTitle = styled.img`
+
+/*const LargeTitleImage = styled.img`
     width: 100%;
     padding-left: 10%;
     padding-right: 10%;
-    position: absolute; 
     margin: auto;
     @media (orientation: portrait) {
-        bottom: 15vh;
+        padding-bottom: 15vh;
     }
     @media (width > ${theme.breakpoints.tablet}) {
-        bottom: 0px;
+        padding-bottom: 0px;
     }
+`*/
+
+const LargeTitleText = styled.h1`
+    width: 100%;
+    text-align: center;
+    @media (orientation: portrait) {
+        padding-bottom: 15vh;
+    };
+    @media (width > ${theme.breakpoints.tablet}) {
+        padding-bottom: 0;
+    };
+    font-family: Rye;
+    font-weight: 100;
+    font-size: 9.25vw;
+    line-height: 9vw;
+    color: ${theme.colors.textSecondary};
 `
 
 function TitleBlock() {
     return (
-        <Container>
+        <TitleBlockContainer>
             <ProfilePicContainer>
                 <ProportionalScrollElement scrollPercentage={.25}>
                     <ProfilePicFullPage />
                 </ProportionalScrollElement>
             </ProfilePicContainer>
             <TitleContainer id="title">
-                <LargeTitle src={LargeTitleWhite} />
+                {/*<LargeTitleImage src={LargeTitleWhite} />*/}
+                <LargeTitleText>Gerik Peterson</LargeTitleText>
             </TitleContainer>
-        </Container>
+        </TitleBlockContainer>
     )
 }
 

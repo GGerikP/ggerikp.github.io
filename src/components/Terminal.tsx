@@ -32,20 +32,26 @@ const WindowContainer = styled.div<WindowContainerProps>`
             overflow: "hidden"
         }
     }
+    span, p {
+        font-family: monospace;
+        font-size: ${theme.fontSizes.large};
+        line-height: 1.4285em;
+    }
 `
 
 const WindowTitleBar = styled.div`
     border-radius: 5px 5px 0px 0px;
-    background-color: ${theme.colors.primaryAccent};
+    background-color: #444444;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 `
 
-const WindowTitle = styled.div`
+const WindowTitle = styled.p`
     text-align: center;
     display: block;
     width: 100%;
+    margin: 0;
 `
 
 const WindowX = styled.i`
@@ -55,13 +61,15 @@ const WindowX = styled.i`
 `
 
 const TerminalContainer = styled.div`
-    color: white;
     top: 5%;
     left: 5%;
     background-color: black;
     border-radius: 0px 0px 10px 10px;
     height: 100%;
     min-height: inherit;
+    p, span {
+        color: ${theme.colors.primary};
+    }
 `
 
 const TerminatorTitleBar = styled.div`
@@ -82,6 +90,10 @@ const LinesContainer = styled.div`
     height: 100%;
     width: 100%;
     padding: 5px;
+`
+const ReprintButton = styled.button`
+    color: black;
+    background-color: ${theme.colors.primaryAccent};
 `
 
 type TerminalProps = {
@@ -112,7 +124,7 @@ const Terminal: React.FC<TerminalProps> = ({ lines, instantPrint }: TerminalProp
         <WindowContainer $expanded={expanded}>
             <WindowTitleBar>
                 <WindowTitle>{windowTitle}</WindowTitle>
-                <button onClick={handleClick}>Reprint</button>
+                <ReprintButton onClick={handleClick}>Reprint</ReprintButton>
                 <WindowX className="fa fa-times" />
             </WindowTitleBar>
             <TerminalContainer>
