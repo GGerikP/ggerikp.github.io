@@ -8,9 +8,10 @@ on:
 jobs:
   automated-tests:
     runs-on: ubuntu-latest
-    needs: code-setup
     steps:
-      - uses: ./build.yaml
+      - uses: actions/checkout@v4
+      - name: Prepare the code
+        uses: ./.github/actions/code-prep
 
       - name: Run unit tests
         run: yarn test
@@ -21,12 +22,13 @@ jobs:
         continue-on-error: false
 
   deploy:
+    if: github.event_name == 'push' && github.ref_name == 'master' && !failure()
     runs-on: ubuntu-latest
     needs: automated-tests
-    if: github.event_name == 'push' && env.BRANCH_NAME == 'master' && !failure()
-
     steps:
-      - uses: ./build.yaml
+      - uses: actions/checkout@v4
+      - name: Prepare the code
+        uses: ./.github/actions/code-prep
 
       - name: Build
         run: yarn run build
