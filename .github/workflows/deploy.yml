@@ -9,7 +9,7 @@ jobs:
   automated-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/build
+        uses: ./.github/actions/build
 
       - name: Run unit tests
         run: yarn test
@@ -25,7 +25,7 @@ jobs:
     if: github.event_name == 'push' && ${{ github.ref_name }} == 'master' && !failure()
 
     steps:
-      - uses: ./.github/actions/build
+        uses: ./.github/actions/build
 
       - name: Build
         run: yarn run build
