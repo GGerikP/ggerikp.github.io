@@ -22,9 +22,9 @@ const config: Config = {
         largeScreen: '1919px',
         widescreen: '1920px',
     }*/
-    apiBaseUrl: process.env.REACT_APP_API_BASE_URL || 'http://localhost:3000',
-    // featureFlag: process.env.REACT_APP_FEATURE_FLAG === 'true',
-    // ... other configuration values
+  apiBaseUrl: process.env.REACT_APP_API_BASE_URL || 'http://localhost:3000',
+  // featureFlag: process.env.REACT_APP_FEATURE_FLAG === 'true',
+  // ... other configuration values
 };
 
 export default config;

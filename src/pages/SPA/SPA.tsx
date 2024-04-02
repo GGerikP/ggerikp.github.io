@@ -14,19 +14,19 @@ const SiteContainer = styled.div`
     position: relative;
 `;
 
-type SPAProps = {};
+// type SPAProps = {};
 
-function SPA(props: SPAProps) {
+function SPA () {
 
-    return (
-        <SiteContainer>
-            <TitleBlock />
-            <AboutMeBlock />
-            <ProfessionalProfileBlock />
-            <ExperienceBlock />
-            <MyValuesBlock />
-        </SiteContainer>
-    );
+  return (
+    <SiteContainer>
+      <TitleBlock />
+      <AboutMeBlock />
+      <ProfessionalProfileBlock />
+      <ExperienceBlock />
+      <MyValuesBlock />
+    </SiteContainer>
+  );
 }
 
 export default SPA;

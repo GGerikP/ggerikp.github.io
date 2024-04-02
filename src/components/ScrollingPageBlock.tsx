@@ -17,7 +17,7 @@ interface ScrollingPageBlockProps {
   style?: React.CSSProperties;
 }
 
-function ScrollingPageBlock({ children, style }: ScrollingPageBlockProps) {
+function ScrollingPageBlock ({ children, style }: ScrollingPageBlockProps) {
 
   // State to hold the dynamic height
   const [pageHeight, setPageHeight] = useState(window.innerHeight);
@@ -42,6 +42,6 @@ function ScrollingPageBlock({ children, style }: ScrollingPageBlockProps) {
       {children}
     </PageContainer>
   );
-};
+}
 
 export default ScrollingPageBlock;

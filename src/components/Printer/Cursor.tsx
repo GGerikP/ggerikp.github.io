@@ -1,10 +1,15 @@
+/* eslint-disable no-shadow */
 import React from 'react';
 import styled, { css, keyframes } from 'styled-components';
 
+// eslint-disable-next-line no-shadow
 export enum CursorDisplay {
-    Stable = "stable",
-    Blink = "blink",
-    Hidden = "hidden"
+//eslint-disable-next-line no-unused-vars
+    Stable = 'stable',
+    //eslint-disable-next-line no-unused-vars
+    Blink = 'blink',
+    //eslint-disable-next-line no-unused-vars
+    Hidden = 'hidden'
 }
 
 const blink = keyframes`
@@ -30,18 +35,18 @@ const CursorDiv = styled.div<CursorDivProps>`
         border-left: 2px solid white;
         animation: ${blink} .5s step-end infinite;
     `}
-`
+`;
 
 type CursorProps = {
     cursorDisplay: CursorDisplay;
     index: number;
 }
 
-function Cursor({cursorDisplay, index}: CursorProps) {
-    // console.log(`Cursor(${index}): cursorDisplay = ${cursorDisplay}`)
-    return (
-        <CursorDiv id={`Cursor:${index}`} $cursordisplay={cursorDisplay}>&nbsp;</CursorDiv>
-    )
+function Cursor ({ cursorDisplay, index }: CursorProps) {
+  // console.log(`Cursor(${index}): cursorDisplay = ${cursorDisplay}`)
+  return (
+    <CursorDiv id={`Cursor:${index}`} $cursordisplay={cursorDisplay}>&nbsp;</CursorDiv>
+  );
 }
 
 export default Cursor;

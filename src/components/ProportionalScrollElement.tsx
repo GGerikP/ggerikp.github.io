@@ -31,7 +31,7 @@ const ProportionalScrollElement: React.FC<ProportionalScrollElementProps> = ({ s
 
   return (
     <Container>
-      <div style={{position: "absolute", top: `-${scrollPosition}px`, height: "100%", width: "100%" }}>
+      <div style={{ position: 'absolute', top: `-${scrollPosition}px`, height: '100%', width: '100%' }}>
         {children}
       </div>
     </Container>

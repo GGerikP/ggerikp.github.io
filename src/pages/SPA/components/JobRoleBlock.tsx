@@ -2,7 +2,7 @@ import React, { ReactNode, useEffect, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import theme from '../../../theme';
 import { HashLink } from 'react-router-hash-link';
-import { useOnClickOutside } from 'usehooks-ts'
+import { useOnClickOutside } from 'usehooks-ts';
 import JobRoleDetailBlock from './JobRoleDetailBlock';
 
 type ContainerProps = {
@@ -26,7 +26,7 @@ const JobRoleContainer = styled.div<ContainerProps>`
 
     transition: min-height .5s ease;
     min-height: ${(props) => (props.$maxchildheight ? `${props.$maxchildheight}px` : '250px')};
-`
+`;
 
 type JobBackgroundProps = {
     $background?: string;
@@ -52,7 +52,7 @@ const JobBackground = styled.div<JobBackgroundProps>`
     ${JobRoleContainer}:hover & {
         width: 105%;
     }
-`
+`;
 
 const AnchorLink = styled(HashLink)`
     min-width: 100%;
@@ -60,7 +60,7 @@ const AnchorLink = styled(HashLink)`
     position: absolute;
     top: 0;
     left: 0;
-`
+`;
 
 const LogoImage = styled.img`
     min-width: 150px;
@@ -69,7 +69,7 @@ const LogoImage = styled.img`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-`
+`;
 
 export type JobRoleBlockProps = {
     companyId: string;
@@ -84,68 +84,68 @@ export type JobRoleBlockProps = {
     backgroundImage?: string;
 }
 
-function JobRoleBlock(props: JobRoleBlockProps) {
+function JobRoleBlock (props: JobRoleBlockProps) {
 
-    const [isActive, setIsActive] = useState(false);
-    const [childHeight, setChildHeight] = useState(0);
-    const childRef = useRef<HTMLDivElement>(null);
-    const insideOutsideRefElement = useRef(null)
+  const [isActive, setIsActive] = useState(false);
+  const [childHeight, setChildHeight] = useState(0);
+  const childRef = useRef<HTMLDivElement>(null);
+  const insideOutsideRefElement = useRef(null);
 
-    const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, hash: string) => {
-        event.preventDefault();
-        setIsActive(true);
-        setTimeout(() => {
-            const element = document.querySelector(hash);
-            if (element) {
-                const yCoordinate = element.getBoundingClientRect().top + window.scrollY;
-                const yOffset = -80;
-                window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
-            }
-        }, 600);
-    };
+  const handleClick = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, hash: string) => {
+    event.preventDefault();
+    setIsActive(true);
+    setTimeout(() => {
+      const element = document.querySelector(hash);
+      if (element) {
+        const yCoordinate = element.getBoundingClientRect().top + window.scrollY;
+        const yOffset = -80;
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+      }
+    }, 600);
+  };
 
-    const handleClickOutside = () => {
-        setTimeout(() => {
-            setIsActive(false);
-        }, 200);
-    }
+  const handleClickOutside = () => {
+    setTimeout(() => {
+      setIsActive(false);
+    }, 200);
+  };
 
-    /*const handleClickInside = () => {
+  /*const handleClickInside = () => {
       // Your custom logic here
       console.log('clicked inside')
     }*/
 
-    useOnClickOutside(insideOutsideRefElement, handleClickOutside)
+  useOnClickOutside(insideOutsideRefElement, handleClickOutside);
 
-    useEffect(() => {
-        if (childRef.current) {
-            const height =
+  useEffect(() => {
+    if (childRef.current) {
+      const height =
                 childRef.current.clientHeight;
-            setChildHeight(height);
-        }
-    }, [isActive]);
+      setChildHeight(height);
+    }
+  }, [isActive]);
 
-    return (
-        <JobRoleContainer id={props.companyId}
-            ref={insideOutsideRefElement}
-            $maxchildheight={isActive ? childHeight + 2 : 0}
-        >
-            <JobBackground id="background"
-                $isactive={isActive}
-                $background={props.backgroundColor}
-                $backgroundimage={props.backgroundImage}>
-                <AnchorLink to={`#${props.companyId}`}
-                    onClick={(event) => handleClick(event, `#${props.companyId}`)}>
-                    <LogoImage src={props.companyLogoURL} />
-                </AnchorLink>
-                <JobRoleDetailBlock
-                    isVisible={isActive}
-                    height={childHeight}
-                    childRef={childRef}
-                    jobRoleDetails={props} />
-            </JobBackground>
-        </JobRoleContainer>
-    )
+  return (
+    <JobRoleContainer id={props.companyId}
+      ref={insideOutsideRefElement}
+      $maxchildheight={isActive ? childHeight + 2 : 0}
+    >
+      <JobBackground id="background"
+        $isactive={isActive}
+        $background={props.backgroundColor}
+        $backgroundimage={props.backgroundImage}>
+        <AnchorLink to={`#${props.companyId}`}
+          onClick={(event) => handleClick(event, `#${props.companyId}`)}>
+          <LogoImage src={props.companyLogoURL} />
+        </AnchorLink>
+        <JobRoleDetailBlock
+          isVisible={isActive}
+          height={childHeight}
+          childRef={childRef}
+          jobRoleDetails={props} />
+      </JobBackground>
+    </JobRoleContainer>
+  );
 }
 
 export default JobRoleBlock;

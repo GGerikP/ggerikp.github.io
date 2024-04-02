@@ -29,9 +29,9 @@ const StyledApp = styled.div`
     line-height: 25px;
     height: 100%;
     background-color: ${theme.colors.tertiaryAccent};
-`
+`;
 
-function App() {
+function App () {
   return (
     <>
       <GlobalStyle />

@@ -63,7 +63,7 @@ export const theme: ThemeInterface = {
     linkHover: '#0056b3',
     border: '#dee2e6',
     success: '#28a745',
-    warning: "#ffc107",
+    warning: '#ffc107',
     error: '#dc3545',
   },
   fonts: {
@@ -84,7 +84,7 @@ export const theme: ThemeInterface = {
     desktop: '992px',
     largeScreen: '1919px',
     widescreen: '1920px',
-},
+  },
   spacing: {
     xsmall: '0.25rem',
     small: '0.5rem',
