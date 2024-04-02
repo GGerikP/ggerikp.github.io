@@ -1,0 +1,15 @@
+steps:
+  - name: Set up environment variables
+    run: echo "BRANCH_NAME=$(echo $GITHUB_REF | cut -d'/' -f3)" >> $GITHUB_ENV
+
+  - name: Checkout code
+    uses: actions/checkout@v4
+
+  - name: Setup Node.js
+    uses: actions/setup-node@v4
+    with:
+      node-version: '18'
+
+  - name: Install dependencies
+    run: yarn install
+
