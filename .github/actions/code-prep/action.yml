@@ -1,4 +1,4 @@
-name: "Setup code for use"
+name: "Prepare the code for use"
 description: "Prepares the code so it can be tested, used, deployed, etc"
 runs:
   using: "composite"

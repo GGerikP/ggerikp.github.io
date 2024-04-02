@@ -10,8 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build the code
-        uses: ./.github/actions/build
+      - name: Prepare the code
+        uses: ./.github/actions/code-prep
 
       - name: Run unit tests
         run: yarn test
@@ -25,11 +25,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: automated-tests
     if: github.event_name == 'push' && ${{ github.ref_name }} == 'master' && !failure()
-
     steps:
       - uses: actions/checkout@v4
-      - name: Build the code
-        uses: ./.github/actions/build
+      - name: Prepare the code
+        uses: ./.github/actions/code-prep
 
       - name: Build
         run: yarn run build
