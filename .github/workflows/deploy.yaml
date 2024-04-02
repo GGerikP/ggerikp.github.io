@@ -3,27 +3,15 @@ name: Deploy
 on:
   push:
     branches:
-      - *
+      - '*'
 
 jobs:
-  code-setup:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Install dependencies
-        run: yarn install
-
   automated-tests:
     runs-on: ubuntu-latest
     needs: code-setup
     steps:
+      - uses: ./build.yaml
+
       - name: Run unit tests
         run: yarn test
         continue-on-error: false
@@ -35,9 +23,11 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: automated-tests
-    if: github.event_name == 'push' && github.ref == 'refs/heads/master' && !failure()
+    if: github.event_name == 'push' && env.BRANCH_NAME == 'master' && !failure()
 
     steps:
+      - uses: ./build.yaml
+
       - name: Build
         run: yarn run build
 
