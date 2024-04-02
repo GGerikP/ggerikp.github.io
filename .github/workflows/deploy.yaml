@@ -23,7 +23,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     needs: automated-tests
-    if: github.event_name == 'push' && $GITHUB_REF_NAME == 'master' && !failure()
+    if: github.event_name == 'push' && ${{ github.ref_name }} == 'master' && !failure()
 
     steps:
       - uses: ./build.yaml
