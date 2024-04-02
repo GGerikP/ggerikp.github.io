@@ -16,7 +16,7 @@ const TitleBlockContainer = styled.section`
         padding-left: 5%;
         padding-right: 5%;
     }
-`
+`;
 
 const ProfilePicContainer = styled.div`
     height: 90vh;
@@ -24,7 +24,7 @@ const ProfilePicContainer = styled.div`
     position: fixed;
     top: 0;
     right: 0;
-`
+`;
 
 const ProfilePicFullPage = styled.div`
     position: absolute;
@@ -38,7 +38,7 @@ const ProfilePicFullPage = styled.div`
     @media (width > 1300px) {
         background-position-y: 65%;
     }
-`
+`;
 
 const TitleContainer = styled.div`
     width: 100%;
@@ -48,7 +48,7 @@ const TitleContainer = styled.div`
     flex-direction: row;
     justify-items: center;
     align-items: flex-end;
-`
+`;
 
 /*const LargeTitleImage = styled.img`
     width: 100%;
@@ -77,22 +77,22 @@ const LargeTitleText = styled.h1`
     font-size: 9.25vw;
     line-height: 9vw;
     color: ${theme.colors.textSecondary};
-`
+`;
 
-function TitleBlock() {
-    return (
-        <TitleBlockContainer>
-            <ProfilePicContainer>
-                <ProportionalScrollElement scrollPercentage={.25}>
-                    <ProfilePicFullPage />
-                </ProportionalScrollElement>
-            </ProfilePicContainer>
-            <TitleContainer id="title">
-                {/*<LargeTitleImage src={LargeTitleWhite} />*/}
-                <LargeTitleText>Gerik Peterson</LargeTitleText>
-            </TitleContainer>
-        </TitleBlockContainer>
-    )
+function TitleBlock () {
+  return (
+    <TitleBlockContainer>
+      <ProfilePicContainer>
+        <ProportionalScrollElement scrollPercentage={.25}>
+          <ProfilePicFullPage />
+        </ProportionalScrollElement>
+      </ProfilePicContainer>
+      <TitleContainer id="title">
+        {/*<LargeTitleImage src={LargeTitleWhite} />*/}
+        <LargeTitleText>Gerik Peterson</LargeTitleText>
+      </TitleContainer>
+    </TitleBlockContainer>
+  );
 }
 
 export default TitleBlock;

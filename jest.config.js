@@ -1,6 +1,6 @@
-console.log('Jest configuration is being used');
+// console.log('Jest configuration is being used');
 module.exports = {
-    setupFilesAfterEnv: [
-        '@testing-library/jest-dom'
-    ]
+  setupFilesAfterEnv: [
+    '@testing-library/jest-dom'
+  ]
 };
