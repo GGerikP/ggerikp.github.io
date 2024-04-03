@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import SegmentPrinter, { Segment } from './SegmentPrinter';
+import { CursorDisplay } from './Cursor';
 
 const PrintedLine = styled.div`
     width: 100%;
@@ -11,6 +12,7 @@ export type Line = {
 }
 
 type LinePrinterProps = {
+    id?: string;
     line: Line;
     lineIndex: number;
     typingSpeed: number;
@@ -18,9 +20,20 @@ type LinePrinterProps = {
     instantPrint: boolean;
     isLastLine: boolean;
     printNextLine?: () => void;
+    finalCursorDisplay?: CursorDisplay;
 };
 
-function LinePrinter ({ line, lineIndex, typingSpeed, promptChars, instantPrint, isLastLine, printNextLine }: LinePrinterProps) {
+function LinePrinter({
+    id,
+    line,
+    lineIndex,
+    typingSpeed,
+    promptChars,
+    instantPrint,
+    isLastLine,
+    printNextLine,
+    finalCursorDisplay
+    }: LinePrinterProps) {
 
   const [lineIsDone, setLineIsDone] = useState<boolean>(false);
   const [segmentIndex, setSegmentIndex] = useState<number>(0);
@@ -85,25 +98,28 @@ function LinePrinter ({ line, lineIndex, typingSpeed, promptChars, instantPrint,
 
   }, [segmentIndex, lineIsDone, line?.segments, printedSegments, line]);
 
-  return (
-    <PrintedLine id={`LinePrinter:${lineIndex}`}>
-      <span>{promptChars}</span>
-      {printedSegments.map((segment, index) => {
-        return (
-          <SegmentPrinter
-            key={index}
-            segment={segment}
-            segmentIndex={index}
-            isLastSegment={index === line.segments.length - 1}
-            typingSpeed={typingSpeed}
-            instantPrint={instantPrint}
-            isLastLine={isLastLine}
-            printNextSegment={printNextSegment}
-          />
-        );
-      })}
-    </PrintedLine>
-  );
+    return (
+        <PrintedLine id={`${id ? id + '-' : ''}LinePrinter:${lineIndex}`}>
+            <span>{promptChars}</span>
+            {printedSegments.map((segment, index) => {
+                const segmentPrinterId = (id ? id + '-' : '') + index;
+                return (
+                    <SegmentPrinter
+                        id={segmentPrinterId}
+                        key={segmentPrinterId}
+                        segment={segment}
+                        segmentIndex={index}
+                        isLastSegment={index === line.segments.length - 1}
+                        finalCursorDisplay={finalCursorDisplay}
+                        typingSpeed={typingSpeed}
+                        instantPrint={instantPrint}
+                        isLastLine={isLastLine}
+                        printNextSegment={printNextSegment}
+                    />
+                )
+            })}
+        </PrintedLine>
+    );
 }
 
 export default LinePrinter;

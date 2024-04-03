@@ -67,7 +67,7 @@ export const theme: ThemeInterface = {
     error: '#dc3545',
   },
   fonts: {
-    base: 'Rye, monospace, Helvetica, Arial, sans-serif',
+    base: 'Lora, monospace, Helvetica, Arial, sans-serif',
     secondary: 'Lora'
   },
   fontSizes: {
