@@ -39,19 +39,19 @@ const CursorDiv = styled.div<CursorDivProps>`
 type CursorProps = {
     id?: string;
     cursorDisplay: CursorDisplay;
-    index: number;
+    index?: number;
 }
 
-function Cursor({ id, cursorDisplay, index }: CursorProps) {
-    // console.log(`Cursor(${index}): cursorDisplay = ${cursorDisplay}`)
-    return (
-        <CursorDiv
-            id={`${id ? id + '-' : ''}Cursor:${index}`}
-            key={id}
-            $cursordisplay={cursorDisplay}>
+function Cursor ({ id, cursorDisplay }: CursorProps) {
+  // console.log(`Cursor(${index}): cursorDisplay = ${cursorDisplay}`)
+  return (
+    <CursorDiv
+      id={id}
+      key={id}
+      $cursordisplay={cursorDisplay}>
             &nbsp;
-        </CursorDiv>
-    )
+    </CursorDiv>
+  );
 }
 
 export default Cursor;

@@ -80,29 +80,29 @@ const LargeTitleText = styled.h1`
     color: ${theme.colors.textSecondary};
 `;
 
-function TitleBlock() {
-    return (
-        <TitleBlockContainer>
-            <ProfilePicContainer>
-                <ProportionalScrollElement scrollPercentage={.25}>
-                    <ProfilePicFullPage />
-                </ProportionalScrollElement>
-            </ProfilePicContainer>
-            <TitleContainer id="title">
-                {/*<LargeTitleImage src={LargeTitleWhite} />*/}
-                <LargeTitleText>
-                    <LinePrinter
-                        id={"title"}
-                        line={{segments: [{text: "Gerik Peterson"}]}}
-                        lineIndex={0}
-                        typingSpeed={125}
-                        instantPrint={false}
-                        isLastLine={false}
-                    />
-                </LargeTitleText>
-            </TitleContainer>
-        </TitleBlockContainer>
-    )
+function TitleBlock () {
+  return (
+    <TitleBlockContainer>
+      <ProfilePicContainer>
+        <ProportionalScrollElement scrollPercentage={.25}>
+          <ProfilePicFullPage />
+        </ProportionalScrollElement>
+      </ProfilePicContainer>
+      <TitleContainer id="title">
+        {/*<LargeTitleImage src={LargeTitleWhite} />*/}
+        <LargeTitleText>
+          <LinePrinter
+            id={'title'}
+            line={{ segments: [{ text: 'Gerik Peterson' }] }}
+            lineIndex={0}
+            typingSpeed={125}
+            instantPrint={false}
+            isLastLine={false}
+          />
+        </LargeTitleText>
+      </TitleContainer>
+    </TitleBlockContainer>
+  );
 }
 
 export default TitleBlock;

@@ -1,17 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SegmentPrinter Tests Renders a SegmentPrinter with a large string of text instantly with instantPrint set to true 1`] = `
+exports[`SegmentPrinter Tests 001: Renders a single empty segment with no lines or segments to follow 1`] = `
 <DocumentFragment>
   <span
-    class="sc-gsTDqH brCFsH"
-    id="SegmentPrinter:0"
+    class="sc-guDLey wuijx"
+    id="segment0"
   >
     <span
-      class="sc-hKgKIp gVuSnU"
+      class="sc-hLQSwg gcsUJF"
     />
     <div
-      class="sc-bdfCDU cFrJyp"
-      id="Cursor:0"
+      class="sc-beySPh brsoYh"
+      id="segment0-cursor"
     >
        
     </div>
@@ -19,18 +19,18 @@ exports[`SegmentPrinter Tests Renders a SegmentPrinter with a large string of te
 </DocumentFragment>
 `;
 
-exports[`SegmentPrinter Tests Renders a SegmentPrinter with a single character of text and it is the last segment and last line 1`] = `
+exports[`SegmentPrinter Tests 002: Renders a single empty segment with more segments to follow 1`] = `
 <DocumentFragment>
   <span
-    class="sc-gsTDqH brCFsH"
-    id="SegmentPrinter:0"
+    class="sc-guDLey wuijx"
+    id="segment0"
   >
     <span
-      class="sc-hKgKIp gVuSnU"
+      class="sc-hLQSwg gcsUJF"
     />
     <div
-      class="sc-bdfCDU cFrJyp"
-      id="Cursor:0"
+      class="sc-beySPh fKJoIe"
+      id="segment0-cursor"
     >
        
     </div>
@@ -38,18 +38,18 @@ exports[`SegmentPrinter Tests Renders a SegmentPrinter with a single character o
 </DocumentFragment>
 `;
 
-exports[`SegmentPrinter Tests Renders a SegmentPrinter with a single character of text but there are more segments to print 1`] = `
+exports[`SegmentPrinter Tests 003: Renders a SegmentPrinter with a single character of text and it is the last segment and last line 1`] = `
 <DocumentFragment>
   <span
-    class="sc-gsTDqH brCFsH"
-    id="SegmentPrinter:0"
+    class="sc-guDLey wuijx"
+    id="segment0"
   >
     <span
-      class="sc-hKgKIp gVuSnU"
+      class="sc-hLQSwg gcsUJF"
     />
     <div
-      class="sc-bdfCDU cFrJyp"
-      id="Cursor:0"
+      class="sc-beySPh fKJoIe"
+      id="segment0-cursor"
     >
        
     </div>
@@ -57,18 +57,18 @@ exports[`SegmentPrinter Tests Renders a SegmentPrinter with a single character o
 </DocumentFragment>
 `;
 
-exports[`SegmentPrinter Tests Renders a SegmentPrinter with a single character of text but there are more segments to print 2`] = `
+exports[`SegmentPrinter Tests 004: Renders a SegmentPrinter with a single character of text but there are more segments to print 1`] = `
 <DocumentFragment>
   <span
-    class="sc-gsTDqH brCFsH"
-    id="SegmentPrinter:0"
+    class="sc-guDLey wuijx"
+    id="segment004"
   >
     <span
-      class="sc-hKgKIp gVuSnU"
+      class="sc-hLQSwg gcsUJF"
     />
     <div
-      class="sc-bdfCDU cFrJyp"
-      id="Cursor:0"
+      class="sc-beySPh fKJoIe"
+      id="segment004-cursor"
     >
        
     </div>
@@ -76,18 +76,18 @@ exports[`SegmentPrinter Tests Renders a SegmentPrinter with a single character o
 </DocumentFragment>
 `;
 
-exports[`SegmentPrinter Tests Renders a single empty segment with more segments to follow 1`] = `
+exports[`SegmentPrinter Tests 005: Renders a SegmentPrinter with a long string of text but there are more segments to print 1`] = `
 <DocumentFragment>
   <span
-    class="sc-gsTDqH brCFsH"
-    id="SegmentPrinter:0"
+    class="sc-guDLey wuijx"
+    id="segment005"
   >
     <span
-      class="sc-hKgKIp gVuSnU"
+      class="sc-hLQSwg gcsUJF"
     />
     <div
-      class="sc-bdfCDU blcbix"
-      id="Cursor:0"
+      class="sc-beySPh fKJoIe"
+      id="segment005-cursor"
     >
        
     </div>
@@ -95,18 +95,18 @@ exports[`SegmentPrinter Tests Renders a single empty segment with more segments 
 </DocumentFragment>
 `;
 
-exports[`SegmentPrinter Tests Renders a single empty segment with no lines or segments to follow 1`] = `
+exports[`SegmentPrinter Tests 006: Renders a SegmentPrinter with a large string of text instantly with instantPrint set to true 1`] = `
 <DocumentFragment>
   <span
-    class="sc-gsTDqH brCFsH"
-    id="SegmentPrinter:0"
+    class="sc-guDLey wuijx"
+    id="segment0"
   >
     <span
-      class="sc-hKgKIp gVuSnU"
+      class="sc-hLQSwg gcsUJF"
     />
     <div
-      class="sc-bdfCDU blcbix"
-      id="Cursor:0"
+      class="sc-beySPh fKJoIe"
+      id="segment0-cursor"
     >
        
     </div>

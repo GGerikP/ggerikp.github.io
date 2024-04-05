@@ -124,7 +124,7 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
   const insideOutsideRefElement = useRef<HTMLDivElement>(null);
   const [inputText, setInputText] = useState<string>('');
   const [chatGPTPrompt, setChatGPTPrompt] = useState<ChatGPTPrompt>({ messages: [] });
-  const terminalID = (id ? id + '-' : '') + printerKey.toString();
+  const tabID = (id ? id + '-' : '') + 'Tab' + printerKey.toString();
 
   const handleClick = () => {
     setPrinterKey(prevKey => prevKey + 1);
@@ -171,6 +171,7 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
       const data: LambdaHandlerRequest = { data: { chatGPTMessages: chatGPTPrompt } };
 
       try {
+        // console.log(`config.chatGPT.models.default.url = ${config.chatGPT.models.default.url}`);
         const response: AxiosResponse = await axios.post(config.chatGPT.models.default.url, data, headers);
         const chatGPTResponse: ChatGPTResponse = response.data;
         const chatGPTResponseText = chatGPTResponse.message[0].message.content;
@@ -203,7 +204,7 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
   };
 
   const handleClickInside = () => {
-    const inputElement = insideOutsideRefElement.current?.querySelector<HTMLInputElement>(`#input-${terminalID}`);
+    const inputElement = insideOutsideRefElement.current?.querySelector<HTMLInputElement>(`#input-${tabID}`);
     if (inputElement) {
       inputElement.focus();
     }
@@ -220,8 +221,8 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
         {
           terminalText ?
             <ParagraphPrinter
-              key={terminalID}
-              id={terminalID}
+              key={tabID}
+              id={tabID}
               lines={terminalText}
               typingSpeed={35}
               promptChars={promptChars}
@@ -238,7 +239,7 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
               <span>{promptChars}</span>
               {printingState === PrintingState.DONE &&
                                 <PromptInput
-                                  id={`input-${terminalID}`}
+                                  id={`input-${tabID}`}
                                   type="text"
                                   value={inputText}
                                   onChange={(e) => setInputText(e.target.value)}

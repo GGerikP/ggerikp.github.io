@@ -23,17 +23,17 @@ type LinePrinterProps = {
     finalCursorDisplay?: CursorDisplay;
 };
 
-function LinePrinter({
-    id,
-    line,
-    lineIndex,
-    typingSpeed,
-    promptChars,
-    instantPrint,
-    isLastLine,
-    printNextLine,
-    finalCursorDisplay
-    }: LinePrinterProps) {
+function LinePrinter ({
+  id,
+  line,
+  lineIndex,
+  typingSpeed,
+  promptChars,
+  instantPrint,
+  isLastLine,
+  printNextLine,
+  finalCursorDisplay
+}: LinePrinterProps) {
 
   const [lineIsDone, setLineIsDone] = useState<boolean>(false);
   const [segmentIndex, setSegmentIndex] = useState<number>(0);
@@ -41,14 +41,13 @@ function LinePrinter({
 
   // Called by the TextPrinter to print each next segment
   const printNextSegment = useCallback(() => {
-    // console.log('Calling printNextSegment ----------');
     setSegmentIndex(prevSegmentIndex => prevSegmentIndex + 1);
   }, []);
 
   // Update whether the line is done or not.
   useEffect(() => {
     if (!line) {
-      // console.log('LinePrinter WARNING: CANNOT PRINT EMPTY LINE.');
+      return;
     } else if (!lineIsDone && segmentIndex === line.segments.length) {
       setLineIsDone(true);
     }
@@ -56,10 +55,8 @@ function LinePrinter({
 
   // Print the next line
   useEffect(() => {
-    // console.log(`LinePrinter: lineIndex(${lineIndex}) JSON.stringify(line)=${JSON.stringify(line)}`);
-    // console.log(`LinePrinter: lineIndex(${lineIndex}) line.lineSegments.length(${line.lineSegments.length})`);
     if (!line) {
-      // console.log('LinePrinter WARNING: CANNOT PRINT EMPTY LINE.');
+      return;
     } else if (lineIsDone) {
       if (typeof printNextLine === 'function') {
         // console.log(`LinePrinter: lineIndex(${lineIndex}) segmentIndex(${segmentIndex})`);
@@ -70,13 +67,11 @@ function LinePrinter({
 
   useEffect(() => {
     if (!line) {
-      // console.log(`Line is undefined! ${JSON.stringify(line)}`);
+      return;
     } else {
-      // console.log(`LinePrinter: lineIsDone(${lineIsDone}), segmentIndex(${segmentIndex}), line.lineSegments.length(${line.segments.length})`)
       if (lineIsDone) {
-        // console.log(`The line is done!`);
+        return;
       } else if (!lineIsDone && (segmentIndex < line.segments.length)) {
-        // console.log('Creating a new segment.');
         const nextSegment: Segment = {
           text: line?.segments[segmentIndex]?.text,
           link: line?.segments[segmentIndex]?.link,
@@ -84,7 +79,6 @@ function LinePrinter({
           postPrintDelay: line?.segments[segmentIndex]?.postPrintDelay,
         };
         if (printedSegments[segmentIndex] === undefined) {
-          // console.log('Adding a new segment.');
           setPrintedSegments(prevDisplayedSegments => {
             const updatedDisplayedSegments = [...prevDisplayedSegments];
             updatedDisplayedSegments[segmentIndex] = nextSegment;
@@ -98,28 +92,28 @@ function LinePrinter({
 
   }, [segmentIndex, lineIsDone, line?.segments, printedSegments, line]);
 
-    return (
-        <PrintedLine id={`${id ? id + '-' : ''}LinePrinter:${lineIndex}`}>
-            <span>{promptChars}</span>
-            {printedSegments.map((segment, index) => {
-                const segmentPrinterId = (id ? id + '-' : '') + index;
-                return (
-                    <SegmentPrinter
-                        id={segmentPrinterId}
-                        key={segmentPrinterId}
-                        segment={segment}
-                        segmentIndex={index}
-                        isLastSegment={index === line.segments.length - 1}
-                        finalCursorDisplay={finalCursorDisplay}
-                        typingSpeed={typingSpeed}
-                        instantPrint={instantPrint}
-                        isLastLine={isLastLine}
-                        printNextSegment={printNextSegment}
-                    />
-                )
-            })}
-        </PrintedLine>
-    );
+  return (
+    <PrintedLine id={id}>
+      <span>{promptChars}</span>
+      {printedSegments.map((segment, index) => {
+        const segmentPrinterId = (id ? id + '-' : '') + `segment${index}`;
+        return (
+          <SegmentPrinter
+            id={segmentPrinterId}
+            key={segmentPrinterId}
+            segment={segment}
+            segmentIndex={index}
+            isLastSegment={index === line.segments.length - 1}
+            finalCursorDisplay={finalCursorDisplay}
+            typingSpeed={typingSpeed}
+            instantPrint={instantPrint}
+            isLastLine={isLastLine}
+            printNextSegment={printNextSegment}
+          />
+        );
+      })}
+    </PrintedLine>
+  );
 }
 
 export default LinePrinter;

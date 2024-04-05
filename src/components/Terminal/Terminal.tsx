@@ -47,7 +47,7 @@ const TerminalCloseButtonIcon = styled.i`
     display: none;
 `;
 
-const tabContainerHeight = '50vh';
+const tabContainerHeight = '30vh';
 const tabContainerHeightExpansionDuration = 5;
 const tabContainerKeyframes = keyframes`
   0% { height: 0px; }

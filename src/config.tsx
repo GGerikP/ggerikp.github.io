@@ -24,23 +24,23 @@ type Config = {
 }
 
 const config: Config = {
-    /*    breakpoints: {
+  /*    breakpoints: {
             mobile: '576px',
             tablet: '768px',
             desktop: '992px',
             largeScreen: '1919px',
             widescreen: '1920px',
         }*/
-    apiBaseUrl: process.env.REACT_APP_API_BASE_URL || 'http://localhost:3000',
-    // featureFlag: process.env.REACT_APP_FEATURE_FLAG === 'true',
-    // ... other configuration values
-    chatGPT: {
-        models: {
-            default: {
-                url: process.env.DEFAULT_CHAT_GPT_URL || '',
-            }
-        }
+  apiBaseUrl: process.env.REACT_APP_API_BASE_URL || 'http://localhost:3000',
+  // featureFlag: process.env.REACT_APP_FEATURE_FLAG === 'true',
+  // ... other configuration values
+  chatGPT: {
+    models: {
+      default: {
+        url: process.env.REACT_APP_DEFAULT_CHAT_GPT_URL || '',
+      }
     }
+  }
 };
 
 export default config;

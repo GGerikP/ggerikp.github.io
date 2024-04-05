@@ -32,17 +32,17 @@ type SegmentPrinterProps = {
     printNextSegment: () => void;
 };
 
-function SegmentPrinter({
-    id,
-    segment,
-    segmentIndex,
-    isLastSegment,
-    isLastLine,
-    finalCursorDisplay,
-    typingSpeed,
-    instantPrint,
-    printNextSegment
-    }: SegmentPrinterProps) {
+function SegmentPrinter ({
+  id,
+  segment,
+  segmentIndex,
+  isLastSegment,
+  isLastLine,
+  finalCursorDisplay,
+  typingSpeed,
+  instantPrint,
+  printNextSegment
+}: SegmentPrinterProps) {
 
   const [isDonePrinting, setIsDonePrinting] = useState<boolean>(false);
   const [charIndex, setCharIndex] = useState<number>(0);
@@ -51,29 +51,31 @@ function SegmentPrinter({
   const postPrintDelay = (!instantPrint && (segment.postPrintDelay) ? segment.postPrintDelay : 0);
   const prePrintDelay = !instantPrint ? (typingSpeed + ((charIndex === 0 && segment.prePrintDelay) ? segment.prePrintDelay : 0)) : 0;
 
-    // Cursor Display
-    useEffect(() => {
-        if (!isDonePrinting) {
-            if (charIndex < segment?.text?.length) {
-                // Still printing the segment - show a stable cursor
-                setCursorDisplay(CursorDisplay.Stable);
-            } else {
-                setCursorDisplay(CursorDisplay.Blink);
-            }
-        } else if (isDonePrinting) {
-            if (isLastSegment && isLastLine && finalCursorDisplay) {
-                setCursorDisplay(finalCursorDisplay);
-            } else if (isLastSegment && isLastLine) {
-                setCursorDisplay(CursorDisplay.Blink);
-            } else if (isLastSegment && !isLastLine) {
-                setCursorDisplay(CursorDisplay.Hidden);
-            } else if (!isLastSegment && !isLastLine) {
-                setCursorDisplay(CursorDisplay.Hidden);
-            } else {
-                setCursorDisplay(CursorDisplay.Blink);
-            }
+  // Cursor Display
+  useEffect(() => {
+    if (!isDonePrinting) {
+      if (charIndex < segment?.text?.length) {
+        // Still printing the segment - show a stable cursor
+        setCursorDisplay(CursorDisplay.Stable);
+      } else {
+        setCursorDisplay(CursorDisplay.Blink);
+      }
+    } else if (isDonePrinting) {
+      if (isLastSegment && isLastLine && finalCursorDisplay) {
+        setCursorDisplay(finalCursorDisplay);
+      } else if (isLastSegment) {
+        if (isLastLine) {
+          setCursorDisplay(CursorDisplay.Blink);
+        } else {
+          setCursorDisplay(CursorDisplay.Hidden);
         }
-    }, [charIndex, isLastLine, isLastSegment, isDonePrinting, segment?.text?.length, cursorDisplay, finalCursorDisplay])
+      } else if (!isLastSegment) {
+        setCursorDisplay(CursorDisplay.Hidden);
+      } else {
+        setCursorDisplay(CursorDisplay.Blink);
+      }
+    }
+  }, [charIndex, isLastLine, isLastSegment, isDonePrinting, segment?.text?.length, cursorDisplay, finalCursorDisplay]);
 
   // Get Next Segment
   useEffect(() => {
@@ -107,23 +109,23 @@ function SegmentPrinter({
     return (() => clearTimeout(prePrintTimeout));
   }, [segment, charIndex, prePrintDelay]);
 
-    const cursorID = (id ? id + '-' : '') + segmentIndex;
-    return (
-        <SegmentWrapper id={`${id ? id + '-' : ''}${segmentIndex}`}>
-            {segment.link
-                ? <StyledLink
-                    url={segment.link}>
-                    <PrintedTextSpan>{displayedText}</PrintedTextSpan>
-                </StyledLink>
-                : <PrintedTextSpan>{displayedText}</PrintedTextSpan>
-            }
-            <Cursor
-                id={cursorID}
-                key={cursorID}
-                cursorDisplay={cursorDisplay}
-                index={segmentIndex} />
-        </SegmentWrapper>
-    );
+  const cursorID = (id ? id + '-' : '') + 'cursor';
+  return (
+    <SegmentWrapper id={id}>
+      {segment.link
+        ? <StyledLink
+          url={segment.link}>
+          <PrintedTextSpan>{displayedText}</PrintedTextSpan>
+        </StyledLink>
+        : <PrintedTextSpan>{displayedText}</PrintedTextSpan>
+      }
+      <Cursor
+        id={cursorID}
+        key={cursorID}
+        cursorDisplay={cursorDisplay}
+        index={segmentIndex} />
+    </SegmentWrapper>
+  );
 }
 
 export default SegmentPrinter;
