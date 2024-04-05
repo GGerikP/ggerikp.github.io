@@ -6,6 +6,7 @@ import ProportionalScrollElement from '../../components/ProportionalScrollElemen
 // import LargeTitleWhite from './images/title-gerikpeterson-white-large.png';
 //import ProfilePicSF from './images/profile-seth-kendra-me-sf.jpg';
 import ProfilePicChicago from './images/profile-gerikpeterson-large.jpg';
+import LinePrinter from '../../components/Printer/LinePrinter';
 
 const TitleBlockContainer = styled.section`
     width: 100%;
@@ -42,7 +43,7 @@ const ProfilePicFullPage = styled.div`
 
 const TitleContainer = styled.div`
     width: 100%;
-    height: 90vh;
+    height: 95vh;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -73,7 +74,7 @@ const LargeTitleText = styled.h1`
         padding-bottom: 0;
     };
     font-family: Rye;
-    font-weight: 100;
+    font-weight: 700;
     font-size: 9.25vw;
     line-height: 9vw;
     color: ${theme.colors.textSecondary};
@@ -89,7 +90,16 @@ function TitleBlock () {
       </ProfilePicContainer>
       <TitleContainer id="title">
         {/*<LargeTitleImage src={LargeTitleWhite} />*/}
-        <LargeTitleText>Gerik Peterson</LargeTitleText>
+        <LargeTitleText>
+          <LinePrinter
+            id={'title'}
+            line={{ segments: [{ text: 'Gerik Peterson' }] }}
+            lineIndex={0}
+            typingSpeed={125}
+            instantPrint={false}
+            isLastLine={false}
+          />
+        </LargeTitleText>
       </TitleContainer>
     </TitleBlockContainer>
   );

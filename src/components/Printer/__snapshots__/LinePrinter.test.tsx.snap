@@ -3,8 +3,8 @@
 exports[`LinePrinter renders correctly with no segments 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCstZk dVbBMf"
-    id="LinePrinter:0"
+    class="sc-eDLKkx cfncZL"
+    id="line0"
   >
     <span />
   </div>
@@ -14,20 +14,20 @@ exports[`LinePrinter renders correctly with no segments 1`] = `
 exports[`LinePrinter renders correctly with one segment where there are no more lines 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCstZk dVbBMf"
-    id="LinePrinter:0"
+    class="sc-eDLKkx cfncZL"
+    id="line0"
   >
     <span />
     <span
-      class="sc-gsTDqH brCFsH"
-      id="SegmentPrinter:0"
+      class="sc-guDLey wuijx"
+      id="line0-segment0"
     >
       <span
-        class="sc-hKgKIp gVuSnU"
+        class="sc-hLQSwg gcsUJF"
       />
       <div
-        class="sc-bdfCDU blcbix"
-        id="Cursor:0"
+        class="sc-beySPh brsoYh"
+        id="line0-segment0-cursor"
       >
          
       </div>
@@ -39,20 +39,20 @@ exports[`LinePrinter renders correctly with one segment where there are no more 
 exports[`LinePrinter renders correctly with two segment where there are additional lines to follow 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCstZk dVbBMf"
-    id="LinePrinter:0"
+    class="sc-eDLKkx cfncZL"
+    id="line0"
   >
     <span />
     <span
-      class="sc-gsTDqH brCFsH"
-      id="SegmentPrinter:0"
+      class="sc-guDLey wuijx"
+      id="line0-segment0"
     >
       <span
-        class="sc-hKgKIp gVuSnU"
+        class="sc-hLQSwg gcsUJF"
       />
       <div
-        class="sc-bdfCDU blcbix"
-        id="Cursor:0"
+        class="sc-beySPh brsoYh"
+        id="line0-segment0-cursor"
       >
          
       </div>
@@ -61,23 +61,23 @@ exports[`LinePrinter renders correctly with two segment where there are addition
 </DocumentFragment>
 `;
 
-exports[`LinePrinter renders correctly with two segment where there are no more lines 1`] = `
+exports[`LinePrinter renders correctly with two segments but there are no more lines 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eCstZk dVbBMf"
-    id="LinePrinter:0"
+    class="sc-eDLKkx cfncZL"
+    id="line0"
   >
     <span />
     <span
-      class="sc-gsTDqH brCFsH"
-      id="SegmentPrinter:0"
+      class="sc-guDLey wuijx"
+      id="line0-segment0"
     >
       <span
-        class="sc-hKgKIp gVuSnU"
+        class="sc-hLQSwg gcsUJF"
       />
       <div
-        class="sc-bdfCDU blcbix"
-        id="Cursor:0"
+        class="sc-beySPh brsoYh"
+        id="line0-segment0-cursor"
       >
          
       </div>

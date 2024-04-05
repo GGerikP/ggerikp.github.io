@@ -1,25 +1,39 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LinePrinter, { Line } from './LinePrinter';
+import { PrintingState } from '../Terminal/Terminal';
+import { CursorDisplay } from './Cursor';
 
 const PrintedTextBlockContainer = styled.div`
-    position: relative;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     align-items: flex-start;
     text-align: left;
     width: 100%;
 `;
 
 type ParagraphPrinterProps = {
+    id?: string;
     lines?: Line[];
     startingLineIndex?: number;
     typingSpeed: number;
     promptChars?: string;
     instantPrint: boolean;
+    // eslint-disable-next-line no-unused-vars
+    setPrintingState: (printingState: PrintingState) => void;
+    finalCursorDisplay?: CursorDisplay;
 };
 
-function ParagraphPrinter ({ lines, typingSpeed, promptChars, instantPrint }: ParagraphPrinterProps) {
+function ParagraphPrinter ({
+  id,
+  lines,
+  typingSpeed,
+  promptChars,
+  instantPrint,
+  setPrintingState,
+  finalCursorDisplay
+}: ParagraphPrinterProps) {
 
   // const sideEffectExecutedRef = useRef(false);
   const [lineIndex, setLineIndex] = useState<number>(0);
@@ -28,6 +42,14 @@ function ParagraphPrinter ({ lines, typingSpeed, promptChars, instantPrint }: Pa
   const printNextLine = useCallback(() => {
     setLineIndex(prevLineIndex => prevLineIndex + 1);
   }, []);
+
+  useEffect(() => {
+    if (!lines || lineIndex >= lines?.length) {
+      setPrintingState(PrintingState.DONE);
+    } else {
+      setPrintingState(PrintingState.PRINTING);
+    }
+  }, [lineIndex, lines, setPrintingState]);
 
   useEffect(() => {
     // console.log(`ParagraphPrinter: lineIndex(${lineIndex}), lines.length(${lines?.length}), displayedLines.length(${displayedLines.length})`);
@@ -51,17 +73,19 @@ function ParagraphPrinter ({ lines, typingSpeed, promptChars, instantPrint }: Pa
         // console.log(`Not updating the displayedLines: lineIndex is greater than or equal to the lines.length.`);
       }
     } else {
-      // console.log('Not updating the displayedLines: there are no lines.');
+    // console.log('Not updating the displayedLines: there are no lines.');
     }
   }, [lineIndex, lines, displayedLines]);
 
-  // console.log(`lineIndex = ${lineIndex}`);
+  const paragraphId = (id ? id + '-' : '') + 'paragraph';
   return (
-    <PrintedTextBlockContainer id="ParagraphPrinter">
+    <PrintedTextBlockContainer id={paragraphId}>
       {displayedLines && displayedLines.map((line, index) => {
+        const LinePrinterID = paragraphId + `-line${index}`;
         return (
           <LinePrinter
-            key={index}
+            id={LinePrinterID}
+            key={LinePrinterID}
             line={line}
             lineIndex={index}
             promptChars={promptChars}
@@ -69,6 +93,7 @@ function ParagraphPrinter ({ lines, typingSpeed, promptChars, instantPrint }: Pa
             instantPrint={instantPrint}
             isLastLine={(!lines || index === lines.length - 1)}
             printNextLine={printNextLine}
+            finalCursorDisplay={finalCursorDisplay}
           />
         );
       })}

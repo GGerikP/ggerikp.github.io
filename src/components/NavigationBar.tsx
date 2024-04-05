@@ -37,6 +37,7 @@ const StyledLink = styled(HashLink)`
     padding-right: 10px;
     padding-left: 10px;
     border-right: 1px solid black;
+    font-weight: 500;
 
     &:hover {
       color: #ddd;

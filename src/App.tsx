@@ -11,7 +11,8 @@ import Footer from './components/Footer';
 // Define global styles using createGlobalStyle
 const GlobalStyle = createGlobalStyle`
     h1, h2, h3, h4, h5 {
-      font-family: 'Rye, monospace, Helvetica, Arial, sans-serif';
+      font-family: 'Lora, monospace, Helvetica, Arial, sans-serif';
+      font-weight: 400;
     }
     p, span {
       font-family: 'Lora, monospace, Helvetica, Arial, sans-serif';

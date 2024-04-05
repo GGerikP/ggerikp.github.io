@@ -21,16 +21,28 @@ export type Segment = {
 }
 
 type SegmentPrinterProps = {
+    id?: string;
     segment: Segment;
     segmentIndex: number;
     isLastSegment: boolean;
     isLastLine: boolean;
+    finalCursorDisplay?: CursorDisplay;
     typingSpeed: number;
     instantPrint: boolean;
     printNextSegment: () => void;
 };
 
-function SegmentPrinter ({ segment, segmentIndex, isLastSegment, isLastLine, typingSpeed, instantPrint, printNextSegment }: SegmentPrinterProps) {
+function SegmentPrinter ({
+  id,
+  segment,
+  segmentIndex,
+  isLastSegment,
+  isLastLine,
+  finalCursorDisplay,
+  typingSpeed,
+  instantPrint,
+  printNextSegment
+}: SegmentPrinterProps) {
 
   const [isDonePrinting, setIsDonePrinting] = useState<boolean>(false);
   const [charIndex, setCharIndex] = useState<number>(0);
@@ -41,19 +53,29 @@ function SegmentPrinter ({ segment, segmentIndex, isLastSegment, isLastLine, typ
 
   // Cursor Display
   useEffect(() => {
-    // console.log(`isDonePrinting=${isDonePrinting}, isLastSegment=${isLastSegment}, isLastLine=${isLastLine}, cursorDisplay=${cursorDisplay}`);
-    if (!isDonePrinting && (charIndex < segment?.text?.length)) {
-      if (cursorDisplay !== CursorDisplay.Stable) {
+    if (!isDonePrinting) {
+      if (charIndex < segment?.text?.length) {
+        // Still printing the segment - show a stable cursor
         setCursorDisplay(CursorDisplay.Stable);
+      } else {
+        setCursorDisplay(CursorDisplay.Blink);
       }
-    } else if (isDonePrinting && !(isLastSegment && isLastLine)) {
-      if (cursorDisplay !== CursorDisplay.Hidden) {
+    } else if (isDonePrinting) {
+      if (isLastSegment && isLastLine && finalCursorDisplay) {
+        setCursorDisplay(finalCursorDisplay);
+      } else if (isLastSegment) {
+        if (isLastLine) {
+          setCursorDisplay(CursorDisplay.Blink);
+        } else {
+          setCursorDisplay(CursorDisplay.Hidden);
+        }
+      } else if (!isLastSegment) {
         setCursorDisplay(CursorDisplay.Hidden);
+      } else {
+        setCursorDisplay(CursorDisplay.Blink);
       }
-    } else if (cursorDisplay !== CursorDisplay.Blink) {
-      setCursorDisplay(CursorDisplay.Blink);
     }
-  }, [charIndex, isLastLine, isLastSegment, isDonePrinting, segment?.text?.length, cursorDisplay]);
+  }, [charIndex, isLastLine, isLastSegment, isDonePrinting, segment?.text?.length, cursorDisplay, finalCursorDisplay]);
 
   // Get Next Segment
   useEffect(() => {
@@ -87,8 +109,9 @@ function SegmentPrinter ({ segment, segmentIndex, isLastSegment, isLastLine, typ
     return (() => clearTimeout(prePrintTimeout));
   }, [segment, charIndex, prePrintDelay]);
 
+  const cursorID = (id ? id + '-' : '') + 'cursor';
   return (
-    <SegmentWrapper id={`SegmentPrinter:${segmentIndex}`}>
+    <SegmentWrapper id={id}>
       {segment.link
         ? <StyledLink
           url={segment.link}>
@@ -96,7 +119,11 @@ function SegmentPrinter ({ segment, segmentIndex, isLastSegment, isLastLine, typ
         </StyledLink>
         : <PrintedTextSpan>{displayedText}</PrintedTextSpan>
       }
-      <Cursor cursorDisplay={cursorDisplay} index={segmentIndex} />
+      <Cursor
+        id={cursorID}
+        key={cursorID}
+        cursorDisplay={cursorDisplay}
+        index={segmentIndex} />
     </SegmentWrapper>
   );
 }
