@@ -97,22 +97,29 @@ type LambdaHandlerRequest = {
         chatGPTMessages?: ChatGPTPrompt,
     }
 }
-type ChatGPTResponse = {
+type ChatGPTMessage = {
+    index: number,
     message: {
-        index: number,
-        message: {
-            role: string,
-            content: string,
-        },
-        logprobs: string | undefined,
-        finish_reason: string
-    }[]
+        role: string,
+        content: string,
+    },
+    logprobs: string | undefined,
+    finish_reason: string
 }
+type ChatGPTMessages = {
+  message: ChatGPTMessage[];
+}
+type ChatGPTResponse = {
+  statusCode?: number;
+  body?: string;
+  message?: ChatGPTMessage[];
+}
+
 type TabProps = {
-    id?: string,
-    lines?: Line[],
-    promptChars: string,
-    instantPrint?: boolean,
+    id?: string;
+    lines?: Line[];
+    promptChars: string;
+    instantPrint?: boolean;
 }
 
 function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
@@ -174,7 +181,15 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
         // console.log(`config.chatGPT.models.default.url = ${config.chatGPT.models.default.url}`);
         const response: AxiosResponse = await axios.post(config.chatGPT.models.default.url, data, headers);
         const chatGPTResponse: ChatGPTResponse = response.data;
-        const chatGPTResponseText = chatGPTResponse.message[0].message.content;
+        const chatGPTResponseText = chatGPTResponse.message 
+          ? chatGPTResponse.message[0].message.content : 
+          (() => {
+            if (chatGPTResponse.body) {
+              const messageString: ChatGPTMessages = JSON.parse(chatGPTResponse.body) as ChatGPTMessages;
+              return messageString.message[0].message.content;
+            }
+            throw new Error ('CANNOT FIND CHATGPT RESPONSE STRING');
+          })();
         updateTerminalText(chatGPTResponseText);
         setChatGPTPrompt(prevChatGPTPrompt => {
           return {
