@@ -202,6 +202,8 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
 
       } catch (err) {
         const error = err as AxiosError;
+        console.log(`Error = ${error}`);
+        console.log(`error.response?.status = ${error.response?.status}`);
         if (error.response?.status === 429) {
           updateTerminalText('We\'re sorry but we\'ve received too many requests.  Please try again in a few minutes.');
         } else {
