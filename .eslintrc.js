@@ -16,7 +16,7 @@ module.exports = {
   ignorePatterns: ['build/*', 'node_modules/*', 'eslintrc.js'],
   rules: {
     // Possible Errors
-    'no-console': 'warn',
+    // 'no-console': 'warn',
     'no-debugger': 'error',
 
     // Best Practices
