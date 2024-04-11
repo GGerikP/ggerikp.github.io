@@ -1,13 +1,13 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import axios, { AxiosError, AxiosResponse } from 'axios';
 import styled from 'styled-components';
 import theme from '../../theme';
 import terminatorPrefsIcon from './images/terminator-prefs-icon.jpeg';
 import ParagraphPrinter from '../Printer/ParagraphPrinter';
 import { Line } from '../Printer/LinePrinter';
-import { PrintingState } from './Terminal';
 import { CursorDisplay } from '../Printer/Cursor';
 import config from '../../config';
+import LoadingGif from './images/loading.gif';
 
 const TabContainer = styled.div`
     display: flex;
@@ -52,6 +52,7 @@ const ReprintButton = styled.button`
     background-color: ${theme.colors.primaryAccent};
     height: 20px;
     font-size: 12px;
+    border-radius: 3px;
 `;
 
 const LinesContainer = styled.div`
@@ -64,19 +65,41 @@ const LinesContainer = styled.div`
     flex-wrap: wrap;
 `;
 const PromptWrapper = styled.div`
-    margin-top: 10px;
     width: 100%;
     display: flex;
     flex-direction: row;
     color: white;
     white-space: pre-wrap;
+    height: 35px;
+    align-items: center;
 `;
 const PromptInput = styled.input`
-    height: 25px;
-    width: 100%;
+    height: 35px;
+    flex-grow: 1;
     background-color:rgba(0, 0, 0, 1);
     color: white;
     padding-left: 10px;
+`;
+
+const SubmitInputButton = styled.button`
+    color: black;
+    background-color: white;
+    height: 25px;
+    font-size: 12px;
+    border-radius: 3px;
+    min-width: 35px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+`;
+
+const LoadingSpinner = styled.div`
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url(${LoadingGif}) no-repeat center center;
+  background-size: cover;
 `;
 
 type UserMessage = {
@@ -127,8 +150,8 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
   const tabTitle = 'gerik@peterson:~'; // To be made configurable in the future if we want
   const [printerKey, setPrinterKey] = useState<number>(0);
   const [terminalText, setTerminalText] = useState<Line[] | undefined>(lines);
-  const [printingState, setPrintingState] = useState<PrintingState>(PrintingState.NOT_STARTED);
-  const insideOutsideRefElement = useRef<HTMLDivElement>(null);
+  const [isPrinting, setIsPrinting] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [inputText, setInputText] = useState<string>('');
   const [chatGPTPrompt, setChatGPTPrompt] = useState<ChatGPTPrompt>({ messages: [] });
   const tabID = (id ? id + '-' : '') + 'Tab' + printerKey.toString();
@@ -151,10 +174,14 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
     });
   }, [setTerminalText]);
 
-
   const handleSubmit = () => {
+    setIsPrinting(true);
+    updateTerminalText('You: ');
     updateTerminalText(inputText);
+    updateTerminalText(' ');
+    updateTerminalText('Assistant:');
     if (inputText && inputText !== '') {
+      setIsLoading(true);
       setChatGPTPrompt(prevChatGPTPrompt => {
         return {
           messages: [
@@ -168,8 +195,8 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
   };
 
   useEffect(() => {
-    setPrintingState(PrintingState.PRINTING);
-    if (chatGPTPrompt.messages.length === 0 || chatGPTPrompt.messages[chatGPTPrompt.messages.length - 1].role !== 'user') {
+    if (chatGPTPrompt.messages.length === 0 
+      || chatGPTPrompt.messages[chatGPTPrompt.messages.length - 1].role !== 'user') {
       // Don't do anything if we don't have any messages to send or if the last message wasn't from the user
       return;
     }
@@ -190,7 +217,14 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
             }
             throw new Error ('CANNOT FIND CHATGPT RESPONSE STRING');
           })();
-        updateTerminalText(chatGPTResponseText);
+        (chatGPTResponseText.split('\n')).forEach((line: string) => {
+          if (line === '') {
+            updateTerminalText(' ');
+          } else {
+            updateTerminalText(line);
+          }
+        });
+        updateTerminalText(' ');
         setChatGPTPrompt(prevChatGPTPrompt => {
           return {
             messages: [
@@ -199,7 +233,6 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
             ]
           };
         });
-
       } catch (err) {
         const error = err as AxiosError;
         console.log(`Error = ${error}`);
@@ -210,6 +243,7 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
           updateTerminalText('We\'re sorry but something has gone wrong.  Please try re-submitting your message.');
         }
       }
+      setIsLoading(false);
     };
     fetchData();
   }, [chatGPTPrompt, updateTerminalText]);
@@ -220,13 +254,6 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
     }
   };
 
-  const handleClickInside = () => {
-    const inputElement = insideOutsideRefElement.current?.querySelector<HTMLInputElement>(`#input-${tabID}`);
-    if (inputElement) {
-      inputElement.focus();
-    }
-  };
-
   return (
     <TabContainer>
       <TabTitleBar>
@@ -234,7 +261,7 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
         <TabTitle>{tabTitle}</TabTitle>
         <ReprintButton onClick={handleClick}>Reprint</ReprintButton>
       </TabTitleBar>
-      <LinesContainer ref={insideOutsideRefElement} onClick={handleClickInside}>
+      <LinesContainer >
         {
           terminalText ?
             <ParagraphPrinter
@@ -244,30 +271,30 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
               typingSpeed={35}
               promptChars={promptChars}
               instantPrint={instantPrint ?? false}
-              setPrintingState={setPrintingState}
+              setPrintingState={setIsPrinting}
               finalCursorDisplay={CursorDisplay.Hidden}
             />
             : <></>
         }
         <PromptWrapper>
-          {printingState === PrintingState.NOT_STARTED || printingState === PrintingState.PRINTING
-            ? <></> :
+          {isPrinting ? <></> : isLoading ? 
             <>
-              <span>{promptChars}</span>
-              {printingState === PrintingState.DONE &&
-                                <PromptInput
-                                  id={`input-${tabID}`}
-                                  type="text"
-                                  value={inputText}
-                                  onChange={(e) => setInputText(e.target.value)}
-                                  onKeyUp={handleKeyUp}
-                                  placeholder={'Type here to find out more about me...'}
-                                  autoFocus>
-                                </PromptInput>
-              }
+              {promptChars}
+              &nbsp;<LoadingSpinner aria-label="Loading" />
+            </> :
+            <>
+              {promptChars}
+              <PromptInput
+                id={`input-${tabID}`}
+                type="text"
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                onKeyUp={handleKeyUp}
+                placeholder={'Ask me something about Gerik...'}>
+              </PromptInput>
+              <SubmitInputButton onClick={handleSubmit}>Submit</SubmitInputButton>
             </>
           }
-
         </PromptWrapper>
       </LinesContainer>
     </TabContainer>

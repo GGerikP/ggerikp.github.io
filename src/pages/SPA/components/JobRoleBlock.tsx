@@ -26,6 +26,9 @@ const JobRoleContainer = styled.div<ContainerProps>`
 
     transition: min-height .5s ease;
     min-height: ${(props) => (props.$maxchildheight ? `${props.$maxchildheight}px` : '250px')};
+    &:hover {
+      min-height: ${(props) => (props.$maxchildheight ? `${props.$maxchildheight}px` : '325px')};
+    }
 `;
 
 type JobBackgroundProps = {
@@ -35,7 +38,7 @@ type JobBackgroundProps = {
 }
 const JobBackground = styled.div<JobBackgroundProps>`
     position: relative;
-    min-height: 250px;
+    min-height: 275px;
     height: 100%;
     width: ${(props) => (props.$isactive ? '105%' : '100%')};
     border: 1px solid black;
@@ -54,21 +57,40 @@ const JobBackground = styled.div<JobBackgroundProps>`
     }
 `;
 
+const JobRoleCover = styled.div`
+    position: relative;
+    min-width: 100%;
+    min-height: 100%;
+`;
+
 const AnchorLink = styled(HashLink)`
     min-width: 100%;
     min-height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
 `;
 
-const LogoImage = styled.img`
-    min-width: 150px;
-    min-height: 150px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+const LogoImage = styled.div<{src: string}>`
+    min-width: 100%;
+    min-height: 200px;
+    background-image: url(${(props) => props.src});
+    background-position: center;
+    background-size: 200px 200px;
+    background-repeat: no-repeat;
+`;
+
+const JobRoleCoverTitle = styled.div`
+    height: 50px;
+    min-width: 250px;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    border-radius: 15px;
+    padding:10px;
+    background-color: rgba(255,255,255,.75);
+    text-align: center;
+    color: black;
 `;
 
 export type JobRoleBlockProps = {
@@ -134,10 +156,13 @@ function JobRoleBlock (props: JobRoleBlockProps) {
         $isactive={isActive}
         $background={props.backgroundColor}
         $backgroundimage={props.backgroundImage}>
-        <AnchorLink to={`#${props.companyId}`}
-          onClick={(event) => handleClick(event, `#${props.companyId}`)}>
-          <LogoImage src={props.companyLogoURL} />
-        </AnchorLink>
+        <JobRoleCover>
+          <AnchorLink to={`#${props.companyId}`}
+            onClick={(event) => handleClick(event, `#${props.companyId}`)}>
+            <LogoImage src={props.companyLogoURL} />
+            <JobRoleCoverTitle>{props.title}</JobRoleCoverTitle>
+          </AnchorLink>
+        </JobRoleCover>
         <JobRoleDetailBlock
           isVisible={isActive}
           height={childHeight}

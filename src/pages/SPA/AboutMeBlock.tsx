@@ -33,9 +33,13 @@ const aboutMeText: Line[] = [
   { segments: [{ text: '', postPrintDelay: 0 }] },
   { segments: [{ text: 'You are now speaking with his personal AI assistant.', postPrintDelay: 500 }] },
   { segments: [{ text: '', postPrintDelay: 0 }] },
-  { segments: [{ text: 'Please note, I am very new so I am still developing my capabilities; but I will do what I can to help!', postPrintDelay: 250 }] },
+  { segments: [
+    { text: 'Please note, I am very new. ', postPrintDelay: 250 }, 
+    { text: 'But I will do whatever I can to help!', postPrintDelay: 250 }
+  ] },
   { segments: [{ text: '', postPrintDelay: 0 }] },
-  { segments: [{ text: 'What can I help you with today?', postPrintDelay: 250 }] },
+  { segments: [{ text: 'So, what can I help you with today?' }] },
+  { segments: [{ text: '', postPrintDelay: 0 }] },
 ];
 
 function AboutMeBlock () {

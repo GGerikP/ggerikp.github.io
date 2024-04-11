@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import LinePrinter, { Line } from './LinePrinter';
-import { PrintingState } from '../Terminal/Terminal';
 import { CursorDisplay } from './Cursor';
 
 const PrintedTextBlockContainer = styled.div`
@@ -21,7 +20,7 @@ type ParagraphPrinterProps = {
     promptChars?: string;
     instantPrint: boolean;
     // eslint-disable-next-line no-unused-vars
-    setPrintingState: (printingState: PrintingState) => void;
+    setPrintingState: (isPrinting: boolean) => void;
     finalCursorDisplay?: CursorDisplay;
 };
 
@@ -45,9 +44,9 @@ function ParagraphPrinter ({
 
   useEffect(() => {
     if (!lines || lineIndex >= lines?.length) {
-      setPrintingState(PrintingState.DONE);
+      setPrintingState(false);
     } else {
-      setPrintingState(PrintingState.PRINTING);
+      setPrintingState(true);
     }
   }, [lineIndex, lines, setPrintingState]);
 
