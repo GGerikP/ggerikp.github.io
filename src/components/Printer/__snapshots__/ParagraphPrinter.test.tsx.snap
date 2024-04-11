@@ -3,7 +3,7 @@
 exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line with 1 segment 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fmKFGs lmiIDL"
+    class="sc-jTQCzO gnzQdg"
     id="Tab0-paragraph"
   >
     <div
@@ -35,7 +35,7 @@ exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line wit
 exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line with 2 segments 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fmKFGs lmiIDL"
+    class="sc-jTQCzO gnzQdg"
     id="Tab0-paragraph"
   >
     <div
@@ -67,7 +67,7 @@ exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line wit
 exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 5 lines, each with 5 segments 1`] = `
 <DocumentFragment>
   <div
-    class="sc-fmKFGs lmiIDL"
+    class="sc-jTQCzO gnzQdg"
     id="Tab0-paragraph"
   >
     <div
