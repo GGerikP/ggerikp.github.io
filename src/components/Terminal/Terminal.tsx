@@ -77,15 +77,7 @@ const TabsContainer = styled.div<TabsContainerProps>`
     }
 }
 `;
-// eslint-disable-next-line no-shadow
-export enum PrintingState {
-    // eslint-disable-next-line no-unused-vars
-    NOT_STARTED = 'not_started',
-    // eslint-disable-next-line no-unused-vars
-    PRINTING = 'printing',
-    // eslint-disable-next-line no-unused-vars
-    DONE = 'done'
-}
+
 type TerminalProps = {
     id?: string;
     lines?: Line[];

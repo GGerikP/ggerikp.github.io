@@ -43,7 +43,7 @@ const ProfilePicFullPage = styled.div`
 
 const TitleContainer = styled.div`
     width: 100%;
-    height: 95vh;
+    height: 85vh;
     position: relative;
     display: flex;
     flex-direction: row;
