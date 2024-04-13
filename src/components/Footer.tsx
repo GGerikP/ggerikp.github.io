@@ -13,6 +13,8 @@ const FooterContainer = styled.footer`
     border: 1px solid black;
     margin-top: 20px;
     padding: 10px;
+    z-index: 10;
+    position: relative;
 `;
 
 const SocialMediaContainer = styled.div`

@@ -10,14 +10,14 @@ import SiteIcon from './images/icon-mowser-192.png';
 
 // Styled components
 const NavBarContainer = styled.div`
-  background: white;
+  background: linear-gradient(to bottom, rgba(255,240,209,1) 75%, rgba(255,240,209,0));
   width: 100%;
   max-width: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
-  height: 50px;
-  border-bottom: solid 1px black;
+  height: 60px;
+  /*border-bottom: solid 1px black;*/
 `;
 
 const NavBar = styled.nav`
@@ -53,7 +53,7 @@ const StyledMobileLink = styled(HashLink)`
     color: black;
     padding-right: 10px;
     padding-left: 10px;
-
+    padding-top: 10px;
     &:hover {
       color: #ddd;
     }
@@ -76,20 +76,6 @@ const NavBarLogo = styled.img`
   padding-right: 10px;
   margin-right: 10px;
 `;
-
-// const NavBarTitle = styled.h1`
-//   cursor: pointer;
-//   height: 40px;
-//   padding-left: 10px;
-//   padding-right: 10px;
-//   margin-right: 10px;
-//   font-family: ${theme.fonts.secondary};
-//   color: ${theme.colors.text};
-//   font-weight: inherit;
-//   margin-top: 0;
-//   font-style: italic;
-// `
-
 
 const Logo = styled.div`
   cursor: pointer;
@@ -132,8 +118,9 @@ const MobileMenu = styled.div`
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: ${theme.colors.secondaryAccent};
     display: none;
+    border: 1px solid black;
 
     &.active {
       display: flex;
@@ -186,7 +173,7 @@ function NavigationBar () {
         </Logo>
         <NavItems className={mobileMenuActive ? 'active' : ''}>
           <StyledLink to="/#title" onClick={(event) => scrollToAnchor(event, '#title')}>Home</StyledLink>
-          <StyledLink to="/#about" onClick={(event) => scrollToAnchor(event, '#about')}>About</StyledLink>
+          <StyledLink to="/#ai-assistant" onClick={(event) => scrollToAnchor(event, '#ai-assistant')}>AI Assistant</StyledLink>
           <StyledLink to="/#professionalprofile" onClick={(event) => scrollToAnchor(event, '#professionalprofile')}>Profile</StyledLink>
           <StyledLink to="/#cv" onClick={(event) => scrollToAnchor(event, '#cv')}>Experience</StyledLink>
           <StyledLink to="/#values" onClick={(event) => scrollToAnchor(event, '#values')}>Values</StyledLink>
@@ -195,7 +182,7 @@ function NavigationBar () {
       </NavBar>
       <MobileMenu className={mobileMenuActive ? 'active' : ''}>
         <StyledMobileLink to="/#title" onClick={(event) => handleMobileAnchorLinkClick(event, '#title')}>Home</StyledMobileLink>
-        <StyledMobileLink to="/#about" onClick={(event) => handleMobileAnchorLinkClick(event, '#about')}>About</StyledMobileLink>
+        <StyledMobileLink to="/#ai-assistant" onClick={(event) => handleMobileAnchorLinkClick(event, '#ai-assistant')}>AI Assistant</StyledMobileLink>
         <StyledMobileLink to="/#professionalprofile" onClick={(event) => handleMobileAnchorLinkClick(event, '#professionalprofile')}>Profile</StyledMobileLink>
         <StyledMobileLink to="/#cv" onClick={(event) => handleMobileAnchorLinkClick(event, '#cv')}>Experience</StyledMobileLink>
         <StyledMobileLink to="/#values" onClick={(event) => handleMobileAnchorLinkClick(event, '#values')}>Values</StyledMobileLink>

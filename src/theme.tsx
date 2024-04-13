@@ -54,7 +54,7 @@ export const theme: ThemeInterface = {
     primary: '#F2F2F2',
     secondary: '#FFFFFF',
     primaryAccent: '#639CBF',
-    secondaryAccent: '#F21326',
+    secondaryAccent: '#fff0d1',
     tertiaryAccent: '#260101',
     background: '#639CBF',
     text: '#260101',

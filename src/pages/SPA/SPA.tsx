@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import TitleBlock from './TitleBlock';
-import AboutMeBlock from './AboutMeBlock';
+import AIAssistant from './AIAssistant';
 import MyValuesBlock from './MyValuesBlock';
 import ExperienceBlock from './ExperienceBlock';
 import ProfessionalProfileBlock from './ProfessionalProfile';
@@ -21,7 +21,7 @@ function SPA () {
   return (
     <SiteContainer>
       <TitleBlock />
-      <AboutMeBlock />
+      <AIAssistant />
       <ProfessionalProfileBlock />
       <ExperienceBlock />
       <MyValuesBlock />
