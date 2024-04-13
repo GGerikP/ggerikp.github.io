@@ -82,7 +82,7 @@ const ExperienceBlurb = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
 `;
 
