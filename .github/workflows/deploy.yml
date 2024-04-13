@@ -35,6 +35,10 @@ jobs:
 
       - name: Build
         run: yarn run build
+        env:
+          REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL || '' }}
+          REACT_APP_PUBLIC_URL: ${{ secrets.REAC_APP_PUBLIC_URL }}
+          PUBLIC_URL: ${{ secrets.PUBLIC_URL }}
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
