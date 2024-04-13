@@ -34,7 +34,7 @@ jobs:
         uses: ./.github/actions/code-prep
 
       - name: Build
-        run: yarn run build
+        run: PUBLIC_URL=${{ secrets.PUBLIC_URL }} yarn run build
         env:
           REACT_APP_BASE_URL: ${{ secrets.REACT_APP_BASE_URL || '' }}
           REACT_APP_PUBLIC_URL: ${{ secrets.REAC_APP_PUBLIC_URL }}
