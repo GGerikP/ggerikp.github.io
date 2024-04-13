@@ -27,7 +27,7 @@ const JobRoleContainer = styled.div<ContainerProps>`
     transition: min-height .5s ease;
     min-height: ${(props) => (props.$maxchildheight ? `${props.$maxchildheight}px` : '250px')};
     &:hover {
-      min-height: ${(props) => (props.$maxchildheight ? `${props.$maxchildheight}px` : '325px')};
+      min-height: ${(props) => (props.$maxchildheight ? `${props.$maxchildheight}px` : '300px')};
     }
 `;
 
@@ -69,26 +69,27 @@ const AnchorLink = styled(HashLink)`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
 `;
 
-const LogoImage = styled.div<{src: string}>`
-    min-width: 100%;
+const LogoImage = styled.div<{src: string, $coverAccentColor: string}>`
+    min-width: 200px;
     min-height: 200px;
     background-image: url(${(props) => props.src});
     background-position: center;
-    background-size: 200px 200px;
+    background-size: cover;
     background-repeat: no-repeat;
+    background-origin: content-box;
+    padding: 2px;
+    border: 1px solid ${(props) => props.$coverAccentColor};
 `;
 
-const JobRoleCoverTitle = styled.div`
-    height: 50px;
-    min-width: 250px;
-    border-radius: 15px;
-    padding:10px;
-    background-color: rgba(255,240,209);
+const JobRoleCoverTitle = styled.div<{$coverAccentColor: string}>`
+    height: 35px;
+    width: 300px;
     text-align: center;
-    color: black;
+    color: ${(props) => props.$coverAccentColor};
     text-decoration: underline;
 `;
 
@@ -103,6 +104,7 @@ export type JobRoleBlockProps = {
     linkedinURL: string;
     backgroundColor?: string;
     backgroundImage?: string;
+    coverAccentColor: string;
 }
 
 function JobRoleBlock (props: JobRoleBlockProps) {
@@ -154,12 +156,13 @@ function JobRoleBlock (props: JobRoleBlockProps) {
       <JobBackground id="background"
         $isactive={isActive}
         $background={props.backgroundColor}
-        $backgroundimage={props.backgroundImage}>
+        $backgroundimage={props.backgroundImage}
+      >
         <JobRoleCover>
           <AnchorLink to={`#${props.companyId}`}
             onClick={(event) => handleClick(event, `#${props.companyId}`)}>
-            <LogoImage src={props.companyLogoURL} />
-            <JobRoleCoverTitle>{props.title}</JobRoleCoverTitle>
+            <LogoImage src={props.companyLogoURL} $coverAccentColor={props.coverAccentColor}/>
+            <JobRoleCoverTitle $coverAccentColor={props.coverAccentColor}>{props.title}</JobRoleCoverTitle>
           </AnchorLink>
         </JobRoleCover>
         <JobRoleDetailBlock

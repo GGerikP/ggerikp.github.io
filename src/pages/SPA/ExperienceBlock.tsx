@@ -82,7 +82,8 @@ const ExperienceBlurb = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    font-size: 24px;
+    font-size: 20px;
+    text-align: center;
 `;
 
 const Roles = styled.div`
@@ -134,6 +135,7 @@ function ExperienceBlock () {
               companyURL='https://radically.digital/'
               linkedinURL='https://www.linkedin.com/company/radically-digital/mycompany/verification/'
               backgroundColor="#000000"
+              coverAccentColor="#FFFFFF"
             />
             <JobRoleBlock
               companyId="dfp"
@@ -160,6 +162,7 @@ function ExperienceBlock () {
               companyURL='https://www.linkedin.com/company/digital-fineprint/?originalSubdomain=uk'
               linkedinURL='https://www.linkedin.com/company/digital-fineprint/'
               backgroundColor="#FFFFFF"
+              coverAccentColor="#FFFFFF"
               backgroundImage="linear-gradient(to top right, #B10EC1 10%, #601BBC)"
             />
             <JobRoleBlock
@@ -183,6 +186,7 @@ function ExperienceBlock () {
               companyURL='https://www.futurecoders.org.uk/'
               linkedinURL='https://www.linkedin.com/company/futurecoders/'
               backgroundColor="#FFFFFF"
+              coverAccentColor="#000000"
             />
             <JobRoleBlock
               companyId="openbet"
@@ -223,6 +227,7 @@ function ExperienceBlock () {
               companyURL='https://www.openbet.com/'
               linkedinURL='https://www.linkedin.com/company/weareopenbet/'
               backgroundColor="#000038"
+              coverAccentColor="#FFFFFF"
             />
             <JobRoleBlock
               companyId="americangreetings"
@@ -242,6 +247,7 @@ function ExperienceBlock () {
               companyURL='https://www.americangreetings.com/'
               linkedinURL='https://www.linkedin.com/company/american-greetings/'
               backgroundColor="#FFFFFF"
+              coverAccentColor="#000000"
             />
             <JobRoleBlock
               companyId="joann"
@@ -264,6 +270,7 @@ function ExperienceBlock () {
               companyURL='https://www.joann.com/'
               linkedinURL='https://www.linkedin.com/company/jo-ann-stores-inc-/'
               backgroundColor="#72BD00"
+              coverAccentColor="#000000"
             />
             <JobRoleBlock
               companyId="presidentialbrokerage"
@@ -283,6 +290,7 @@ function ExperienceBlock () {
               companyURL='https://www.linkedin.com/company/presidential-brokerage/'
               linkedinURL='https://www.linkedin.com/company/presidential-brokerage/'
               backgroundColor="#00073E"
+              coverAccentColor="#FFFFFF"
             />
           </Roles>
         </ExperienceContent>
