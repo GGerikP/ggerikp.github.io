@@ -5,11 +5,12 @@ import IconSmallLinkedIn from './images/icon-linkedin-small.svg';
 import IconSmallGithub from './images/icon-github-small.svg';
 import IconSmallStackOverflow from './images/icon-stackoverflow-small.png';
 import IconSmallFacebook from './images/icon-facebook-small.svg';
+import theme from '../theme';
 
 const FooterContainer = styled.footer`
     width: 100%;
     border-bottom: solid 1px black;
-    background-color: white;
+    background-color: ${theme.colors.secondaryAccent};
     border: 1px solid black;
     margin-top: 20px;
     padding: 10px;
