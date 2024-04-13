@@ -175,12 +175,12 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
   }, [setTerminalText]);
 
   const handleSubmit = () => {
-    setIsPrinting(true);
-    updateTerminalText('You: ');
-    updateTerminalText(inputText);
-    updateTerminalText(' ');
-    updateTerminalText('Assistant:');
     if (inputText && inputText !== '') {
+      setIsPrinting(true);
+      updateTerminalText('You: ');
+      updateTerminalText(inputText);
+      updateTerminalText(' ');
+      updateTerminalText('Assistant:');
       setIsLoading(true);
       setChatGPTPrompt(prevChatGPTPrompt => {
         return {
@@ -238,9 +238,9 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
         console.log(`Error = ${error}`);
         console.log(`error.response?.status = ${error.response?.status}`);
         if (error.response?.status === 429) {
-          updateTerminalText('We\'re sorry but we\'ve received too many requests.  Please try again in a few minutes.');
+          updateTerminalText('I\'m sorry but I seem to be a bit overloaded!  Please try again in a minute or two.');
         } else {
-          updateTerminalText('We\'re sorry but something has gone wrong.  Please try re-submitting your message.');
+          updateTerminalText('I\'m sorry but something has gone wrong in handling your message.  Please try re-submitting it.');
         }
       }
       setIsLoading(false);

@@ -28,7 +28,7 @@ const ExperienceBlockContainer = styled.div`
     flex-direction: column;
     align-items: center;
     padding-top: 4vw;
-    background-color: ${theme.colors.primaryAccent};
+    background-color: #fdfbee;
     color: black;
     font-family: ${theme.fonts.secondary};
     border-radius: 5px;
@@ -60,7 +60,6 @@ const Title = styled.h1`
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
-    padding-bottom: 20px;
     text-align: center;
     font-family: ${theme.fonts.base};
     font-weight: 100;
@@ -83,6 +82,7 @@ const ExperienceBlurb = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
+    font-size: 24px;
 `;
 
 const Roles = styled.div`
@@ -99,9 +99,9 @@ function ExperienceBlock () {
       <ExperienceBlockContainer>
         <ExperienceContent>
           <ExperienceIntroContainer>
-            <Title>Professional Experience</Title>
+            <Title>Experience</Title>
             <ExperienceBlurb>
-              <p>Click on the roles below to find out more.</p>
+              Click on the roles to find out more.
             </ExperienceBlurb>
           </ExperienceIntroContainer>
           <Roles>
