@@ -28,7 +28,7 @@ const ExperienceBlockContainer = styled.div`
     flex-direction: column;
     align-items: center;
     padding-top: 4vw;
-    background-color: #fdfbee;
+    background-color: ${theme.colors.secondaryAccent};
     color: black;
     font-family: ${theme.fonts.secondary};
     border-radius: 5px;

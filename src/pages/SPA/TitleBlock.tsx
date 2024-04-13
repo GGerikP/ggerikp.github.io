@@ -10,6 +10,7 @@ import LinePrinter from '../../components/Printer/LinePrinter';
 
 const TitleBlockContainer = styled.section`
     width: 100%;
+    height: 85vh;
     position: relative;
     display: flex;
     flex-direction: row;
@@ -20,8 +21,8 @@ const TitleBlockContainer = styled.section`
 `;
 
 const ProfilePicContainer = styled.div`
-    height: 90vh;
     width: 100%;
+    height: 100%;
     position: fixed;
     top: 0;
     right: 0;
@@ -30,7 +31,7 @@ const ProfilePicContainer = styled.div`
 const ProfilePicFullPage = styled.div`
     position: absolute;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background-image: url(${ProfilePicChicago});
     background-size: cover;
     background-repeat: no-repeat;
@@ -43,26 +44,13 @@ const ProfilePicFullPage = styled.div`
 
 const TitleContainer = styled.div`
     width: 100%;
-    height: 85vh;
+    height: 100%;
     position: relative;
     display: flex;
     flex-direction: row;
     justify-items: center;
     align-items: flex-end;
 `;
-
-/*const LargeTitleImage = styled.img`
-    width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
-    margin: auto;
-    @media (orientation: portrait) {
-        padding-bottom: 15vh;
-    }
-    @media (width > ${theme.breakpoints.tablet}) {
-        padding-bottom: 0px;
-    }
-`*/
 
 const LargeTitleText = styled.h1`
     width: 100%;
@@ -82,13 +70,13 @@ const LargeTitleText = styled.h1`
 
 function TitleBlock () {
   return (
-    <TitleBlockContainer>
+    <TitleBlockContainer id="title">
       <ProfilePicContainer>
         <ProportionalScrollElement scrollPercentage={.25}>
           <ProfilePicFullPage />
         </ProportionalScrollElement>
       </ProfilePicContainer>
-      <TitleContainer id="title">
+      <TitleContainer>
         {/*<LargeTitleImage src={LargeTitleWhite} />*/}
         <LargeTitleText>
           <LinePrinter

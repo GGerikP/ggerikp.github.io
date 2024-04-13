@@ -84,13 +84,12 @@ const LogoImage = styled.div<{src: string}>`
 const JobRoleCoverTitle = styled.div`
     height: 50px;
     min-width: 250px;
-    border-top: solid 1px black;
-    border-bottom: solid 1px black;
     border-radius: 15px;
     padding:10px;
-    background-color: rgba(255,255,255,.75);
+    background-color: rgba(255,240,209);
     text-align: center;
     color: black;
+    text-decoration: underline;
 `;
 
 export type JobRoleBlockProps = {

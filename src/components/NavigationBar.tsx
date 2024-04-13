@@ -10,14 +10,14 @@ import SiteIcon from './images/icon-mowser-192.png';
 
 // Styled components
 const NavBarContainer = styled.div`
-  background: white;
+  background: linear-gradient(to bottom, rgba(255,240,209,1) 75%, rgba(255,240,209,0));
   width: 100%;
   max-width: 100%;
   position: fixed;
   top: 0;
   z-index: 10;
-  height: 50px;
-  border-bottom: solid 1px black;
+  height: 60px;
+  /*border-bottom: solid 1px black;*/
 `;
 
 const NavBar = styled.nav`
@@ -118,8 +118,9 @@ const MobileMenu = styled.div`
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: ${theme.colors.secondaryAccent};
     display: none;
+    border: 1px solid black;
 
     &.active {
       display: flex;
