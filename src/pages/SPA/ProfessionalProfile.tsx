@@ -131,8 +131,8 @@ function ProfessionalProfileBlock () {
               <p>I also have dual citizenship in the United States and the United Kingdom.  So, I am free to live and work in both countries without restriction.</p>
             </ProfessionalProfileBlurb>
             <Flags>
-              <Flag src={AmericanFlag} />
-              <Flag src={UKFlag} />
+              <Flag src={AmericanFlag} alt="American Flag"/>
+              <Flag src={UKFlag} alt="United Kingdom Flag"/>
             </Flags>
           </ProfessionalProfileContainer>
         </ProfessionalProfileContent>

@@ -2,10 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import theme from '../../theme';
 import ProportionalScrollElement from '../../components/ProportionalScrollElement';
-//import ProfilePicLookingDown from './images/profile-pic-looking-down.png';
-// import LargeTitleWhite from './images/title-gerikpeterson-white-large.png';
-//import ProfilePicSF from './images/profile-seth-kendra-me-sf.jpg';
-import ProfilePicChicago from './images/profile-gerikpeterson-large.jpg';
+import ProfilePicChicagoTransp from './images/profile-gerikpeterson-large.webp';
+import ProfilePicChicago from './images/profile-gerikpeterson-large-transp.webp';
 import LinePrinter from '../../components/Printer/LinePrinter';
 
 const TitleBlockContainer = styled.section`
@@ -32,7 +30,10 @@ const ProfilePicFullPage = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url(${ProfilePicChicago});
+    background-image: url(${ProfilePicChicagoTransp});
+    @media (width > ${theme.breakpoints.tablet}) {
+      background-image: url(${ProfilePicChicago});
+    }
     background-size: cover;
     background-repeat: no-repeat;
     background-position-y: center;

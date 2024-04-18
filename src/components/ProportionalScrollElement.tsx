@@ -12,6 +12,13 @@ const Container = styled.div`
   width: 100%;
 `;
 
+const ScrolledElement = styled.div<{$scrollPosition: number, children: ReactNode}>`
+  position: absolute;
+  top: ${(props) => `-${props.$scrollPosition}px`};
+  height: 100%;
+  width: 100%;
+`;
+
 const ProportionalScrollElement: React.FC<ProportionalScrollElementProps> = ({ scrollPercentage, children }) => {
   const [scrollPosition, setScrollPosition] = useState(0);
 
@@ -30,10 +37,10 @@ const ProportionalScrollElement: React.FC<ProportionalScrollElementProps> = ({ s
   }, [scrollPercentage]);
 
   return (
-    <Container>
-      <div style={{ position: 'absolute', top: `-${scrollPosition}px`, height: '100%', width: '100%' }}>
+    <Container id="ProportionalScrollElement">
+      <ScrolledElement $scrollPosition={scrollPosition}>
         {children}
-      </div>
+      </ScrolledElement>
     </Container>
   );
 };

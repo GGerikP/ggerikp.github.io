@@ -52,14 +52,15 @@ function Footer () {
   return (
     <FooterContainer>
       <SocialMediaContainer>
-        <SocialMediaWrapper><Link url="https://www.linkedin.com/in/gerikpeterson/"><SocialMediaIcon src={IconSmallLinkedIn} /></Link></SocialMediaWrapper>
-        <SocialMediaWrapper><Link url="https://github.com/GGerikP"><SocialMediaIcon src={IconSmallGithub} /></Link></SocialMediaWrapper>
-        <SocialMediaWrapper><Link url="https://stackoverflow.com/users/3187487/gerik"><SocialMediaIcon src={IconSmallStackOverflow} style={{ border: '2px solid black', borderRadius: '3px', height: '100%' }} /></Link></SocialMediaWrapper>
-        <SocialMediaWrapper><Link url="https://www.facebook.com/ggerikp/"><SocialMediaIcon src={IconSmallFacebook} /></Link></SocialMediaWrapper>
+        <SocialMediaWrapper><Link url="https://www.linkedin.com/in/gerikpeterson/" aria-label="Read more about Gerik's LinkedIn profile"><SocialMediaIcon src={IconSmallLinkedIn} alt="LinkedIn"/></Link></SocialMediaWrapper>
+        <SocialMediaWrapper><Link url="https://github.com/GGerikP" aria-label="Read more about Gerik's GitHub work"><SocialMediaIcon src={IconSmallGithub} alt="GitHub"/></Link></SocialMediaWrapper>
+        <SocialMediaWrapper><Link url="https://stackoverflow.com/users/3187487/gerik" aria-label="Read more about Gerik's Stack Overflow Reputation"><SocialMediaIcon src={IconSmallStackOverflow} alt="Stack Overflow" style={{ border: '2px solid black', borderRadius: '3px', height: '100%' }} /></Link></SocialMediaWrapper>
+        <SocialMediaWrapper><Link url="https://www.facebook.com/ggerikp/" aria-label="Read more on Gerik's Facebook page."><SocialMediaIcon src={IconSmallFacebook} alt="Facebook" /></Link></SocialMediaWrapper>
       </SocialMediaContainer>
       <FooterBlurbContainer>
         <p>This site was created by Gerik Peterson.</p>
         <p>Information, data and designs from this website may not be copied or used in any way except for its originally intended purpose.</p>
+        <a href="/privacy-policy"><p>Privacy Policy</p></a>
       </FooterBlurbContainer>
     </FooterContainer>
   );

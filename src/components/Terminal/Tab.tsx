@@ -257,7 +257,7 @@ function Tab ({ id, lines, promptChars, instantPrint }: TabProps) {
   return (
     <TabContainer>
       <TabTitleBar>
-        <TabIcon src={terminatorPrefsIcon} />
+        <TabIcon src={terminatorPrefsIcon} alt="Terminator Icon"/>
         <TabTitle>{tabTitle}</TabTitle>
         <ReprintButton onClick={handleClick}>Reprint</ReprintButton>
       </TabTitleBar>
