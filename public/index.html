@@ -1,52 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/images/favicon.ico" />
-    <link rel="canonical" href="%PUBLIC_URL%" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Gerik Peterson's Personal Website"
-    />
-  
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="GerikPeterson.com">
-    <meta property="og:description" content="Gerik Peterson's Personal Website">
-    <meta property="og:image" content="%PUBLIC_URL%/static/media/profile-gerikpeterson-large.fa42a20c32601da2003b.jpg">
-    <meta property="og:url" content="gerikpeterson.com">
-    <meta property="og:type" content="website">
-    
-    <!-- Twitter Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="GerikPeterson.com">
-    <meta name="twitter:description" content="Gerik Peterson's Personal Website">
-    <meta name="twitter:image" content="%PUBLIC_URL%/static/media/profile-gerikpeterson-large.fa42a20c32601da2003b.jpg">
 
-    <link rel="stylesheet" href="%PUBLIC_URL%/fonts/font-awesome.min.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/images/favicon.ico" />
+  <link rel="canonical" href="%PUBLIC_URL%" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Gerik Peterson's Personal Website" />
 
-    <!-- Rye Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rye&display=swap" rel="stylesheet">
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="GerikPeterson.com">
+  <meta property="og:description" content="Gerik Peterson's Personal Website">
+  <meta property="og:image" content="%PUBLIC_URL%/static/media/profile-gerikpeterson-large.fa42a20c32601da2003b.jpg">
+  <meta property="og:url" content="gerikpeterson.com">
+  <meta property="og:type" content="website">
 
-    <!-- Lora Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&family=Rye&display=swap" rel="stylesheet">
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="GerikPeterson.com">
+  <meta name="twitter:description" content="Gerik Peterson's Personal Website">
+  <meta name="twitter:image" content="%PUBLIC_URL%/static/media/profile-gerikpeterson-large.fa42a20c32601da2003b.jpg">
 
-    <!-- Apple Touch Icon -->
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/icon-mowser-192.png" />
-    <!--
+  <link rel="stylesheet" href="%PUBLIC_URL%/fonts/font-awesome.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <!-- Rye Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rye&display=swap" rel="stylesheet">
+
+  <!-- Lora Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lora:ital,wght@0,400..700;1,400..700&family=Rye&display=swap"
+    rel="stylesheet">
+
+  <!-- Apple Touch Icon -->
+  <link rel="apple-touch-icon" href="%PUBLIC_URL%/images/icon-mowser-192.png" />
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -56,21 +56,40 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNXW69WQ1V"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag('js', new Date());
-      gtag('config', 'G-MNXW69WQ1V');
-    </script>
+  <script>
+    // Define dataLayer and the gtag function.
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
 
-    <title>Gerik Peterson's Website</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+    // Set default consent to 'denied' as a placeholder
+    // Determine actual values based on your own requirements
+    gtag('consent', 'default', {
+      'ad_storage': 'denied',
+      'ad_user_data': 'denied',
+      'ad_personalization': 'denied',
+      'analytics_storage': 'denied'
+    });
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MNXW69WQ1V"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-MNXW69WQ1V', {
+      'cookie_expires': 0,  // Set cookie expiration to 0 days, effectively disabling them
+      'storage': 'none'     // Disable cookie storage
+    });
+  </script>
+
+  <title>Gerik Peterson's Website</title>
+</head>
+
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -80,5 +99,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-  </body>
+</body>
+
 </html>

@@ -5,6 +5,7 @@ import AIAssistant from './AIAssistant';
 import MyValuesBlock from './MyValuesBlock';
 import ExperienceBlock from './ExperienceBlock';
 import ProfessionalProfileBlock from './ProfessionalProfile';
+import usePageTracking from '../../components/Analytics/UsePageTracking';
 
 const SiteContainer = styled.div`
     width: 95%;
@@ -14,9 +15,9 @@ const SiteContainer = styled.div`
     position: relative;
 `;
 
-// type SPAProps = {};
-
 function SPA () {
+
+  usePageTracking();
 
   return (
     <SiteContainer>

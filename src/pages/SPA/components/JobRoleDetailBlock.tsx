@@ -57,9 +57,9 @@ function JobRoleDetailBlock ({ isVisible, height, childRef, jobRoleDetails }: Jo
     <JobRoleDetailContainer $isvisible={isVisible} height={height} ref={childRef}>
       <ContentCardData>
         <TitleWrapper>
-          <Link url={jobRoleDetails.companyURL}><ContentCardLogo src={jobRoleDetails.companyLogoURL} /></Link>
+          <Link url={jobRoleDetails.companyURL} aria-label={`Read more about ${jobRoleDetails.companyName} here`}><ContentCardLogo src={jobRoleDetails.companyLogoURL} alt={`${jobRoleDetails.companyName} logo`} /></Link>
           <ContentCardTitle>
-            <Link url={jobRoleDetails.companyURL}><h1>{jobRoleDetails.companyName}</h1></Link>
+            <Link url={jobRoleDetails.companyURL} aria-label={`Read more about ${jobRoleDetails.companyName} here`}><h1>{jobRoleDetails.companyName}</h1></Link>
             <h2>{jobRoleDetails.title}</h2>
           </ContentCardTitle>
         </TitleWrapper>

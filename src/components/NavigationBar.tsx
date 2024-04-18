@@ -1,5 +1,6 @@
 // NavigationBar.tsx
 import React, { useRef, useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { Icon } from 'semantic-ui-react';
 import { HashLink } from 'react-router-hash-link';
@@ -137,14 +138,30 @@ const MobileMenu = styled.div`
 function NavigationBar () {
   const [mobileMenuActive, setMobileMenuActive] = useState(false);
   const insideOutsideRefElement = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const scrollToAnchor = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, hash: string) => {
     event.preventDefault();
-    const element = document.querySelector(hash);
-    if (element) {
-      const yCoordinate = element.getBoundingClientRect().top + window.scrollY;
-      const yOffset = -60;
-      window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+    const [path, anchor] = hash.split('#');
+    if (location.pathname !== path) {
+      // Navigate and then scroll after navigation has occurred
+      navigate(path);
+      setTimeout(() => {
+        const element = document.querySelector(`#${anchor}`);
+        if (element) {
+          const yCoordinate = element.getBoundingClientRect().top + window.scrollY;
+          const yOffset = -60;
+          window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+        }
+      }, 0);
+    } else {
+      const element = document.querySelector(`#${anchor}`);
+      if (element) {
+        const yCoordinate = element.getBoundingClientRect().top + window.scrollY;
+        const yOffset = -60;
+        window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+      }
     }
   };
 
@@ -167,7 +184,7 @@ function NavigationBar () {
     <NavBarContainer ref={insideOutsideRefElement} id="NavigationBar">
       <NavBar>
         <Logo as={HashLink} to="/#title">
-          <NavBarIcon title="mow" src={SiteIcon} />
+          <NavBarIcon title="mow" src={SiteIcon} alt="Site Icon"/>
           <NavBarLogo src={GerikPetersonLogo} alt="Site Logo" />
           {/*<NavBarTitle>Gerik Peterson</NavBarTitle>*/}
         </Logo>
