@@ -27,6 +27,7 @@ const CloseButton = styled.i`
     width: 19px;
     height: 19px;
     margin: -2px 0px -2px 5px;
+    cursor:pointer;
 `;
 
 const ConsentText = styled.p`
@@ -40,6 +41,7 @@ const ConsentButton = styled.button`
     border-radius: 3px;
     text-decoration: underline;
     background-color: transparent;
+    cursor:pointer;
 `;
 
 const DeclineButton = styled.button`
@@ -48,13 +50,14 @@ const DeclineButton = styled.button`
     border-radius: 3px;
     text-decoration: underline;
     background-color: transparent;
+    cursor:pointer;
 `;
 
 
 const CookieConsentModal = () => {
 
   const [showModal, setShowModal] = useState<boolean | null>(null);
-  const [cookiesAccepted, setCookiesAccepted] = useState<boolean | null>(null);
+  const [hasAnswered, setHasAnswered] = useState<boolean | null>(null);
 
   const initializeGoogleAnalytics = () => {
     ReactGA.initialize('G-MNXW69WQ1V');
@@ -62,11 +65,10 @@ const CookieConsentModal = () => {
 
   useEffect(() => {
     const savedPreference = localStorage.getItem('gaConsent');
-    console.log(`savedPreference = ${savedPreference}`);
     if (savedPreference === null) {
       setShowModal(true);
     } else {
-      setCookiesAccepted(savedPreference === 'true');
+      setHasAnswered(true);
       if (savedPreference === 'true') {
         initializeGoogleAnalytics();
       }
@@ -76,12 +78,12 @@ const CookieConsentModal = () => {
   const handleAcceptCookies = () => {
     localStorage.setItem('gaConsent', 'true');
     initializeGoogleAnalytics();
-    setCookiesAccepted(true);
+    setHasAnswered(true);
   };
 
   const handleDeclineCookies = () => {
     localStorage.setItem('gaConsent', 'false');
-    setCookiesAccepted(false);
+    setHasAnswered(true);
   };
 
   const hideModal = () => {
@@ -91,7 +93,7 @@ const CookieConsentModal = () => {
   return (
     <>
       {showModal &&
-      <CookieConsentModalContainer $showComponent={!cookiesAccepted}>
+      <CookieConsentModalContainer $showComponent={!hasAnswered}>
         <ConsentTextContainer>
           <CloseButton className="fa fa-window-close" aria-hidden="true" onClick={hideModal}></CloseButton>
           <ConsentText>By using our site you agree to our use of cookies and google analytics to deliver a better site experience.  Read more on our <a href="/privacy-policy">privacy policy</a>.</ConsentText>
