@@ -7,6 +7,7 @@ type LinkProps = {
     onClick?: () => void;
     children?: ReactNode;
     className?: string;
+    target?: '_self'|'_blank'|'_parent'|'_top';
 }
 
 function Link (props: LinkProps) {
@@ -26,7 +27,7 @@ function Link (props: LinkProps) {
         className={props.className}
         to={props.url}
         onClick={props.onClick}
-        target="_blank"
+        target={props.target ? props.target : '_blank'}
         rel="noopener noreferrer">
         {props.children}
       </RouterLink>
