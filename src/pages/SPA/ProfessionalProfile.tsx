@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import theme from '../../theme';
 import AmericanFlag from './images/Flag-USA.svg';
 import UKFlag from './images/Flag-UK.svg';
+import Link from '../../components/Link';
 
 const ProfessionalProfileSection = styled.section`
     width: 100%;
@@ -121,12 +122,12 @@ function ProfessionalProfileBlock () {
           <ProfessionalProfileContainer>
             <Title>Professional Profile</Title>
             <ProfessionalProfileBlurb>
-              <p>I have a Masters in Computer Science and have been working in software development for over 15 years.  I love leading people and writing code equally and have led a career swapping back and forth between the two (see more of my experience <a href="#cv">here</a>).</p>
+              <p>I have a Masters in Computer Science and have been working in software development for over 15 years.  I love leading people and writing code equally and have led a career swapping back and forth between the two (see more of my experience <Link url="/#cv">here</Link>).</p>
               <h2>Experience Summary</h2><HorizontalRule />
               <p>I have extensive experience in leading teams and building full-stack software.
                 My strongest programming skills are in TypeScript and Python but I also love working with data and database systems.
                 I am also a certified scrum master and am currently developing skills and knowledge in AI integrations and ML.
-                Historically my strength is backend engineering with a specialty in cloud computing.  However, these days it doesn't really matter what I work on — I just love being an engineer! (check out some of my personal values as an engineer <a href="#values">here</a>).</p>
+                Historically my strength is backend engineering with a specialty in cloud computing.  However, these days it doesn't really matter what I work on — I just love being an engineer! (check out some of my personal values as an engineer <Link url="/#values">here</Link>).</p>
               <h2>Dual Citizenship</h2><HorizontalRule />
               <p>I also have dual citizenship in the United States and the United Kingdom.  So, I am free to live and work in both countries without restriction.</p>
             </ProfessionalProfileBlurb>
