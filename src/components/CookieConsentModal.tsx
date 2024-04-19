@@ -97,7 +97,7 @@ const CookieConsentModal = () => {
       <CookieConsentModalContainer $showComponent={!hasAnswered}>
         <ConsentTextContainer>
           <CloseButton className="fa fa-window-close" aria-hidden="true" onClick={hideModal}></CloseButton>
-          <ConsentText>By using our site you agree to our use of cookies and google analytics to deliver a better site experience.  Read more on our <Link url="/privacy-policy">privacy policy</Link>.</ConsentText>
+          <ConsentText>By using our site you agree to our use of cookies and google analytics to deliver a better site experience.  Read more on our <Link url="/privacy-policy" target="_self">privacy policy</Link>.</ConsentText>
           <ConsentButton onClick={handleAcceptCookies}>I understand.</ConsentButton>
           <DeclineButton onClick={handleDeclineCookies}>No, thank you.</DeclineButton>
         </ConsentTextContainer>
