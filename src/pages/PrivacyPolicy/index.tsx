@@ -9,6 +9,7 @@ const PrivacyPolicyPageWrapperDiv = styled.div`
   justify-content: center;
   align-items: flex-start;
   margin-bottom: 20px;
+  autofocus;
 `;
 
 const PrivacyPolicyContentBox = styled.div`
@@ -27,7 +28,7 @@ const PrivacyPolicyContentBox = styled.div`
 
 const PrivacyPolicyPage: React.FC = () => {
   return (
-    <PrivacyPolicyPageWrapperDiv>
+    <PrivacyPolicyPageWrapperDiv id="privacy-policy">
       <PrivacyPolicyContentBox>
         <div>
           <h1>Privacy Policy for gerikpeterson.com</h1>

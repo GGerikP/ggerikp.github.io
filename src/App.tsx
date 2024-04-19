@@ -1,6 +1,6 @@
 import React from 'react';
 import NavigationBar from './components/NavigationBar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 import styled, { createGlobalStyle } from 'styled-components';
 import theme from './theme';

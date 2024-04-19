@@ -60,7 +60,7 @@ function Footer () {
       <FooterBlurbContainer>
         <p>This site was created by Gerik Peterson.</p>
         <p>Information, data and designs from this website may not be copied or used in any way except for its originally intended purpose.</p>
-        <a href="/privacy-policy"><p>Privacy Policy</p></a>
+        <Link url="/privacy-policy"><p>Privacy Policy</p></Link>
       </FooterBlurbContainer>
     </FooterContainer>
   );
