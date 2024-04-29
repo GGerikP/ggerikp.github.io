@@ -73,10 +73,10 @@ const AnchorLink = styled(HashLink)`
     flex-wrap: wrap;
 `;
 
-const LogoImage = styled.div<{src: string, $coverAccentColor: string}>`
+const LogoImage = styled.div<{$backgroundImgURL: string, $coverAccentColor: string}>`
     min-width: 200px;
     min-height: 200px;
-    background-image: url(${(props) => props.src});
+    background-image: url(${(props) => props.$backgroundImgURL});
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -161,7 +161,7 @@ function JobRoleBlock (props: JobRoleBlockProps) {
         <JobRoleCover>
           <AnchorLink to={`#${props.companyId}`}
             onClick={(event) => handleClick(event, `#${props.companyId}`)}>
-            <LogoImage src={props.companyLogoURL} $coverAccentColor={props.coverAccentColor}/>
+            <LogoImage $backgroundImgURL={props.companyLogoURL} $coverAccentColor={props.coverAccentColor}/>
             <JobRoleCoverTitle $coverAccentColor={props.coverAccentColor}>{props.title}</JobRoleCoverTitle>
           </AnchorLink>
         </JobRoleCover>
