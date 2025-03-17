@@ -9,6 +9,7 @@ import LogoOpenBet from './images/logo-openbet.jpeg';
 import LogoPresidentialBrokerage from './images/logo-presidentialbrokerage.jpeg';
 import LogoJoannStores from './images/logo-joannstores.jpeg';
 import LogoAmericanGreetings from './images/logo-americangreetings.jpeg';
+import LogoSillionLtd from './images/logo-sillionltd.jpeg';
 
 const ExperienceBlockSection = styled.section`
     width: 100%;
@@ -106,6 +107,31 @@ function ExperienceBlock () {
             </ExperienceBlurb>
           </ExperienceIntroContainer>
           <Roles>
+            <JobRoleBlock
+              companyId="sillion"
+              companyLogoURL={LogoSillionLtd}
+              companyName="Sillion Ltd"
+              title="Senior Software Engineer"
+              location="London, England"
+              workDescription={
+                <div>
+                  <p>In this role I was an Individual Contributor (IC) Python Engineer primarily responsible for designing and delivering features into a Python Django application hosted in AWS (with Docker, Kubernetes, Terraform) with a PostGreSQL database, managed via GitHub Actions, Pants, and Makefiles.</p>
+                  <p>Responsibilities/Achievements:</p>
+                  <ol style={{ listStyleType: 'disc' }}>
+                    <li>Built a modular and extensible ETL framework ingesting data using Python, Django, Pandas, Celery, abc, and Redis, PostGreSQL from a variety of file formats: CSV, Excel, and Parquet; and sources: UI uploads, AWS S3, HTTP APIs</li>
+                    <li>Broke up and refactored a monolithic codebase following SOLID, DRY, and KISS principles, modularising embedded business logic in Django Management Commands, making functionality reusable, and API and ETL-ready (leading to the introduction of a set of previously non-existent coding standards)</li>
+                    <li>Monitored and managed system performance (e.g. PostGreSQL + SQL + Query plans, WSL resource management)</li>
+                    <li>Built a data seeding framework used for ingesting static data fixtures and preparing test data in addition to introduced test coverage metrics, and established standards for </li>
+                    <li>Trained data scientists standard software development and engineering practices</li>
+                    <li>Coached the team lead on Agile practices and got the team to begin having retrospectives, refinement meetings, and demos</li>
+                  </ol>
+                </div>
+              }
+              companyURL='https://www.sillion.co.uk/'
+              linkedinURL='https://www.linkedin.com/company/sillionltd/posts/?feedView=all'
+              backgroundColor="#61cab8"
+              coverAccentColor="#FFFFFF"
+            />
             <JobRoleBlock
               companyId="rad"
               companyLogoURL={LogoRad}
