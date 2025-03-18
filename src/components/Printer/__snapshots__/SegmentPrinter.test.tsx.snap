@@ -3,14 +3,14 @@
 exports[`SegmentPrinter Tests 001: Renders a single empty segment with no lines or segments to follow 1`] = `
 <DocumentFragment>
   <span
-    class="sc-guDLey wuijx"
+    class="sc-gnOvAp bYEiAR"
     id="segment0"
   >
     <span
-      class="sc-hLQSwg gcsUJF"
+      class="sc-glJfXD hHREYb"
     />
     <div
-      class="sc-beySPh brsoYh"
+      class="sc-VHjGu hmIWSt"
       id="segment0-cursor"
     >
        
@@ -22,14 +22,14 @@ exports[`SegmentPrinter Tests 001: Renders a single empty segment with no lines 
 exports[`SegmentPrinter Tests 002: Renders a single empty segment with more segments to follow 1`] = `
 <DocumentFragment>
   <span
-    class="sc-guDLey wuijx"
+    class="sc-gnOvAp bYEiAR"
     id="segment0"
   >
     <span
-      class="sc-hLQSwg gcsUJF"
+      class="sc-glJfXD hHREYb"
     />
     <div
-      class="sc-beySPh fKJoIe"
+      class="sc-VHjGu jiiWGa"
       id="segment0-cursor"
     >
        
@@ -41,14 +41,14 @@ exports[`SegmentPrinter Tests 002: Renders a single empty segment with more segm
 exports[`SegmentPrinter Tests 003: Renders a SegmentPrinter with a single character of text and it is the last segment and last line 1`] = `
 <DocumentFragment>
   <span
-    class="sc-guDLey wuijx"
+    class="sc-gnOvAp bYEiAR"
     id="segment0"
   >
     <span
-      class="sc-hLQSwg gcsUJF"
+      class="sc-glJfXD hHREYb"
     />
     <div
-      class="sc-beySPh fKJoIe"
+      class="sc-VHjGu jiiWGa"
       id="segment0-cursor"
     >
        
@@ -60,14 +60,14 @@ exports[`SegmentPrinter Tests 003: Renders a SegmentPrinter with a single charac
 exports[`SegmentPrinter Tests 004: Renders a SegmentPrinter with a single character of text but there are more segments to print 1`] = `
 <DocumentFragment>
   <span
-    class="sc-guDLey wuijx"
+    class="sc-gnOvAp bYEiAR"
     id="segment004"
   >
     <span
-      class="sc-hLQSwg gcsUJF"
+      class="sc-glJfXD hHREYb"
     />
     <div
-      class="sc-beySPh fKJoIe"
+      class="sc-VHjGu jiiWGa"
       id="segment004-cursor"
     >
        
@@ -79,14 +79,14 @@ exports[`SegmentPrinter Tests 004: Renders a SegmentPrinter with a single charac
 exports[`SegmentPrinter Tests 005: Renders a SegmentPrinter with a long string of text but there are more segments to print 1`] = `
 <DocumentFragment>
   <span
-    class="sc-guDLey wuijx"
+    class="sc-gnOvAp bYEiAR"
     id="segment005"
   >
     <span
-      class="sc-hLQSwg gcsUJF"
+      class="sc-glJfXD hHREYb"
     />
     <div
-      class="sc-beySPh fKJoIe"
+      class="sc-VHjGu jiiWGa"
       id="segment005-cursor"
     >
        
@@ -98,14 +98,14 @@ exports[`SegmentPrinter Tests 005: Renders a SegmentPrinter with a long string o
 exports[`SegmentPrinter Tests 006: Renders a SegmentPrinter with a large string of text instantly with instantPrint set to true 1`] = `
 <DocumentFragment>
   <span
-    class="sc-guDLey wuijx"
+    class="sc-gnOvAp bYEiAR"
     id="segment0"
   >
     <span
-      class="sc-hLQSwg gcsUJF"
+      class="sc-glJfXD hHREYb"
     />
     <div
-      class="sc-beySPh fKJoIe"
+      class="sc-VHjGu jiiWGa"
       id="segment0-cursor"
     >
        

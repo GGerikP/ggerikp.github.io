@@ -3,7 +3,7 @@
 exports[`LinePrinter renders correctly with no segments 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eDLKkx cfncZL"
+    class="sc-dOfePm gUsSlc"
     id="line0"
   >
     <span />
@@ -14,19 +14,19 @@ exports[`LinePrinter renders correctly with no segments 1`] = `
 exports[`LinePrinter renders correctly with one segment where there are no more lines 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eDLKkx cfncZL"
+    class="sc-dOfePm gUsSlc"
     id="line0"
   >
     <span />
     <span
-      class="sc-guDLey wuijx"
+      class="sc-gnOvAp bYEiAR"
       id="line0-segment0"
     >
       <span
-        class="sc-hLQSwg gcsUJF"
+        class="sc-glJfXD hHREYb"
       />
       <div
-        class="sc-beySPh brsoYh"
+        class="sc-VHjGu hmIWSt"
         id="line0-segment0-cursor"
       >
          
@@ -39,19 +39,19 @@ exports[`LinePrinter renders correctly with one segment where there are no more 
 exports[`LinePrinter renders correctly with two segment where there are additional lines to follow 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eDLKkx cfncZL"
+    class="sc-dOfePm gUsSlc"
     id="line0"
   >
     <span />
     <span
-      class="sc-guDLey wuijx"
+      class="sc-gnOvAp bYEiAR"
       id="line0-segment0"
     >
       <span
-        class="sc-hLQSwg gcsUJF"
+        class="sc-glJfXD hHREYb"
       />
       <div
-        class="sc-beySPh brsoYh"
+        class="sc-VHjGu hmIWSt"
         id="line0-segment0-cursor"
       >
          
@@ -64,19 +64,19 @@ exports[`LinePrinter renders correctly with two segment where there are addition
 exports[`LinePrinter renders correctly with two segments but there are no more lines 1`] = `
 <DocumentFragment>
   <div
-    class="sc-eDLKkx cfncZL"
+    class="sc-dOfePm gUsSlc"
     id="line0"
   >
     <span />
     <span
-      class="sc-guDLey wuijx"
+      class="sc-gnOvAp bYEiAR"
       id="line0-segment0"
     >
       <span
-        class="sc-hLQSwg gcsUJF"
+        class="sc-glJfXD hHREYb"
       />
       <div
-        class="sc-beySPh brsoYh"
+        class="sc-VHjGu hmIWSt"
         id="line0-segment0-cursor"
       >
          

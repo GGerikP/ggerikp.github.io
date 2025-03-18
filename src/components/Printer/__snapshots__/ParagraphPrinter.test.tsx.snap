@@ -3,25 +3,25 @@
 exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line with 1 segment 1`] = `
 <DocumentFragment>
   <div
-    class="sc-jTQCzO gnzQdg"
+    class="sc-jgmqJh RLSbd"
     id="Tab0-paragraph"
   >
     <div
-      class="sc-eDLKkx cfncZL"
+      class="sc-dOfePm gUsSlc"
       id="Tab0-paragraph-line0"
     >
       <span>
         $ 
       </span>
       <span
-        class="sc-guDLey wuijx"
+        class="sc-gnOvAp bYEiAR"
         id="Tab0-paragraph-line0-segment0"
       >
         <span
-          class="sc-hLQSwg gcsUJF"
+          class="sc-glJfXD hHREYb"
         />
         <div
-          class="sc-beySPh brsoYh"
+          class="sc-VHjGu hmIWSt"
           id="Tab0-paragraph-line0-segment0-cursor"
         >
            
@@ -35,25 +35,25 @@ exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line wit
 exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line with 2 segments 1`] = `
 <DocumentFragment>
   <div
-    class="sc-jTQCzO gnzQdg"
+    class="sc-jgmqJh RLSbd"
     id="Tab0-paragraph"
   >
     <div
-      class="sc-eDLKkx cfncZL"
+      class="sc-dOfePm gUsSlc"
       id="Tab0-paragraph-line0"
     >
       <span>
         $ 
       </span>
       <span
-        class="sc-guDLey wuijx"
+        class="sc-gnOvAp bYEiAR"
         id="Tab0-paragraph-line0-segment0"
       >
         <span
-          class="sc-hLQSwg gcsUJF"
+          class="sc-glJfXD hHREYb"
         />
         <div
-          class="sc-beySPh brsoYh"
+          class="sc-VHjGu hmIWSt"
           id="Tab0-paragraph-line0-segment0-cursor"
         >
            
@@ -67,25 +67,25 @@ exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 1 line wit
 exports[`ParagraphPrinter Unit Tests. Renders a ParagraphPrinter with 5 lines, each with 5 segments 1`] = `
 <DocumentFragment>
   <div
-    class="sc-jTQCzO gnzQdg"
+    class="sc-jgmqJh RLSbd"
     id="Tab0-paragraph"
   >
     <div
-      class="sc-eDLKkx cfncZL"
+      class="sc-dOfePm gUsSlc"
       id="Tab0-paragraph-line0"
     >
       <span>
         $ 
       </span>
       <span
-        class="sc-guDLey wuijx"
+        class="sc-gnOvAp bYEiAR"
         id="Tab0-paragraph-line0-segment0"
       >
         <span
-          class="sc-hLQSwg gcsUJF"
+          class="sc-glJfXD hHREYb"
         />
         <div
-          class="sc-beySPh brsoYh"
+          class="sc-VHjGu hmIWSt"
           id="Tab0-paragraph-line0-segment0-cursor"
         >
            
