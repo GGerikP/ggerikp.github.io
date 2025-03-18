@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "https://gerikpeterson.com/static/css/main.a0f95119.css",
-    "main.js": "https://gerikpeterson.com/static/js/main.71b7642e.js",
+    "main.css": "https://gerikpeterson.com/static/css/main.7c475565.css",
+    "main.js": "https://gerikpeterson.com/static/js/main.8605af41.js",
     "static/js/453.9feff629.chunk.js": "https://gerikpeterson.com/static/js/453.9feff629.chunk.js",
     "static/media/brand-icons.svg": "https://gerikpeterson.com/static/media/brand-icons.6729d29753e000c17489.svg",
     "static/media/profile-gerikpeterson-large-transp.webp": "https://gerikpeterson.com/static/media/profile-gerikpeterson-large-transp.aca95c72c22db81a3265.webp",
@@ -35,12 +35,12 @@
     "static/media/icon-facebook-small.svg": "https://gerikpeterson.com/static/media/icon-facebook-small.3423de1733e888646c2052258f049e9c.svg",
     "static/media/Flag-USA.svg": "https://gerikpeterson.com/static/media/Flag-USA.e50f426ae1c4b4bbbb6edf17d2e716ea.svg",
     "static/media/Flag-UK.svg": "https://gerikpeterson.com/static/media/Flag-UK.5aa2f382eb186965d0d01427f2b1c608.svg",
-    "main.a0f95119.css.map": "https://gerikpeterson.com/static/css/main.a0f95119.css.map",
-    "main.71b7642e.js.map": "https://gerikpeterson.com/static/js/main.71b7642e.js.map",
+    "main.7c475565.css.map": "https://gerikpeterson.com/static/css/main.7c475565.css.map",
+    "main.8605af41.js.map": "https://gerikpeterson.com/static/js/main.8605af41.js.map",
     "453.9feff629.chunk.js.map": "https://gerikpeterson.com/static/js/453.9feff629.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a0f95119.css",
-    "static/js/main.71b7642e.js"
+    "static/css/main.7c475565.css",
+    "static/js/main.8605af41.js"
   ]
 }
